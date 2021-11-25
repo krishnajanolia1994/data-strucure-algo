@@ -1,5 +1,8 @@
 package com.krishna.algorithm.DSAlgo.service;
 
-public class HashingService {
+import com.krishna.algorithm.DSAlgo.model.HashNode;
+
+public interface HashingService {
+	public HashNode [] addNode(int key, int value);	
 
 }
