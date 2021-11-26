@@ -19,5 +19,6 @@ public class HashingController {
 	public HashNode[] addNode(@RequestParam("key") int key , @RequestParam("value") int value)
 	{
 		return hashingService.addNode(key, value);
+		
 	}
 }
