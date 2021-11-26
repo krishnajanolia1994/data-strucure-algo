@@ -21,4 +21,5 @@ public class AppConstants {
 	public static final String ELEMENT = "/element";
 	public static final String MATCH = "/match";
 	public static final String PATTERN = "/pattern";
+	
 }
