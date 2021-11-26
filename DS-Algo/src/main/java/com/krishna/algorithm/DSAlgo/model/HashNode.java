@@ -24,7 +24,4 @@ public class HashNode {
 	public void setNext(HashNode next) {
 		this.next = next;
 	}
-	
-	
-  
 }
