@@ -12,6 +12,7 @@ private List<String> list = new ArrayList<String>();
 	private LinkedList linkedList = null;
 	
 	
+	
 	private static DataStructure dataStrucure = null;
 	
 	private DataStructure() {}
