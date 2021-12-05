@@ -6,5 +6,4 @@ public interface LinkedListService {
 	
 	public LinkedList AddNode(String name, String surname);
 
-
 }
