@@ -14,7 +14,7 @@ public class HashingController {
 
 	@Autowired
 	private HashingService hashingService;
-	
+	//to add a node in hashmap 
 	@GetMapping(value  = AppConstants.HASHING + AppConstants.ADD+AppConstants.ELEMENT)
 	public HashNode[] addNode(@RequestParam("key") int key , @RequestParam("value") int value)
 	{
