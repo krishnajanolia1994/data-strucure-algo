@@ -15,6 +15,7 @@ public class PeakFindingController {
 	@Autowired
 	private PeakService peakService;
 	
+	
 	@PostMapping(value  = AppConstants.PEAK_FIND+ AppConstants.ONED)
 	public int getPeak(@RequestBody int[] ar)
 	{
