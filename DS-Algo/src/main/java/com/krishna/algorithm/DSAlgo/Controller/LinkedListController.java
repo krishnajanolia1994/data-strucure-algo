@@ -18,7 +18,8 @@ public class LinkedListController {
 	@GetMapping(value  = AppConstants.LINKED_LIST + AppConstants.NAME + AppConstants.SURNAME)
 	public LinkedList addNode(@PathVariable("name") String name , @PathVariable("surname") String surname)
 	{
-		return linkedListService.AddNode(name, surname);
+		return linkedListService.AddNode(name, surname); 
+		
 	}
 
   
