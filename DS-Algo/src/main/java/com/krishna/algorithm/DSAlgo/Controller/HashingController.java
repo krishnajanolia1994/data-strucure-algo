@@ -11,7 +11,7 @@ import com.krishna.algorithm.DSAlgo.service.HashingService;
 
 @RestController
 public class HashingController {
-
+	//to add hashingService
 	@Autowired
 	private HashingService hashingService;
 	//to add a node in hashmap 
