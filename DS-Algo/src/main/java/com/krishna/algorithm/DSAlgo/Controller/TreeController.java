@@ -39,6 +39,7 @@ public class TreeController {
 	public Tree addAvlNode(@RequestParam("value") int value )
 	{
 		return treeService.addAvlNode(value);
+		
 	}
 
 }
