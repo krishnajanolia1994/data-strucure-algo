@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.krishna.algorithm.DSAlgo.constent.AppConstants;
 import com.krishna.algorithm.DSAlgo.model.HashNode;
 import com.krishna.algorithm.DSAlgo.service.HashingService;
-
+//A RestController for handling request related to hashing 
 @RestController
 public class HashingController {
 	//to add hashingService
