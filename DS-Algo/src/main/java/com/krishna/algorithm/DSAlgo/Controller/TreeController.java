@@ -21,6 +21,7 @@ public class TreeController {
 	public Tree addNode(@RequestParam("value") int value )
 	{
 		return treeService.addNode(value);
+		
 	}
 	
 	@PostMapping(value  = AppConstants.TREE + AppConstants.DELETE + AppConstants.NODE)
@@ -39,6 +40,7 @@ public class TreeController {
 	public Tree addAvlNode(@RequestParam("value") int value )
 	{
 		return treeService.addAvlNode(value);
+		
 	}
 
 }
