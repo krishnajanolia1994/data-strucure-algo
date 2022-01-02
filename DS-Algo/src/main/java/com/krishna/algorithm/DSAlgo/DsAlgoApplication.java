@@ -9,6 +9,7 @@ public class DsAlgoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DsAlgoApplication.class, args);
+		
 	}
 
 }
