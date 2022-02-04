@@ -41,8 +41,8 @@ public class SortingController {
 	
 	@PostMapping(value  = AppConstants.INDEX_SORT)
 	public int [] indexSort(@RequestBody int[] ar)
-	{
-		return sortingService.indexSort(ar);
+	 {
+		return sortingService.indexSort(ar) ;
 	}
 	
 	
