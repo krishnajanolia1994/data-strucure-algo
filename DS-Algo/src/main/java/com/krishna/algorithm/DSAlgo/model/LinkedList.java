@@ -22,6 +22,6 @@ public class LinkedList {
 		return next;
 	}
 	public void setNext(LinkedList next) {
-		this.next = next;
+		this.next = next ;
 	}
 }
