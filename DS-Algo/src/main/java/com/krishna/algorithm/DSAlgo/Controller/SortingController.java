@@ -30,7 +30,7 @@ public class SortingController {
 	@PostMapping(value  = AppConstants.HEAP_SORT)
 	public int [] heapSort(@RequestBody int[] ar)
 	{
-		return sortingService.heapSort(ar);
+		return sortingService.heapSort(ar) ;
 	}
 	
 	@PostMapping(value  = AppConstants.COUNTING_SORT)
