@@ -1,5 +1,5 @@
 package com.krishna.algorithm.DSAlgo.service;
 
 public interface PeakService {
-	public int getAPeak(int ar[]);
+	public int getAPeak(int ar[]) ;
 }
