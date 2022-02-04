@@ -4,7 +4,7 @@ import com.krishna.algorithm.DSAlgo.model.LinkedList;
 
 public interface LinkedListService {
 	
-	public LinkedList AddNode(String name, String surname);
+	public LinkedList AddNode(String name, String surname) ;
 
 	public LinkedList delete(String name);
 
