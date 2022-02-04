@@ -19,19 +19,19 @@ public class LinkedListController {
 	@GetMapping(value  = AppConstants.LINKED_LIST + AppConstants.NAME + AppConstants.SURNAME)
 	public LinkedList addNode(@PathVariable("name") String name , @PathVariable("surname") String surname)
 	{
-		return linkedListService.AddNode(name, surname); 
+		return linkedListService.AddNode(name, surname) ;  
 		
 	}
 	
 	@GetMapping(value  = AppConstants.LINKED_LIST + AppConstants.DELETE + AppConstants.BY_KEY)
-	public LinkedList addNode(@PathVariable("name") String name)
+	public LinkedList deleteNodeByKey(@PathVariable("name") String name)
 	{
 		return linkedListService.delete(name); 
 		
 	}
 	
 	@GetMapping(value  = AppConstants.LINKED_LIST + AppConstants.DELETE + AppConstants.BY_POSITION)
-	public LinkedList addNode(@PathVariable("index") int index)
+	public LinkedList deleteNodeByPosition(@PathVariable("index") int index)
 	{
 		return linkedListService.deleteByPosition(index); 
 		
