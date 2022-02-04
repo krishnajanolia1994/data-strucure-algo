@@ -15,9 +15,9 @@ public class PatternMatchingController {
 	private PatternService patternService;
 	
 	@GetMapping(value  = AppConstants.PATTERN + AppConstants.MATCH)
-	public Integer addNode(@RequestParam("pattern") String pattern , @RequestParam("string") String string)
+	public Integer findPositionPatternInStringIfAny(@RequestParam("pattern") String pattern , @RequestParam("string") String string)
 	{
-		return patternService.findPositionPatternInStringIfAny(pattern, string);
+		return patternService.findPositionPatternInStringIfAny(pattern, string) ;
 	}
 
 }
