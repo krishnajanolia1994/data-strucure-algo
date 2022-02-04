@@ -304,7 +304,7 @@ private static Tree root;
 		int max =height;
 		if(height2>height)
 			max=height2;
-		return max;
+		return max ;
 	}
 
 }
