@@ -38,7 +38,7 @@ public class TreeController {
 	@PostMapping(value  = AppConstants.AVL + AppConstants.TREE + AppConstants.ADD + AppConstants.NODE)
 	public Tree addAvlNode(@RequestParam("value") int value )
 	{
-		return treeService.addAvlNode(value);
+		return treeService.addAvlNode(value) ;
 		
 	}
 
