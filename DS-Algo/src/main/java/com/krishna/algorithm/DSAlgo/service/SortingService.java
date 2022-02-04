@@ -2,7 +2,7 @@ package com.krishna.algorithm.DSAlgo.service;
 
 public interface SortingService {
 
-	public int[] mergeSort(int[] ar);
+	public int[] mergeSort(int[] ar) ;
 
 	public int[] heapSort(int[] ar);
 
