@@ -32,7 +32,7 @@ public class TreeController {
 	@PostMapping(value  = AppConstants.TREE + AppConstants.GET + AppConstants.NODE)
 	public Tree getNode(@RequestParam("value") int value )
 	{
-		return treeService.getNode(value);
+		return treeService.getNode(value) ;
 	}
 	
 	@PostMapping(value  = AppConstants.AVL + AppConstants.TREE + AppConstants.ADD + AppConstants.NODE)
