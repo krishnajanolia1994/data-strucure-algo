@@ -32,7 +32,7 @@ private static Tree root;
 			node.setLeft(null);
 			node.setRight(null);
 			if (value > parent.getValue())   {
-				parent.setRight(node)   ;
+				parent.setRight(node)    ;
 			} else {
 				parent.setLeft(node);
 			}
