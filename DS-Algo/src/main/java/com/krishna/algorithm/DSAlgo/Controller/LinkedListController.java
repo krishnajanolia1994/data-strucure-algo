@@ -13,7 +13,7 @@ import com.krishna.algorithm.DSAlgo.service.LinkedListService;
 public class LinkedListController {
 	
 	@Autowired
-	private LinkedListService linkedListService;
+	private LinkedListService linkedListService ;
 	
 	
 	@GetMapping(value  = AppConstants.LINKED_LIST + AppConstants.NAME + AppConstants.SURNAME)
