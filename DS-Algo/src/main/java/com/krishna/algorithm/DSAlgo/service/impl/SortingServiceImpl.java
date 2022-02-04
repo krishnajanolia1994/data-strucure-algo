@@ -273,7 +273,7 @@ public class SortingServiceImpl implements SortingService {
 			max /= 10;
 			maxDigit++;
 		}
-		return maxDigit;
+		return maxDigit; 
 	}
 
 }
