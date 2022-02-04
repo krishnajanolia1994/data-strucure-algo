@@ -42,7 +42,7 @@ private static Tree root;
 		return root;
 	}
 
-	private Tree getParentLeaf(int value ,Tree root ) {
+	private Tree getParentLeaf(int value ,Tree root )  {
 
 		Tree temp = root;
 
