@@ -18,7 +18,7 @@ public class SortingController {
 	@PostMapping(value  = AppConstants.INSEERTION_SORT)
 	public int [] insertionSort(@RequestBody int[] ar)
 	{
-		return sortingService.insertionSort(ar);
+		return sortingService.insertionSort(ar) ;
 	}
 	
 	@PostMapping(value  = AppConstants.MERGE_SORT)
