@@ -33,7 +33,7 @@ public class LinkedListController {
 	@GetMapping(value  = AppConstants.LINKED_LIST + AppConstants.DELETE + AppConstants.BY_POSITION)
 	public LinkedList deleteNodeByPosition(@PathVariable("index") int index)
 	{
-		return linkedListService.deleteByPosition(index) ; 
+		return linkedListService.deleteByPosition(index)  ; 
 		
 	}
 	
