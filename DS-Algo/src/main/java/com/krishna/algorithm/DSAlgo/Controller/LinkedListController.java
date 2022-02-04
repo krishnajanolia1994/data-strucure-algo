@@ -20,7 +20,6 @@ public class LinkedListController {
 	public LinkedList addNode(@PathVariable("name") String name , @PathVariable("surname") String surname)
 	{
 		return linkedListService.AddNode(name, surname) ;  
-		
 	}
 	
 	@GetMapping(value  = AppConstants.LINKED_LIST + AppConstants.DELETE + AppConstants.BY_KEY)
