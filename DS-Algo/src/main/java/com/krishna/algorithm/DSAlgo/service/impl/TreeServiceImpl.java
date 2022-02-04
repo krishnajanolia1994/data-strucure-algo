@@ -54,7 +54,7 @@ private static Tree root;
 			} else {
 				if (temp.getLeft() == null)
 					break;
-				temp = temp.getLeft();
+				temp = temp.getLeft() ;
 
 			}
 
