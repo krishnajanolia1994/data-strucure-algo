@@ -22,7 +22,7 @@ public class Graph {
 	}
 
 	public void setGraphs(List<Graph> graphs) {
-		this.graphs = graphs;
+		this.graphs = graphs ;
 	}
 	
 	
