@@ -15,7 +15,7 @@ public class GraphController {
 	@GetMapping(value  = AppConstants.GRAPH + AppConstants.ADD+AppConstants.NODE)
 	public String addNode(@RequestParam("sourse") int sourse , @RequestParam("destination") int destination)
 	{
-		return graphService.addNode(sourse, destination) ;
+		return graphService.addNode(sourse, destination)  ;
 	}
 	
 	@GetMapping(value  = AppConstants.WEIGHT+AppConstants.GRAPH + AppConstants.ADD+AppConstants.NODE)
