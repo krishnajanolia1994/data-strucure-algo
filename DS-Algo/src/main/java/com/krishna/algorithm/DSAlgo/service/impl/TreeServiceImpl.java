@@ -21,7 +21,7 @@ private static Tree root;
 
 		flag = true;
 		if (root == null) {
-			root = new Tree();
+			root = new Tree() ;
 			root.setValue(value);
 			root.setLeft(null);
 			root.setRight(null);
