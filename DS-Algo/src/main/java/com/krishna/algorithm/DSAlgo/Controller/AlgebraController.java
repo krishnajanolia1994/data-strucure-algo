@@ -15,6 +15,6 @@ public class AlgebraController {
 	@GetMapping(value  = AppConstants.GET + AppConstants.RTH+AppConstants.ROOT)
 	public double getRthRoot(@RequestParam("root") int root , @RequestParam("number") int number)
 	{
-		return algebraService.getRthRoot(root, number) ;
+		return algebraService.getRthRoot(root, number);
 	}
 }
