@@ -3,7 +3,7 @@ package com.krishna.algorithm.DSAlgo.model;
 
 public class HashNode {
 
-	private int key;
+	private int key ;
 	private int value;
 	private HashNode next;
 	public int getKey() {
