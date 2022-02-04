@@ -24,7 +24,7 @@ public class SortingController {
 	@PostMapping(value  = AppConstants.MERGE_SORT)
 	public int [] mergeSort(@RequestBody int[] ar)
 	{
-		return sortingService.mergeSort(ar);
+		return sortingService.mergeSort(ar) ;
 	}
 	
 	@PostMapping(value  = AppConstants.HEAP_SORT)
