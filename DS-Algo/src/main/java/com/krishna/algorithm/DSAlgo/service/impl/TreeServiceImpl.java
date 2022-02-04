@@ -75,7 +75,7 @@ private static Tree root;
 		Tree nodeToBeDeleted = getNodeToBeDeletedParent(value);
 		if (nodeToBeDeleted != null) {
 			if (nodeToBeDeleted.getLeft() == null && nodeToBeDeleted.getRight() == null) {
-				parent = getParent(value,root);
+				parent = getParent(value,root) ;
 				if (parent == null)
 					root = null;
 				else {
