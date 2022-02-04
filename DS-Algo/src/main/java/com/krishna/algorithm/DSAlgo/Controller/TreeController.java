@@ -26,7 +26,7 @@ public class TreeController {
 	@PostMapping(value  = AppConstants.TREE + AppConstants.DELETE + AppConstants.NODE)
 	public Tree deleteNode(@RequestParam("value") int value )
 	{
-		return treeService.deleteNode(value);
+		return treeService.deleteNode(value) ;
 	}
 	
 	@PostMapping(value  = AppConstants.TREE + AppConstants.GET + AppConstants.NODE)
