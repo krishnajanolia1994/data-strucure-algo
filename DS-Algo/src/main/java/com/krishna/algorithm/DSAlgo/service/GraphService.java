@@ -1,7 +1,7 @@
 package com.krishna.algorithm.DSAlgo.service;
 
 public interface GraphService {
-	public String addNode(int sourse, int destination)  ;	
+	public String addNode(int sourse, int destination)   ;	
 	
 	public String DFS();
 	
