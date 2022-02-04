@@ -36,7 +36,7 @@ public class SortingController {
 	@PostMapping(value  = AppConstants.COUNTING_SORT)
 	public int [] countingSort(@RequestBody int[] ar)
 	{
-		return sortingService.countingSort(ar);
+		return sortingService.countingSort(ar) ;
 	}
 	
 	@PostMapping(value  = AppConstants.INDEX_SORT)
