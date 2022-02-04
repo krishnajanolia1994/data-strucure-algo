@@ -9,7 +9,7 @@ public class WeightedGraph {
 	
 	private boolean isIfinity;
 	
-	private int value;
+	private int value ;
 	private int distance;
 	
 	private List<WeightedGraph> graphs = new ArrayList<WeightedGraph>();
