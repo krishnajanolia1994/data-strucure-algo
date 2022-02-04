@@ -26,7 +26,7 @@ public class LinkedListController {
 	@GetMapping(value  = AppConstants.LINKED_LIST + AppConstants.DELETE + AppConstants.BY_KEY)
 	public LinkedList deleteNodeByKey(@PathVariable("name") String name)
 	{
-		return linkedListService.delete(name); 
+		return linkedListService.delete(name) ; 
 		
 	}
 	
