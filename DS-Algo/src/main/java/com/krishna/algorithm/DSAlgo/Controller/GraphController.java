@@ -27,7 +27,7 @@ public class GraphController {
 	@GetMapping(value  = AppConstants.DIJEKSTRA)
 	public String dijkstra(@RequestParam("sourse") int sourse , @RequestParam("destination") int destination)
 	{
-		return graphService.dijkstra(sourse, destination);
+		return graphService.dijkstra(sourse, destination) ;
 	}
 	
 	@GetMapping(value  = AppConstants.BELLMANFORD)
