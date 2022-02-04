@@ -31,7 +31,7 @@ private static Tree root;
 			node.setValue(value);
 			node.setLeft(null);
 			node.setRight(null);
-			if (value > parent.getValue())  {
+			if (value > parent.getValue())   {
 				parent.setRight(node);
 			} else {
 				parent.setLeft(node);
