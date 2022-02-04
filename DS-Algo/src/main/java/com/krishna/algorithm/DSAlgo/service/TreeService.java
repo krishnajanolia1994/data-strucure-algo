@@ -4,7 +4,7 @@ import com.krishna.algorithm.DSAlgo.model.Tree;
 
 public interface TreeService {
 	
-	public Tree addNode(int value) ;
+	public Tree addNode(int value)  ;
 
 	public Tree deleteNode(int value);
 
