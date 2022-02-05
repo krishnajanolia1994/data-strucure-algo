@@ -70,9 +70,13 @@ public class LinkedListServiceImpl implements LinkedListService{
 
 	private LinkedList getParentNode(LinkedList head, String name) {
 		LinkedList parent = null;
-		if(head.getNext().getName()==name)
-			parent = head.getNext();
-		
+		LinkedList temp = head;
+		while(temp.getNext()!=null) {
+			if( temp.getNext().getName().equals(name))
+				parent = temp;
+			temp=temp.getNext();
+		}
+				
 		return parent;
 	}
 
