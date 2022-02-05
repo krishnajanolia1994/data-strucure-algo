@@ -35,7 +35,7 @@ public class PatternMatchingServiceImpl implements PatternService{
 						;
 					position = firstIndex + 2;
 					break;
-				}
+				} 
 				firstIndex++;
 			}
 		}
