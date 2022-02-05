@@ -36,7 +36,7 @@ public class PeakServiceImpl implements PeakService{
 				else if(ar[mid]<ar[mid-1]) {
 					last=mid-1;
 				}else {
-					first=mid+1;
+					first=mid+1; 
 				}
 			}
 		}
