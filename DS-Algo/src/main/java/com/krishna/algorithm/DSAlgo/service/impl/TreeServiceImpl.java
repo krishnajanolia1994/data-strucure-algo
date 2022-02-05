@@ -21,7 +21,7 @@ private static Tree root;
 
 		flag = true;
 		if (root == null) {
-			root = new Tree();
+			root = new Tree() ;
 			root.setValue(value);
 			root.setLeft(null);
 			root.setRight(null);
@@ -31,8 +31,8 @@ private static Tree root;
 			node.setValue(value);
 			node.setLeft(null);
 			node.setRight(null);
-			if (value > parent.getValue()) {
-				parent.setRight(node);
+			if (value > parent.getValue())   {
+				parent.setRight(node)  ;
 			} else {
 				parent.setLeft(node);
 			}
@@ -42,7 +42,7 @@ private static Tree root;
 		return root;
 	}
 
-	private Tree getParentLeaf(int value ,Tree root ) {
+	private Tree getParentLeaf(int value ,Tree root )   {
 
 		Tree temp = root;
 
@@ -54,7 +54,7 @@ private static Tree root;
 			} else {
 				if (temp.getLeft() == null)
 					break;
-				temp = temp.getLeft();
+				temp = temp.getLeft() ;
 
 			}
 
@@ -75,7 +75,7 @@ private static Tree root;
 		Tree nodeToBeDeleted = getNodeToBeDeletedParent(value);
 		if (nodeToBeDeleted != null) {
 			if (nodeToBeDeleted.getLeft() == null && nodeToBeDeleted.getRight() == null) {
-				parent = getParent(value,root);
+				parent = getParent(value,root) ;
 				if (parent == null)
 					root = null;
 				else {
@@ -304,7 +304,7 @@ private static Tree root;
 		int max =height;
 		if(height2>height)
 			max=height2;
-		return max;
+		return max ;
 	}
 
 }

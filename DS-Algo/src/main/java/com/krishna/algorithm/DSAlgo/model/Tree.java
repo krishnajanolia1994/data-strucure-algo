@@ -1,8 +1,9 @@
 package com.krishna.algorithm.DSAlgo.model;
 
 
-public class Tree {
-	private int value;
+public class Tree { 
+	
+	private int value; 
 	private Tree left;
 	private Tree right;
 

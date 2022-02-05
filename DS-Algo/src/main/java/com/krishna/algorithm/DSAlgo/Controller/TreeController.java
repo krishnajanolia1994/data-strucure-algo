@@ -20,26 +20,25 @@ public class TreeController {
 	@PostMapping(value  = AppConstants.TREE + AppConstants.ADD + AppConstants.NODE)
 	public Tree addNode(@RequestParam("value") int value )
 	{
-		return treeService.addNode(value);
-		
+		return treeService.addNode(value);	
 	}
 	
 	@PostMapping(value  = AppConstants.TREE + AppConstants.DELETE + AppConstants.NODE)
 	public Tree deleteNode(@RequestParam("value") int value )
 	{
-		return treeService.deleteNode(value);
+		return treeService.deleteNode(value) ;
 	}
 	
 	@PostMapping(value  = AppConstants.TREE + AppConstants.GET + AppConstants.NODE)
 	public Tree getNode(@RequestParam("value") int value )
 	{
-		return treeService.getNode(value);
+		return treeService.getNode(value) ;
 	}
 	
 	@PostMapping(value  = AppConstants.AVL + AppConstants.TREE + AppConstants.ADD + AppConstants.NODE)
 	public Tree addAvlNode(@RequestParam("value") int value )
 	{
-		return treeService.addAvlNode(value);
+		return treeService.addAvlNode(value) ;
 		
 	}
 

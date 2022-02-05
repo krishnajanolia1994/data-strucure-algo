@@ -30,7 +30,7 @@ public class LinkedListServiceImpl implements LinkedListService{
 		}else {
 			LinkedList temp = linkedList;
 			LinkedList lastNode = getLastNode(temp);
-			lastNode.setNext(linkedListNode);
+			lastNode.setNext(linkedListNode);         
 		}
 		
 		return dataStructure.getHead();
@@ -137,7 +137,7 @@ public class LinkedListServiceImpl implements LinkedListService{
 	@Override
 	public LinkedList swap(String first, String second) {
 		// TODO Auto-generated method stub
-		return null;
+		return null; 
 	}
 
 

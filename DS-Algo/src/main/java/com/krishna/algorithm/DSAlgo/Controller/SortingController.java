@@ -18,31 +18,31 @@ public class SortingController {
 	@PostMapping(value  = AppConstants.INSEERTION_SORT)
 	public int [] insertionSort(@RequestBody int[] ar)
 	{
-		return sortingService.insertionSort(ar);
+		return sortingService.insertionSort(ar) ;
 	}
 	
 	@PostMapping(value  = AppConstants.MERGE_SORT)
 	public int [] mergeSort(@RequestBody int[] ar)
 	{
-		return sortingService.mergeSort(ar);
+		return sortingService.mergeSort(ar) ;
 	}
 	
 	@PostMapping(value  = AppConstants.HEAP_SORT)
 	public int [] heapSort(@RequestBody int[] ar)
 	{
-		return sortingService.heapSort(ar);
+		return sortingService.heapSort(ar) ;
 	}
 	
 	@PostMapping(value  = AppConstants.COUNTING_SORT)
 	public int [] countingSort(@RequestBody int[] ar)
 	{
-		return sortingService.countingSort(ar);
+		return sortingService.countingSort(ar) ;
 	}
 	
 	@PostMapping(value  = AppConstants.INDEX_SORT)
 	public int [] indexSort(@RequestBody int[] ar)
-	{
-		return sortingService.indexSort(ar);
+	 {
+		return sortingService.indexSort(ar) ;
 	}
 	
 	

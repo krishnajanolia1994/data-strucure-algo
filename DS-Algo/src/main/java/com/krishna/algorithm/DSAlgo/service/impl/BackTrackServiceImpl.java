@@ -32,7 +32,7 @@ public class BackTrackServiceImpl implements BackTrackService{
 			swap(str,i,0);
 			StringBuffer strToBePrint = new StringBuffer(str.charAt(0)+"");
 			StringBuffer tempb=printPermutation(allPermutation, new StringBuffer(str.substring(1, str.length())),length,strToBePrint1);
-			strToBePrint.append(tempb);
+			strToBePrint.append(tempb);   
 			if(strToBePrint.length()==length)
 			{
 				System.out.println(strToBePrint);
@@ -48,7 +48,7 @@ public class BackTrackServiceImpl implements BackTrackService{
 		char ch1 = str.charAt(i);
 		char ch2 = str.charAt(j);
 		str.replace(j, j+1, ch1+"");
-		str.replace(i, i+1, ch2+"");
+		str.replace(i, i+1, ch2+""); 
 
 	}
 

@@ -29,10 +29,10 @@ public class SortingServiceImpl implements SortingService {
 			if (temp > ar[index]) {
 				break;
 			} else {
-				ar[index + 1] = ar[index];
-				if (index != 0)
-					index--;
-				else
+				ar[index + 1] = ar[index];  
+				if (index != 0) 
+					index--;                    
+				else  
 					break;
 			}
 		}
@@ -273,7 +273,7 @@ public class SortingServiceImpl implements SortingService {
 			max /= 10;
 			maxDigit++;
 		}
-		return maxDigit;
+		return maxDigit; 
 	}
 
 }

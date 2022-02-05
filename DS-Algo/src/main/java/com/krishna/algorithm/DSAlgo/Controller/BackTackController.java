@@ -14,9 +14,9 @@ public class BackTackController {
 	@Autowired
 	private BackTrackService backTrackService;;
 	@GetMapping(value  = AppConstants.GET + AppConstants.ALL+AppConstants.PERMUTATION)
-	public String getRthRoot(@RequestParam("str") String str)
+	public String getPermutationOfString(@RequestParam("str") String str)
 	{
-		return backTrackService.getPermutationOfString(str);
+		return backTrackService.getPermutationOfString(str)  ;
 	}
 
 }

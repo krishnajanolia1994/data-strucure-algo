@@ -30,9 +30,9 @@ public class GraphServiceImpl implements GraphService{
 	private static int totalHead; 
 
 	@Override
-	public String addNode(int sourse, int destination) {
-		String response = "";
-		if(head==null) {
+	public String addNode(int sourse, int destination) { 
+		String response = "";  
+		if(head==null) {     
 			head = new Graph();
 			Graph destinationGraph = new Graph();
 			head.setValue(sourse);
@@ -318,6 +318,6 @@ public class GraphServiceImpl implements GraphService{
             sb.append(String.format("%02x", b));
         }
         return sb.toString();
-    }
+    } 
 
 }

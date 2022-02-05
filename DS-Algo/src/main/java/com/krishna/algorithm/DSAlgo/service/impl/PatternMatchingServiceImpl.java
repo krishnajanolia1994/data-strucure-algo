@@ -17,7 +17,7 @@ public class PatternMatchingServiceImpl implements PatternService{
 			return -1;
 		if (pattern.isEmpty() || string.isEmpty())
 			return -1;
-		if (pattern.length() > string.length())
+		if (pattern.length() > string.length()) 
 			return -1;
 		int valueOfPattern = getWordCount(pattern);
 		int valueOfFirstSubstring = getWordCount(string.substring(0, pattern.length()));
@@ -31,11 +31,11 @@ public class PatternMatchingServiceImpl implements PatternService{
 
 				valueOfFirstSubstring = valueOfFirstSubstring - charToBeRemoved + charToBeAdd;
 				if (valueOfPattern == valueOfFirstSubstring) {
-					if (match(pattern, string.substring(firstIndex, lastIndex)))
+					if (match(pattern, string.substring(firstIndex, lastIndex)))  
 						;
 					position = firstIndex + 2;
 					break;
-				}
+				} 
 				firstIndex++;
 			}
 		}
