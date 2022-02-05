@@ -30,7 +30,7 @@ public class LinkedListServiceImpl implements LinkedListService{
 		}else {
 			LinkedList temp = linkedList;
 			LinkedList lastNode = getLastNode(temp);
-			lastNode.setNext(linkedListNode); 
+			lastNode.setNext(linkedListNode);  
 		}
 		
 		return dataStructure.getHead();
