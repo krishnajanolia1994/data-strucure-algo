@@ -29,7 +29,7 @@ public class PeakServiceImpl implements PeakService{
 			int mid =(first+last)/2;
 			if((mid!=0)|| (mid!=ar.length-1)) {
 				if(ar[mid]>ar[mid-1]&& ar[mid]>ar[mid+1]) {
-					return ar[mid];
+					return ar[mid]; 
 					
 					
 				}
