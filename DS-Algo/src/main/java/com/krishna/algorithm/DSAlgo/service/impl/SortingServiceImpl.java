@@ -29,7 +29,7 @@ public class SortingServiceImpl implements SortingService {
 			if (temp > ar[index]) {
 				break;
 			} else {
-				ar[index + 1] = ar[index]; 
+				ar[index + 1] = ar[index];  
 				if (index != 0)
 					index--;       
 				else  
