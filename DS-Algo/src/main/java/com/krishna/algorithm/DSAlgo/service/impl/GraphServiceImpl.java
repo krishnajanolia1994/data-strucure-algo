@@ -30,7 +30,7 @@ public class GraphServiceImpl implements GraphService{
 	private static int totalHead; 
 
 	@Override
-	public String addNode(int sourse, int destination) {
+	public String addNode(int sourse, int destination) { 
 		String response = "";  
 		if(head==null) {  
 			head = new Graph();
