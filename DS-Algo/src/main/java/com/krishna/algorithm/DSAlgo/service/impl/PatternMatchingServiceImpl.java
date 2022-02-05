@@ -31,7 +31,7 @@ public class PatternMatchingServiceImpl implements PatternService{
 
 				valueOfFirstSubstring = valueOfFirstSubstring - charToBeRemoved + charToBeAdd;
 				if (valueOfPattern == valueOfFirstSubstring) {
-					if (match(pattern, string.substring(firstIndex, lastIndex))) 
+					if (match(pattern, string.substring(firstIndex, lastIndex)))  
 						;
 					position = firstIndex + 2;
 					break;
