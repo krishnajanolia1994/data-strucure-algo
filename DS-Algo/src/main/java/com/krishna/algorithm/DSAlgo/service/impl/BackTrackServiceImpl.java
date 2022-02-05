@@ -48,7 +48,7 @@ public class BackTrackServiceImpl implements BackTrackService{
 		char ch1 = str.charAt(i);
 		char ch2 = str.charAt(j);
 		str.replace(j, j+1, ch1+"");
-		str.replace(i, i+1, ch2+"");
+		str.replace(i, i+1, ch2+""); 
 
 	}
 
