@@ -29,7 +29,7 @@ public class LinkedListController {
 	{
 		return linkedListService.delete(name) ; 
 		
-	}
+	} 
 	
 	@GetMapping(value  = AppConstants.LINKED_LIST + AppConstants.DELETE + AppConstants.BY_POSITION)
 	public LinkedList deleteNodeByPosition(@RequestParam("index") int index)
