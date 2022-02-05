@@ -30,7 +30,7 @@ public class AlgebraServiceImpl implements AlgebraService{
 			if(differnce<0.000001) {
 				itr=false;
 			}else {
-				current=next;
+				current=next; 
 			}
 		}
 		
