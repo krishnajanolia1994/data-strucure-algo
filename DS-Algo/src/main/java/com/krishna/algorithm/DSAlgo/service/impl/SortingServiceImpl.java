@@ -30,7 +30,7 @@ public class SortingServiceImpl implements SortingService {
 				break;
 			} else {
 				ar[index + 1] = ar[index];  
-				if (index != 0)
+				if (index != 0) 
 					index--;       
 				else  
 					break;
