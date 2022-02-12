@@ -29,7 +29,7 @@ public class LinkedListServiceImpl implements LinkedListService{
 			
 			linkedListNode.setSurName(surname);
 			linkedListNode.setNext(null);
-			dataStructure.setHead(linkedListNode);
+			dataStructure.setHead(linkedListNode)
 		}else { 
 			LinkedList temp = linkedList;
 			LinkedList lastNode = getLastNode(temp)
