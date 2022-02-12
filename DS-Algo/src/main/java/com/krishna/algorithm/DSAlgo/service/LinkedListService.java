@@ -20,6 +20,6 @@ public interface LinkedListService {
 
 	public LinkedList reverse();
 
-	public LinkedList meargeSoart();  
+	public LinkedList meargeSoart();   
 
 }
