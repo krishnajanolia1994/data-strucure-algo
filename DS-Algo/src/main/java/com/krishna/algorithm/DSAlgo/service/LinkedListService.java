@@ -18,6 +18,6 @@ public interface LinkedListService {
 
 	public LinkedList getLinkedList();
 
-	public LinkedList reverse(); 
+	public LinkedList reverse();  
 
 }
