@@ -365,8 +365,7 @@ public class LinkedListServiceImpl implements LinkedListService{
 
 	private LinkedList getTail(LinkedList head) {
 		while(head.getNext()!=null) {
-			head = head.getNext()
-				;
+			head = head.getNext();
 		}
 		return head;
 	}
