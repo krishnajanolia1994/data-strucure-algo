@@ -72,6 +72,13 @@ public class LinkedListController {
 		return linkedListService.reverse();
 		
 	}
+	
+	@GetMapping(value  = AppConstants.LINKED_LIST + AppConstants.MERGE_SORT)
+	public LinkedList meargeSoart()
+	{
+		return linkedListService.meargeSoart();
+		
+	}
 
 
   

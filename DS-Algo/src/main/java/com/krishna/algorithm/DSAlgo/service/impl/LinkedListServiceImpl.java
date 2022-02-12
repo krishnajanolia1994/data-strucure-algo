@@ -252,5 +252,124 @@ public class LinkedListServiceImpl implements LinkedListService{
 	}
 
 
+	@Override
+	public LinkedList meargeSoart() {
+		LinkedList  head = dataStructure.getHead();
+		LinkedList  tail = getTail(dataStructure.getHead());
+		 meargeSoart(head,tail);
+		dataStructure.setHead(head);
+		return dataStructure.getHead();
+	}
+
+
+	private LinkedList meargeSoart(LinkedList head, LinkedList tail) {
+		if(head!=tail) {
+			LinkedList mid = getMid(head,tail);
+			meargeSoart(head,mid);
+			meargeSoart(mid.getNext(), tail);
+			head = mearge(head,mid,tail);
+		}
+		return head;
+	}
+
+
+	private LinkedList mearge(LinkedList head, LinkedList mid, LinkedList tail) {
+		
+		LinkedList head1 = null;
+		LinkedList tail1 = null;
+
+		LinkedList head2 = null;
+		LinkedList tail2 = null;
+
+		LinkedList tempHead = head;
+		
+		while(tempHead != mid.getNext()) {
+			if(head1==null) {
+				head1 = new LinkedList();
+				head1.setName(tempHead.getName());
+				head1.setNext(null);
+				tail1= head1;
+				tempHead = tempHead.getNext();
+			}else {
+				LinkedList node  = new LinkedList();
+				node.setName(tempHead.getName());
+				node.setNext(null);
+				tail1.setNext(node);
+				tail1=node;
+				tempHead = tempHead.getNext();
+			}
+			
+		}
+		while(tempHead != tail.getNext()) {
+			if(head2==null) {
+				head2 = new LinkedList();
+				head2.setName(tempHead.getName());
+				head2.setNext(null);
+				tail2= head2;
+				tempHead = tempHead.getNext();
+			}else {
+				LinkedList node  = new LinkedList();
+				node.setName(tempHead.getName());
+				node.setNext(null);
+				tail2.setNext(node);
+				tail2=node;
+				tempHead = tempHead.getNext();
+			}
+			
+		}
+		tempHead = head;
+		while(head1 !=null && head2!=null) {
+			if(Integer.parseInt(head1.getName())< Integer.parseInt(head2.getName())) {
+				tempHead.setName(head1.getName());
+				head1= head1.getNext();
+				tempHead= tempHead.getNext();
+			}else {
+				tempHead.setName(head2.getName());
+				head2=head2.getNext();
+				tempHead= tempHead.getNext();
+			}
+		}
+		
+		while(head1 !=null) {
+			tempHead.setName(head1.getName());
+			head1 = head1.getNext();
+			tempHead = tempHead.getNext();
+			
+		}
+		while(head2!=null) {
+			tempHead.setName(head2.getName());
+			head2=head2.getNext();
+			tempHead= tempHead.getNext();
+			
+		}
+		return head;
+	}
+
+
+	private LinkedList getMid(LinkedList head, LinkedList tail) {
+		LinkedList slow = head;
+		LinkedList fast = head.getNext();
+		LinkedList tailNext = tail.getNext();
+		
+		while(fast!=null && fast!=tailNext && fast.getNext()!= tailNext) {
+			fast = fast.getNext();
+			if(fast!=null) {
+				fast=fast.getNext();
+				slow = slow.getNext();
+			}
+		}
+		
+		return slow;
+	}
+
+
+	private LinkedList getTail(LinkedList head) {
+		while(head.getNext()!=null) {
+			head = head.getNext();
+		}
+		return head;
+	}
+
+
 	
 }
