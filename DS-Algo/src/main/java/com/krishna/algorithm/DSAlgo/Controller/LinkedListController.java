@@ -76,7 +76,7 @@ public class LinkedListController {
 	@GetMapping(value  = AppConstants.LINKED_LIST + AppConstants.MERGE_SORT)
 	public LinkedList meargeSoart()
 	{
-		return linkedListService.meargeSoart();
+		return linkedListService.meargeSoart(); 
 		
 	}
 
