@@ -29,10 +29,10 @@ public class LinkedListServiceImpl implements LinkedListService{
 			
 			linkedListNode.setSurName(surname);
 			linkedListNode.setNext(null);
-			dataStructure.setHead(linkedListNode)
+			dataStructure.setHead(linkedListNode);
 		}else { 
 			LinkedList temp = linkedList;
-			LinkedList lastNode = getLastNode(temp)
+			LinkedList lastNode = getLastNode(temp);
 			lastNode.setNext(linkedListNode);         
 		}
 		
@@ -214,7 +214,7 @@ public class LinkedListServiceImpl implements LinkedListService{
 			LinkedList firstChildNode = firstNode.getNext();
 			LinkedList secondChildNode = secondNodeParent.getNext().getNext();
 			LinkedList secondNode = secondNodeParent.getNext();
-			secondNode.setNext(firstChildNode)
+			secondNode.setNext(firstChildNode);
 			secondNodeParent.setNext(firstNode);
 			firstNode.setNext(secondChildNode);
 			dataStructure.setHead(secondNode);
