@@ -16,4 +16,8 @@ public interface LinkedListService {
 
 	public LinkedList swap(String first, String second);
 
+	public LinkedList getLinkedList();
+
+	public LinkedList reverse();
+
 }

@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.ws.rs.core.MediaType;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.wink.client.ClientConfig;
 import org.apache.wink.client.ClientRequest;
 import org.apache.wink.client.ClientResponse;
@@ -24,6 +25,13 @@ public class DsAlgoApplication {
 	public static void main(String[] args) {
 		
 		org.apache.wink.client.ClientConfig clientConfig = new org.apache.wink.client.ClientConfig();
+		
+		String a="a    ";
+		String b="b";
+		String c= a+b;
+		System.out.println(c.replaceAll(" ", ""));
+		 Base64 base64 = new Base64();
+	        System.out.println(new String(base64.encode("1234567890".getBytes())));
 
 //		javax.ws.rs.core.Application app = new javax.ws.rs.core.Application() {
 //		       public Set<Class<?>> getClasses() {
@@ -56,12 +64,12 @@ public class DsAlgoApplication {
 //			}
 //		});
 //		
-		RestClient client = new RestClient();
-		Resource resource = client.resource("https://postman-echo.com/post");
-		ClientResponse response =resource.contentType(MediaType.APPLICATION_JSON_TYPE).accept(MediaType.APPLICATION_JSON_TYPE).post("");
+//		RestClient client = new RestClient();
+//		Resource resource = client.resource("https://postman-echo.com/post");
+//		ClientResponse response =resource.contentType(MediaType.APPLICATION_JSON_TYPE).accept(MediaType.APPLICATION_JSON_TYPE).post("");
 		SpringApplication.run(DsAlgoApplication.class, args);
-		System.out.println("The response code is: " + response.getStatusCode());
-		System.out.println("The response message body is: " + response.getEntity(String.class));
+//		System.out.println("The response code is: " + response.getStatusCode());
+//		System.out.println("The response message body is: " + response.getEntity(String.class));
 
 		
 		

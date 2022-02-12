@@ -53,8 +53,10 @@ public class LinkedListServiceImpl implements LinkedListService{
 		
 		if(linkedList==null)
 			return linkedList;
-		if(linkedList.getName()==name) {
+		if(linkedList.getName().equals(name)) {
 			dataStructure.setHead(linkedList.getNext());
+			return dataStructure.getHead();
+
 		}
 		
 		LinkedList parent = getParentNode(dataStructure.getHead(),name);
@@ -140,8 +142,110 @@ public class LinkedListServiceImpl implements LinkedListService{
 
 	@Override
 	public LinkedList swap(String first, String second) {
-		// TODO Auto-generated method stub
-		return null; 
+		if(first==second) {
+			System.out.println("same element");
+			return dataStructure.getHead();
+		}
+		
+		LinkedList linkedList = dataStructure.getHead();
+		if(linkedList.getName().equals(first)||linkedList.getName().equals(second)) {
+			LinkedList firstNode = null;
+			LinkedList secondNodeParent = null;
+			firstNode = linkedList;
+
+			if(linkedList.getName().equals(first)) {
+				while(linkedList.getNext()!=null) {
+					if(linkedList.getNext().getName().equals(second)) {
+						secondNodeParent = linkedList;
+					}
+					linkedList=linkedList.getNext();
+				}
+				swapNode(linkedList, firstNode, secondNodeParent);
+			}else {
+				while(linkedList.getNext()!=null) {
+					if(linkedList.getNext().getName().equals(first)) {
+						secondNodeParent = linkedList;
+					}
+					linkedList=linkedList.getNext();
+
+				}
+				swapNode(linkedList, firstNode, secondNodeParent);
+			}
+				
+		}else {
+			LinkedList fistParent = null;
+			LinkedList secondParent = null;
+			boolean fistFount =false;
+			boolean seondFound = false;
+			while(linkedList.getNext()!=null) {
+				
+				if(!fistFount&&linkedList.getNext().getName().equals(first)) {
+					fistFount= true;
+					fistParent= linkedList;
+				}else if(!seondFound&&linkedList.getNext().getName().equals(second)) {
+					seondFound=true;
+					secondParent=linkedList;
+				}else if(fistFount&& seondFound)
+					break;
+				linkedList=linkedList.getNext();
+				
+			}
+			if(fistParent!=null&&secondParent!=null) {
+				LinkedList firstNode = fistParent.getNext();
+				LinkedList firstChild = firstNode.getNext();
+				LinkedList secondNode = secondParent.getNext();
+				LinkedList secondChild = secondNode.getNext();
+				secondParent.setNext(firstNode);
+				firstNode.setNext(secondChild);
+				fistParent.setNext(secondNode);
+				secondNode.setNext(firstChild);
+			}
+		}
+		 
+		return dataStructure.getHead(); 
+	}
+
+
+	private void swapNode(LinkedList linkedList, LinkedList firstNode, LinkedList secondNodeParent) {
+		if(secondNodeParent!=null) {
+			LinkedList firstChildNode = firstNode.getNext();
+			LinkedList secondChildNode = secondNodeParent.getNext().getNext();
+			LinkedList secondNode = secondNodeParent.getNext();
+			secondNode.setNext(firstChildNode);
+			secondNodeParent.setNext(firstNode);
+			firstNode.setNext(secondChildNode);
+			dataStructure.setHead(secondNode);
+		}
+	}
+
+
+	@Override
+	public LinkedList getLinkedList() {
+		return dataStructure.getHead();
+	}
+
+
+	@Override
+	public LinkedList reverse() {
+		LinkedList head = dataStructure.getHead();
+		reverse(head,true);
+		return dataStructure.getHead();
+	}
+
+
+	private LinkedList reverse(LinkedList head,boolean isHead) {
+		if(head.getNext()==null) {
+			dataStructure.setHead(head);
+			return head;
+		}
+		LinkedList next = head.getNext();
+		if(isHead) {
+			head.setNext(null);
+			isHead=false;
+		}
+		LinkedList reverse = reverse(next,isHead);
+		reverse.setNext(head);
+		return head;
 	}
 
 

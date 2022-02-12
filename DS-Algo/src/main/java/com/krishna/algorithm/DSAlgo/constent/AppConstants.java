@@ -43,5 +43,7 @@ public class AppConstants {
 	public static final String RECURSION = "/recursion";
 
 	public static final String SWAP = "/swap";
+
+	public static final String REVRSE = "/reverse";
 	
 }
