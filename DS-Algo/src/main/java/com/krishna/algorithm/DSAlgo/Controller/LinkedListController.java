@@ -64,7 +64,7 @@ public class LinkedListController {
 	{
 		return linkedListService.getLinkedList();
 		
-	}
+	} 
 	
 	@GetMapping(value  = AppConstants.LINKED_LIST + AppConstants.REVRSE)
 	public LinkedList reverse()
