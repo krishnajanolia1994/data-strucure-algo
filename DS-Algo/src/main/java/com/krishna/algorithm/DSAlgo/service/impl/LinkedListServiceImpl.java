@@ -14,7 +14,6 @@ public class LinkedListServiceImpl implements LinkedListService{
 	@Override
 	public LinkedList AddNode(String name, String surname) {
 		
-		
 		LinkedList linkedList = dataStructure.getHead();
 		
 		LinkedList linkedListNode = new LinkedList();
