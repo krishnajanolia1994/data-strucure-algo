@@ -8,7 +8,7 @@ import com.krishna.algorithm.DSAlgo.service.LinkedListService;
 
 @Component
 public class LinkedListServiceImpl implements LinkedListService{
-	DataStructure dataStructure = DataStructure.getDataStruture()
+	DataStructure dataStructure = DataStructure.getDataStruture();
 
 
 	@Override
