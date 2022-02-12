@@ -27,7 +27,7 @@ public class LinkedListServiceImpl implements LinkedListService{
 		if(linkedList==null) {
 			linkedListNode.setName(name);
 			
-			linkedListNode.setSurName(surname);
+			linkedListNode.setSurName(surname)
 			linkedListNode.setNext(null);
 			dataStructure.setHead(linkedListNode);
 		}else { 
