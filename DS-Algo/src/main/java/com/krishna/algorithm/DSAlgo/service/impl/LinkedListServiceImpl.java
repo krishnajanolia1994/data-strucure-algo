@@ -18,6 +18,7 @@ public class LinkedListServiceImpl implements LinkedListService{
 		LinkedList linkedList = dataStructure.getHead();
 		
 		LinkedList linkedListNode = new LinkedList();
+		
 		linkedListNode.setName(name);
 		linkedListNode.setSurName(surname);
 		
