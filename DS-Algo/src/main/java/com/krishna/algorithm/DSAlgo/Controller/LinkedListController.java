@@ -1,7 +1,6 @@
 package com.krishna.algorithm.DSAlgo.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -77,6 +76,13 @@ public class LinkedListController {
 	public LinkedList meargeSoart()
 	{
 		return linkedListService.meargeSoart(); 
+		
+	}
+	
+	@GetMapping(value  = AppConstants.LINKED_LIST + AppConstants.ROTATE)
+	public LinkedList rotate(@RequestParam("number") int number)
+	{
+		return linkedListService.rotate(number); 
 		
 	}
 

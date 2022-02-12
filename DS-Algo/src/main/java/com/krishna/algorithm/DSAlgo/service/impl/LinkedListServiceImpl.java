@@ -371,5 +371,38 @@ public class LinkedListServiceImpl implements LinkedListService{
 	}
 
 
+	@Override
+	public LinkedList rotate(int number) {
+		
+		if(dataStructure.getHead()!=null&&dataStructure.getHead().getNext()!=null) {
+			for(int i=0;i<number ;i++) {
+				LinkedList head = dataStructure.getHead();
+				LinkedList parentTail = getParentTail(head);
+				LinkedList tail = parentTail.getNext();
+				parentTail.setNext(null);
+				tail.setNext(head);
+				dataStructure.setHead(tail);
+				
+				
+			}
+		}else
+			System.out.println("there is only one element in list or empty");
+		
+		
+		return dataStructure.getHead();
+	}
+
+
+	private LinkedList getParentTail(LinkedList head) {
+		LinkedList tempHead = head;
+		LinkedList parent = null;
+		while(tempHead.getNext().getNext()!=null) {
+			tempHead = tempHead.getNext();
+		}
+		parent = tempHead;
+		return parent;
+	}
+
+
 	
 }
