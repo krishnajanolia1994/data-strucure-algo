@@ -19,7 +19,7 @@ public class LinkedListServiceImpl implements LinkedListService{
 		LinkedList linkedListNode = new LinkedList();
 		
 		linkedListNode.setName(name);
-		linkedListNode.setSurName(surname);
+		linkedListNode.setSurName(surname)
 		
 		linkedListNode.setNext(null);
 		
