@@ -14,22 +14,22 @@ public class LinkedListServiceImpl implements LinkedListService{
 	@Override
 	public LinkedList AddNode(String name, String surname) {
 		
-		LinkedList linkedList = dataStructure.getHead()
+		LinkedList linkedList = dataStructure.getHead();
 		
-		LinkedList linkedListNode = new LinkedList()
+		LinkedList linkedListNode = new LinkedList();
 		
-		linkedListNode.setName(name)
-		linkedListNode.setSurName(surname)
+		linkedListNode.setName(name);
+		linkedListNode.setSurName(surname);
 		
-		linkedListNode.setNext(null)
+		linkedListNode.setNext(null);
 		
 
 		if(linkedList==null) {
 			linkedListNode.setName(name);
 			
-			linkedListNode.setSurName(surname)
-			linkedListNode.setNext(null)
-			dataStructure.setHead(linkedListNode)
+			linkedListNode.setSurName(surname);
+			linkedListNode.setNext(null);
+			dataStructure.setHead(linkedListNode);
 		}else { 
 			LinkedList temp = linkedList;
 			LinkedList lastNode = getLastNode(temp); 
