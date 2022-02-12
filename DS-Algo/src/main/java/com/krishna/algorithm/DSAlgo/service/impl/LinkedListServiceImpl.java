@@ -24,6 +24,7 @@ public class LinkedListServiceImpl implements LinkedListService{
 
 		if(linkedList==null) {
 			linkedListNode.setName(name);
+			
 			linkedListNode.setSurName(surname);
 			linkedListNode.setNext(null);
 			dataStructure.setHead(linkedListNode);
@@ -243,7 +244,7 @@ public class LinkedListServiceImpl implements LinkedListService{
 			head.setNext(null);
 			isHead=false;
 		}
-		LinkedList reverse = reverse(next,isHead);
+		LinkedList reverse = reverse(next,isHead); 
 		reverse.setNext(head);
 		return head;
 	}
