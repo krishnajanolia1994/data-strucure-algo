@@ -9,6 +9,11 @@ private List<String> list = new ArrayList<String>();
 	
 	private LinkedList head = null;
 	
+	private CircularLinkedList headCircularLinkedList = null;
+	
+	private CircularLinkedList tailCircularLinkedList = null;
+
+	
 	private LinkedList linkedList = null;
 	
 	
@@ -49,6 +54,25 @@ private List<String> list = new ArrayList<String>();
 	public void setHead(LinkedList head) {
 		this.head = head;
 	}
+
+	public CircularLinkedList getHeadCircularLinkedList() {
+		return headCircularLinkedList;
+	}
+
+	public void setHeadCircularLinkedList(CircularLinkedList headCircularLinkedList) {
+		this.headCircularLinkedList = headCircularLinkedList;
+	}
+
+	public CircularLinkedList getTailCircularLinkedList() {
+		return tailCircularLinkedList;
+	}
+
+	public void setTailCircularLinkedList(CircularLinkedList tailCircularLinkedList) {
+		this.tailCircularLinkedList = tailCircularLinkedList;
+	}
+
+	
+	
 	
 
 }

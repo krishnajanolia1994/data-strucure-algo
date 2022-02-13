@@ -17,6 +17,7 @@ import org.apache.wink.client.handlers.HandlerContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.krishna.algorithm.DSAlgo.model.CircularLinkedList;
 import com.krishna.algorithm.DSAlgo.model.DataStructure;
 import com.krishna.algorithm.DSAlgo.model.LinkedList;
 
@@ -69,12 +70,40 @@ public class DsAlgoApplication {
 //		RestClient client = new RestClient();
 //		Resource resource = client.resource("https://postman-echo.com/post");
 //		ClientResponse response =resource.contentType(MediaType.APPLICATION_JSON_TYPE).accept(MediaType.APPLICATION_JSON_TYPE).post("");
-		SpringApplication.run(DsAlgoApplication.class, args);
+//		SpringApplication.run(DsAlgoApplication.class, args);
 //		System.out.println("The response code is: " + response.getStatusCode());
 //		System.out.println("The response message body is: " + response.getEntity(String.class));
 
-		removeLoopFromAList();
+//		removeLoopFromAList();
 		
+		createCircularLinkedList();
+	}
+
+	private static void createCircularLinkedList() {
+		for(int i= 0;i<10;i++) {
+			addNodeInCircularLinkedList(i);
+		}
+
+	}
+
+	private static void addNodeInCircularLinkedList(int value) {
+		DataStructure dataStructure = DataStructure.getDataStruture();
+		CircularLinkedList head = dataStructure.getHeadCircularLinkedList();
+		if(head == null) {
+			head = new CircularLinkedList();
+			head.setValue(value);
+			dataStructure.setHeadCircularLinkedList(head);
+			dataStructure.setTailCircularLinkedList(head);
+			head.setNext(head);
+		}else {
+			CircularLinkedList node = new CircularLinkedList();
+			node.setValue(value);
+			CircularLinkedList tail = dataStructure.getTailCircularLinkedList();
+			tail.setNext(node);
+			tail = tail.getNext();
+			tail.setNext(dataStructure.getHeadCircularLinkedList());
+			dataStructure.setTailCircularLinkedList(tail);
+		}
 	}
 
 	private static void removeLoopFromAList() {
