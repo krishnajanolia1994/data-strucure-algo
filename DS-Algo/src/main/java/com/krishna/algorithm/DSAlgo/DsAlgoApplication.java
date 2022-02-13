@@ -1,20 +1,8 @@
 package com.krishna.algorithm.DSAlgo;
 
-import java.util.HashSet;
 import java.util.Random;
-import java.util.Set;
-
-import javax.ws.rs.core.MediaType;
 
 import org.apache.commons.codec.binary.Base64;
-import org.apache.wink.client.ClientConfig;
-import org.apache.wink.client.ClientRequest;
-import org.apache.wink.client.ClientResponse;
-import org.apache.wink.client.Resource;
-import org.apache.wink.client.RestClient;
-import org.apache.wink.client.handlers.ClientHandler;
-import org.apache.wink.client.handlers.HandlerContext;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.krishna.algorithm.DSAlgo.model.CircularLinkedList;
@@ -84,7 +72,135 @@ public class DsAlgoApplication {
 		for(int i= 0;i<10;i++) {
 			addNodeInCircularLinkedList(i);
 		}
+		travesrCircularLinkedList();
+		createSortedLinked();
+//		devideCircularLinkedList();
 
+	}
+
+	private static void createSortedLinked() {
+		CircularLinkedList head = null;
+		CircularLinkedList tail = null;
+
+		Random random =new Random();
+
+		for(int i= 0;i<10;i++) {
+						
+			int rand = random.nextInt(10000);
+			tail = addSortedNode(head, tail, rand);
+			head=tail.getNext();
+			
+		}
+		traverseSortedNode(head);
+
+	}
+
+	private static void traverseSortedNode(CircularLinkedList head) {
+		if(head!=null) {
+			CircularLinkedList temp = head.getNext();
+			System.out.println("sorted list "+head.getValue());
+
+			while(temp!=head) {
+				System.out.println("sorted list "+temp.getValue());
+				temp=temp.getNext();
+			}
+
+		}
+	}
+
+	private static CircularLinkedList addSortedNode(CircularLinkedList head, CircularLinkedList tail, int rand) {
+		if(head==null) {
+			head = new CircularLinkedList();
+			head.setValue(rand);
+			tail = head;
+			tail.setNext(head);
+		}else {
+			CircularLinkedList node = new CircularLinkedList();
+			node.setValue(rand);
+			if(rand<head.getValue()) 
+			{
+				node.setNext(head);
+				head = node;
+				tail.setNext(node);
+			}else if(rand> tail.getValue()) {
+				tail.setNext(node);
+				tail=tail.getNext();
+				tail.setNext(head);
+				
+			}else {
+				CircularLinkedList temp = head;
+				CircularLinkedList parent = getParentNodeOfCurentNode(temp,rand);
+				CircularLinkedList child = parent.getNext();
+				parent.setNext(node);
+				node.setNext(child);
+			}
+		}
+		return tail;
+	}
+
+	
+	private static CircularLinkedList getParentNodeOfCurentNode(CircularLinkedList temp, int rand) {
+		while(temp.getNext()!=temp) {
+			if(rand> temp.getValue() && rand<= temp.getNext().getValue()) {
+				break;
+			}
+			temp = temp.getNext();
+		}
+		return temp;
+	}
+
+	private static void devideCircularLinkedList() {
+		DataStructure dataStructure = DataStructure.getDataStruture();
+		CircularLinkedList head = dataStructure.getHeadCircularLinkedList();
+		
+		CircularLinkedList mid = getCircularLinkedListMid(head);
+		
+		CircularLinkedList head1 = head ;
+		CircularLinkedList tail = mid;
+		CircularLinkedList head2 = mid.getNext();
+		CircularLinkedList tail2 = dataStructure.getTailCircularLinkedList();
+		tail.setNext(head1);
+		tail2.setNext(head2);
+		CircularLinkedList tempHead1 = head1;
+		
+		CircularLinkedList tempHead2 = head2;
+		while(tempHead1.getNext()!=head1) {
+			System.out.println(tempHead1.getValue());
+			tempHead1 = tempHead1.getNext();
+		}
+		System.out.println(tempHead1.getValue());
+
+		while(tempHead2.getNext()!=head2) {
+			System.out.println(tempHead2.getValue());
+			tempHead2 = tempHead2.getNext();
+		}
+		System.out.println(tempHead2.getValue());
+
+		
+		
+	}
+
+	private static CircularLinkedList getCircularLinkedListMid(CircularLinkedList head) {
+		CircularLinkedList slow = head;
+		CircularLinkedList fast = head.getNext();
+		
+		while(fast!=head && fast.getNext()!=head) {
+			slow=slow.getNext();
+			fast=fast.getNext().getNext();
+		}
+		return slow;
+	}
+
+	private static void travesrCircularLinkedList() {
+		
+		DataStructure dataStructure = DataStructure.getDataStruture();
+		CircularLinkedList head = dataStructure.getHeadCircularLinkedList();
+		CircularLinkedList tempHead = head;
+		while(tempHead.getNext()!=head) {
+			System.out.println("value "+ tempHead.getValue());
+			tempHead = tempHead.getNext();
+		}
+		System.out.println("value "+ tempHead.getValue());
 	}
 
 	private static void addNodeInCircularLinkedList(int value) {
