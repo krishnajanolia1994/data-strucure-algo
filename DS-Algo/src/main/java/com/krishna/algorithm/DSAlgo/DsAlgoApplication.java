@@ -15,10 +15,13 @@ public class DsAlgoApplication {
 
 	public static void main(String[] args) {
 		
+		
 		org.apache.wink.client.ClientConfig clientConfig = new org.apache.wink.client.ClientConfig();
 		
 		
-		String a="a    ";
+		String a="a    "; 
+		
+		
 		String b="b";
 		String c= a+b;
 		System.out.println(c.replaceAll(" ", ""));
@@ -216,6 +219,7 @@ public class DsAlgoApplication {
 			CircularLinkedList node = new CircularLinkedList();
 			node.setValue(value);
 			CircularLinkedList tail = dataStructure.getTailCircularLinkedList();
+			
 			tail.setNext(node);
 			tail = tail.getNext();
 			tail.setNext(dataStructure.getHeadCircularLinkedList());
