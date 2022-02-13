@@ -130,6 +130,7 @@ public class DsAlgoApplication {
 		while(fast.getNext()!= slow) {
 			fast = fast.getNext();
 			loopCount++;
+			
 		}
 		
 		
