@@ -103,6 +103,7 @@ public class DsAlgoApplication {
 			CircularLinkedList node = new CircularLinkedList();
 			node.setValue(value);
 			CircularLinkedList tail = dataStructure.getTailCircularLinkedList();
+			
 			tail.setNext(node);
 			tail = tail.getNext();
 			tail.setNext(dataStructure.getHeadCircularLinkedList());
