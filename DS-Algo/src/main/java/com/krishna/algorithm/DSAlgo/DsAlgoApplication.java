@@ -78,6 +78,7 @@ public class DsAlgoApplication {
 	}
 
 	private static void removeLoopFromAList() {
+		
 		LinkedList head = new LinkedList();
 		head.setName("1");
 		head.setNext(null);
