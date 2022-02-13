@@ -21,7 +21,7 @@ import com.krishna.algorithm.DSAlgo.model.DataStructure;
 import com.krishna.algorithm.DSAlgo.model.LinkedList;
 
 @SpringBootApplication
-public class DsAlgoApplication {
+public class DsAlgoApplication { 
 	
 
 	public static void main(String[] args) {
