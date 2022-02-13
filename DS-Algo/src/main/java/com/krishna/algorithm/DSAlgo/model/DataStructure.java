@@ -30,7 +30,7 @@ private List<String> list = new ArrayList<String>();
 		return dataStrucure;
 		
 	}
-
+ 
 	public List<String> getList() {
 		return list;
 	}
