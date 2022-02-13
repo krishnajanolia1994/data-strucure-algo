@@ -144,7 +144,7 @@ public class DsAlgoApplication {
 		
 		while(fast!=null) {
 			slow = slow.getNext();
-			fast = fast.getNext().getNext();
+			fast = fast.getNext().getNext(); 
 			if(slow == fast){
 				break;
 			}
