@@ -22,12 +22,13 @@ import com.krishna.algorithm.DSAlgo.model.DataStructure;
 import com.krishna.algorithm.DSAlgo.model.LinkedList;
 
 @SpringBootApplication
-public class DsAlgoApplication {
+public class DsAlgoApplication { 
 	
 
 	public static void main(String[] args) {
 		
 		org.apache.wink.client.ClientConfig clientConfig = new org.apache.wink.client.ClientConfig();
+		
 		
 		String a="a    ";
 		String b="b";
@@ -107,6 +108,7 @@ public class DsAlgoApplication {
 	}
 
 	private static void removeLoopFromAList() {
+		
 		LinkedList head = new LinkedList();
 		head.setName("1");
 		head.setNext(null);
@@ -158,6 +160,7 @@ public class DsAlgoApplication {
 		while(fast.getNext()!= slow) {
 			fast = fast.getNext();
 			loopCount++;
+			
 		}
 		
 		
@@ -171,7 +174,7 @@ public class DsAlgoApplication {
 		
 		while(fast!=null) {
 			slow = slow.getNext();
-			fast = fast.getNext().getNext();
+			fast = fast.getNext().getNext(); 
 			if(slow == fast){
 				break;
 			}
