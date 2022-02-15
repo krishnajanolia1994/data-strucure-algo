@@ -76,10 +76,13 @@ public class DsAlgoApplication {
 	private static void createDoublyLinkList() {
 		DoublyLinkedList head = null;
 		Random random =new Random();
-
+		int nodeToBeDelete = random.nextInt(10);
 
 		for(int i=0;i<10;i++) {
 			int rand = random.nextInt(10000);
+			if(nodeToBeDelete== i ) {
+				nodeToBeDelete = rand;
+			}
 			head = addNodeToSorteDoublyLinkedList(head,rand);
 			
 		}
@@ -89,6 +92,38 @@ public class DsAlgoApplication {
 			temp = temp.getNext();
 
 		}
+		
+		temp =head;
+		boolean found = false;
+		while(temp!=null) {
+			if(temp.getValue()== nodeToBeDelete) {
+				found = true;
+				break;
+			}
+			temp = temp.getNext();
+		}
+		if(found) {
+			if(temp== head) {
+				head=head.getNext();
+				head.setPriviouse(null);
+				temp=null;
+			}else if(temp.getNext() == null ) {
+				DoublyLinkedList parent = temp.getPriviouse();
+				
+				parent.setNext(null);
+				temp.setPriviouse(null);
+				
+			}
+			else {
+				DoublyLinkedList parent = temp.getPriviouse();
+				DoublyLinkedList child = temp.getNext();
+				parent.setNext(child);
+				child.setPriviouse(parent);
+				temp=null;
+
+			}
+		}
+		
 	}
 
 	private static DoublyLinkedList addNodeToSorteDoublyLinkedList(DoublyLinkedList head, int rand) {
