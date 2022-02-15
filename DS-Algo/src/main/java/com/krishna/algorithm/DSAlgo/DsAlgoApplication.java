@@ -77,7 +77,6 @@ public class DsAlgoApplication {
 		DoublyLinkedList head = null;
 		Random random =new Random();
 
-
 		for(int i=0;i<10;i++) {
 			int rand = random.nextInt(10000);
 			head = addNodeToSorteDoublyLinkedList(head,rand);
