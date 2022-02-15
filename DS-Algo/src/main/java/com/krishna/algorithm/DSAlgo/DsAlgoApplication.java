@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.krishna.algorithm.DSAlgo.model.CircularLinkedList;
 import com.krishna.algorithm.DSAlgo.model.DataStructure;
+import com.krishna.algorithm.DSAlgo.model.DoublyLinkedList;
 import com.krishna.algorithm.DSAlgo.model.LinkedList;
 
 @SpringBootApplication
@@ -68,7 +69,62 @@ public class DsAlgoApplication {
 
 //		removeLoopFromAList();
 		
-		createCircularLinkedList();
+//		createCircularLinkedList();
+		createDoublyLinkList();
+	}
+
+	private static void createDoublyLinkList() {
+		DoublyLinkedList head = null;
+		Random random =new Random();
+
+
+		for(int i=0;i<10;i++) {
+			int rand = random.nextInt(10000);
+			head = addNodeToSorteDoublyLinkedList(head,rand);
+			
+		}
+		DoublyLinkedList temp =head;
+		while(temp!=null) {
+			System.out.println(" doubly linked list : "+temp.getValue());
+			temp = temp.getNext();
+
+		}
+	}
+
+	private static DoublyLinkedList addNodeToSorteDoublyLinkedList(DoublyLinkedList head, int rand) {
+		DoublyLinkedList node = new DoublyLinkedList();
+		node.setValue(rand);
+		if(head==null) {
+			head = node;
+			head.setNext(null);
+			head.setPriviouse(null);
+		}else if(rand<head.getValue()) {
+			node.setNext(head);
+			head.setPriviouse(node);
+			head = node;
+			
+		}else {
+			DoublyLinkedList temp = head;
+			while(temp.getNext()!=null) {
+				if(rand> temp.getValue() && rand<temp.getNext().getValue()) {
+					break;
+				}
+				temp = temp.getNext();
+			}
+			
+			if(temp.getNext()!=null) {
+				DoublyLinkedList child = temp.getNext();
+				temp.setNext(node);
+				node.setPriviouse(temp);
+				node.setNext(child);
+				child.setPriviouse(node);
+			}else {
+				temp.setNext(node);
+				node.setPriviouse(temp);
+				node.setNext(null);
+			}
+		}
+		return head;
 	}
 
 	private static void createCircularLinkedList() {
