@@ -128,6 +128,7 @@ public class DsAlgoApplication {
 
 	private static DoublyLinkedList addNodeToSorteDoublyLinkedList(DoublyLinkedList head, int rand) {
 		DoublyLinkedList node = new DoublyLinkedList();
+		
 		node.setValue(rand);
 		if(head==null) {
 			head = node;
