@@ -98,6 +98,7 @@ public class DsAlgoApplication {
 		while(temp!=null) {
 			if(temp.getValue()== nodeToBeDelete) {
 				found = true;
+				System.out.println("value to be deleted : "+temp.getValue());
 				break;
 			}
 			temp = temp.getNext();
@@ -123,7 +124,45 @@ public class DsAlgoApplication {
 
 			}
 		}
+		temp =head;
+
+		while(temp!=null) {
+			System.out.println(" doubly linked list after deletion: "+temp.getValue());
+			temp = temp.getNext();
+
+		}
+		temp =head;
+		DoublyLinkedList newHead = getTailOfDoublyLinkedList(temp);
+		DoublyLinkedList newTail = newHead;
+		DoublyLinkedList previouse = newHead.getPriviouse();
+
+		while(previouse!=null)
+		{
+			DoublyLinkedList currentNode = previouse;
+			previouse= previouse.getPriviouse();
+			newTail.setNext(currentNode);
+			currentNode.setPriviouse(newTail);
+			currentNode.setNext(null);
+			newTail=newTail.getNext();
+			
+		}
 		
+		temp =newHead;
+		System.out.println();
+
+		while(temp!=null) {
+
+			System.out.println(" doubly linked list after revers: "+temp.getValue());
+			temp = temp.getNext();
+
+		}
+
+	}
+
+	private static DoublyLinkedList getTailOfDoublyLinkedList(DoublyLinkedList temp) {
+		while(temp.getNext()!=null)
+			temp=temp.getNext();
+		return temp;
 	}
 
 	private static DoublyLinkedList addNodeToSorteDoublyLinkedList(DoublyLinkedList head, int rand) {
