@@ -22,6 +22,8 @@ public interface LinkedListService {
 
 	public LinkedList meargeSoart();
 
-	public LinkedList rotate(int number);   
+	public LinkedList rotate(int number);
+
+	public String crateDoublyLinkedListFromTree();   
 
 }

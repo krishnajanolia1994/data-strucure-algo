@@ -85,6 +85,13 @@ public class LinkedListController {
 		return linkedListService.rotate(number); 
 		
 	}
+	
+	@GetMapping(value  = AppConstants.LINKED_LIST + AppConstants.FROM +AppConstants.TREE)
+	public String crateDoublyLinkedListFromTree(@RequestParam("number") int number)
+	{
+		return linkedListService.crateDoublyLinkedListFromTree(); 
+		
+	}
 
 
   

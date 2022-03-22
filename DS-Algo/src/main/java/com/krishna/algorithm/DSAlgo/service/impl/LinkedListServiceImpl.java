@@ -1,9 +1,12 @@
 package com.krishna.algorithm.DSAlgo.service.impl;
 
+import java.util.Random;
+
 import org.springframework.stereotype.Component;
 
 import com.krishna.algorithm.DSAlgo.model.DataStructure;
 import com.krishna.algorithm.DSAlgo.model.LinkedList;
+import com.krishna.algorithm.DSAlgo.model.Tree;
 import com.krishna.algorithm.DSAlgo.service.LinkedListService;
 
 @Component
@@ -402,6 +405,233 @@ public class LinkedListServiceImpl implements LinkedListService{
 		parent = tempHead;
 		return parent;
 	}
+
+
+	@Override
+	public String crateDoublyLinkedListFromTree() {
+		
+		Tree tree = null;
+		Random random = new Random();
+		int value = 0;
+//		for(int i=0;i<10 ; i++) {
+//			value = random.nextInt(1000);
+//			tree= addNode(value, tree);
+//		}
+		tree= addNode(674, tree);
+		tree= addNode(577, tree);
+		tree= addNode(365, tree);
+		tree= addNode(294, tree);
+		tree= addNode(198, tree);
+		tree= addNode(491, tree);
+		tree= addNode(743, tree);
+		tree= addNode(740, tree);
+		tree= addNode(786, tree);
+		tree= addNode(749, tree);
+		String list = "";
+		convert(tree,tree);
+//		Tree l = tree.getLeft();
+//		Tree r=tree.getRight();
+//		Tree rr=null;
+//		Tree rl=null;
+//		Tree ll=null;
+//		Tree lr=null;
+//		
+//		tree.setLeft(l);
+//		tree.setRight(r);
+//		if(r!=null) {
+//			tree.setRight(r);
+//			rr=r.getRight();
+//			rl=r.getLeft();
+//
+//			r.setLeft(tree);
+//			r.setRight(null);
+//		}
+//		
+//		if(l!=null) {
+//			tree.setLeft(l);
+//			ll=l.getLeft();
+//			lr=l.getRight();
+//
+//			l.setRight(tree);
+//			l.setLeft(null);
+//		}
+//		
+//		
+//		
+//		Tree leftChild =convert(l,ll,lr);
+//		Tree rightChild =convert(r,rr,rl);
+		
+		Tree left = tree.getLeft();
+		Tree right = tree.getRight();
+		left.setRight(tree);
+		right.setLeft(tree);
+		return list;
+	}
+	
+	private void convert(Tree tree, Tree root) {
+		if(tree!=null && (tree.getRight()!=null || tree.getLeft()!=null)) {
+			
+			convert(tree.getLeft(), root);
+			convert(tree.getRight(), root);
+			
+			Tree parent = getParent(root,tree);
+			
+			if(parent!=null) {
+				if(parent.getValue()>tree.getValue()&& tree.getRight()!=null) {
+//					if(tree.getLeft()!=null)
+//						tree.getLeft().setRight(tree);
+					rotateLeft(tree,parent,null);
+				}else if(parent.getValue()<tree.getValue()&& tree.getLeft()!=null){
+//					if(tree.getRight()!=null)
+//						tree.getRight().setLeft(tree);
+					rotateRight(tree,parent,null);
+
+				}
+		
+			}
+		}
+	}
+	
+	private Tree getParent(Tree root, Tree tree) {
+		Tree parent = null;
+		Tree temp = root;
+		while(temp!=null) {
+			if(temp.getRight()== tree || temp.getLeft()==tree) {
+				parent = temp;
+				break;
+			}
+			if(temp.getValue()<tree.getValue()) {
+				temp=temp.getRight();
+			}else
+				temp=temp.getLeft();
+		}
+		return parent;
+	}
+
+	private void rotateRight(Tree tree, Tree parent, Tree firstRotate) {
+		
+		Tree leftList = tree.getLeft();
+		Tree rightChild = tree.getRight();
+		parent.setRight(tree);
+		tree.setLeft(parent);
+		tree.setRight(rightChild);
+		if(rightChild!=null)
+			rightChild.setLeft(tree);
+		while(leftList!=null) {
+			Tree mid = leftList;
+			leftList = leftList.getLeft();
+			Tree child = parent.getRight();
+			
+			parent.setRight(mid);
+			mid.setLeft(parent);
+			mid.setRight(child);
+			child.setLeft(mid);
+		}
+		
+	}
+
+	private void rotateLeft(Tree tree, Tree parent, Tree firstRotate) {
+		
+		Tree rightList = tree.getRight();
+		Tree leftChild = tree.getLeft();
+		tree.setRight(parent);
+		if(leftChild!=null) {
+			leftChild.setRight(tree);
+		}
+		while(rightList!=null) {
+			Tree Child = parent.getLeft();
+			Tree mid = rightList;
+			rightList = rightList.getRight();
+			parent.setLeft(mid);
+			mid.setRight(parent);
+			mid.setLeft(Child);
+			Child.setRight(mid);
+		}
+		
+	}
+
+
+//	private Tree convert(Tree parent, Tree l, Tree r) {
+//		if(parent!=null) {
+//			Tree rr=null;
+//			Tree rl=null;
+//			Tree ll=null;
+//			Tree lr=null;
+//			
+//			if(r!=null) {
+//				if(parent.getRight()==null) {
+//					parent.setRight(r);
+//
+//				}else {
+//					
+//				}
+//				rr=r.getRight();
+//				rl=r.getLeft();
+//				r.setLeft(parent);
+//				r.setRight(null);
+//			}
+//			
+//			if(l!=null) {
+//				parent.setLeft(l);
+//				ll=l.getLeft();
+//				lr=l.getRight();
+//				l.setRight(parent);
+//				l.setLeft(null);
+//			}
+//			l=convert(l,ll,lr);
+//			r=convert(r,rr,rl);			
+//			
+//		}
+//		return parent;
+//	}
+//
+
+	public Tree addNode(int value,Tree root) {
+
+		
+		if(root==null) {
+			root = new Tree() ;
+			root.setValue(value);
+			root.setLeft(null);
+			root.setRight(null);
+		} else {
+			Tree parent = getParentLeaf(value ,root);
+			Tree node = new Tree();
+			node.setValue(value);
+			node.setLeft(null);
+			node.setRight(null);
+			if (value > parent.getValue())   {
+				parent.setRight(node)  ;
+			} else {
+				parent.setLeft(node);
+			}
+
+		}
+		return root;
+	}
+	
+	private Tree getParentLeaf(int value ,Tree root )   {
+
+		Tree temp = root;
+
+		while (temp != null) {
+			if (temp.getValue() < value) {
+				if (temp.getRight() == null)
+					break;
+				temp = temp.getRight();
+			} else {
+				if (temp.getLeft() == null)
+					break;
+				temp = temp.getLeft() ;
+
+			}
+
+		}
+
+		return temp;
+	}
+
+
 
 
 	

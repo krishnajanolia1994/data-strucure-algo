@@ -1,7 +1,5 @@
 package com.krishna.algorithm.DSAlgo.service.impl;
 
-import java.util.LinkedList;
-
 import org.springframework.stereotype.Component;
 
 import com.krishna.algorithm.DSAlgo.service.AlgebraService;
@@ -16,8 +14,6 @@ public class AlgebraServiceImpl implements AlgebraService{
 		double next=0.1;
 		double current = number/root;
 		
-		LinkedList list= new LinkedList();
-//		list.add
 		
 		boolean itr = true;
 		while(itr) {
