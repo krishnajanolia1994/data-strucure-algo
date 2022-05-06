@@ -1,16 +1,11 @@
 package com.krishna.algorithm.DSAlgo;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import javax.net.ssl.SSLContext;
-
-import org.apache.commons.codec.binary.Base64;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.util.NumberUtils;
 
 import com.krishna.algorithm.DSAlgo.model.CircularLinkedList;
 import com.krishna.algorithm.DSAlgo.model.DataStructure;
@@ -27,14 +22,22 @@ public class DsAlgoApplication {
 		org.apache.wink.client.ClientConfig clientConfig = new org.apache.wink.client.ClientConfig();
 		
 		
-		String a="a    "; 
+		Boolean b = false;
+		int k=10;
+		Map<String, Boolean> map = new HashMap<String, Boolean>();
+		System.out.println("b "+b);
+		System.out.println("b in map "+b);
+
+		changeB(k,b,map);
+		System.out.println("b "+b);
+		System.out.println("b in map "+map.get("b"));
 		
 		
-		String b="b";
-		String c= a+b;
-		System.out.println(c.replaceAll(" ", ""));
-		 Base64 base64 = new Base64();
-	        System.out.println(new String(base64.encode("1234567890".getBytes())));
+//		String b="b";
+//		String c= a+b;
+//		System.out.println(c.replaceAll(" ", ""));
+//		 Base64 base64 = new Base64();
+//	        System.out.println(new String(base64.encode("1234567890".getBytes())));
 
 //		javax.ws.rs.core.Application app = new javax.ws.rs.core.Application() {
 //		       public Set<Class<?>> getClasses() {
@@ -70,7 +73,7 @@ public class DsAlgoApplication {
 //		RestClient client = new RestClient();
 //		Resource resource = client.resource("https://postman-echo.com/post");
 //		ClientResponse response =resource.contentType(MediaType.APPLICATION_JSON_TYPE).accept(MediaType.APPLICATION_JSON_TYPE).post("");
-//		SpringApplication.run(DsAlgoApplication.class, args);
+		SpringApplication.run(DsAlgoApplication.class, args);
 //		System.out.println("The response code is: " + response.getStatusCode());
 //		System.out.println("The response message body is: " + response.getEntity(String.class));
 
@@ -95,6 +98,16 @@ public class DsAlgoApplication {
 		
 		priorityQueue();		
 		
+	}
+
+	private static void changeB(int k, Boolean b, Map<String, Boolean> map) {
+		if(k>0) {
+			if(k==5) {
+				b=true;
+				map.put("b", b);
+			}
+			changeB(k-1, b,map);
+		}
 	}
 
 	private static void priorityQueue() {

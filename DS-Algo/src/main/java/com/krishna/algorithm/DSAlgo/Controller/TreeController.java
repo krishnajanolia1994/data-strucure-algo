@@ -35,11 +35,84 @@ public class TreeController {
 		return treeService.getNode(value) ;
 	}
 	
-	@PostMapping(value  = AppConstants.AVL + AppConstants.TREE + AppConstants.ADD + AppConstants.NODE)
+	@PostMapping(value  = AppConstants.TREE + AppConstants.GET + AppConstants.LCA)
+	public Integer getLCA(@RequestParam("value") int value,@RequestParam("value1") int value1 )
+	{
+		return treeService.getLCA(value,value1) ;
+	}
+	
+	@PostMapping(value  = AppConstants.TREE + AppConstants.GET + AppConstants.KTH_SMALLEST_ELEMENT)
+	public Tree getKthSmallestElement(@RequestParam("maxCount") int maxCount )
+	{
+		return treeService.getKthSmallestElement(maxCount) ;
+	}
+	
+	@PostMapping(value  = AppConstants.IS_BST)
+	public void isBst()
+	{
+		treeService.isBst() ;
+		
+	}
+	
+	@PostMapping(value  = AppConstants.AVL + AppConstants.TREE + AppConstants.ADD+AppConstants.NODE )
 	public Tree addAvlNode(@RequestParam("value") int value )
 	{
 		return treeService.addAvlNode(value) ;
 		
+	}
+	
+	
+	
+	@PostMapping(value  =  AppConstants.TREE + AppConstants.INORDER)
+	public Tree inorderTraves()
+	{
+		return treeService.inorder() ;
+		
+	}
+	
+	@PostMapping(value  =  AppConstants.TREE + AppConstants.PREORDER)
+	public Tree preorderTraves()
+	{
+		return treeService.preorder() ;
+		
+	}
+	
+	@PostMapping(value  = AppConstants.TREE + AppConstants.POSTORDER)
+	public Tree postorderTraves()
+	{
+		return treeService.postorder() ;
+		
+	}
+	
+	@PostMapping(value  =   AppConstants.TREE + AppConstants.DIAMETER)
+	public int getDiameter()
+	{
+		return treeService.getDiameter() ;
+		
+	}
+	
+	@PostMapping(value  = AppConstants.TREE+AppConstants.OTHER + AppConstants.ADD + AppConstants.NODE)
+	public Tree addNodeInOtherTree(@RequestParam("value") int value )
+	{
+		return treeService.addNode(value);	
+	}
+	
+	@PostMapping(value  = AppConstants.TREE+AppConstants.CONVERT+AppConstants.THREADE__INTO_BINARY_TREE)
+	public Tree convertIntoThreadeBinaryTree(@RequestParam("inorder") int[] inorder,@RequestParam("preorder") int[] preorder )
+	{
+		return treeService.convertIntoThreadeBinaryTree(inorder,preorder);	
+	}
+	
+	@PostMapping(value  = AppConstants.TREE+AppConstants.COPY_WITH_RANDOM_NODE)
+	public String copyTreeWithRandomNode(@RequestParam("values") int[] values)
+	{
+		return treeService.copyTreeWithRandomNode(values);	
+	}
+	
+	@PostMapping(value  = AppConstants.TREE+AppConstants.WIDTH)
+	public String getWidth(@RequestParam("values") int[] values)
+	{
+		return treeService.getWidth();	
 	}
 
 }

@@ -49,5 +49,43 @@ public class AppConstants {
 	public static final String ROTATE = "/rotate";
 
 	public static final String FROM = "/from";
+
+	public static final String INORDER = "/inorder";
+
+	public static final String PREORDER = "/preorder";
+
+	public static final String POSTORDER = "/postorder";
+
+	public static final String DIAMETER = "/diameter";
+
+	public static final String OTHER = "/other";
+
+	public static final String THREADE__INTO_BINARY_TREE = "/threaded/binary/tree";
+
+	public static final String CONVERT = "/convert";
+
+	public static final String COPY_WITH_RANDOM_NODE = "copy/with/random/node";
+
+	public static final String WIDTH = "/width";
+
+	public static final String IS_BST = "is/bst";
+
+	public static final String LCA = "/lca";
+
+	public static final String KTH_SMALLEST_ELEMENT = "/kth/smallest/element";
+
+	public static final String FIND_SUB_ARRAR = "/find/subarray";
+
+	public static final String FIND_INTESACTION_JOIN = "/find/interaction/join";
+
+	public static final String FIND_TWO_NUMBER_HAVING_SUM = "/find/two/number/having/given/sum";
+
+	public static final String FIND_DUPLICATE_IN_K_RANGE = "/find/duplicate/in/k/range";
+
+	public static final String FIND_ITINERARY = "/find/itineary";
+
+	public static final String FIND_TOTAL_NUMBER_EMPLOYEE = "find/total/employee";
+
+	public static final String FIND_CYCLE = "/find/cycle";
 	
 }

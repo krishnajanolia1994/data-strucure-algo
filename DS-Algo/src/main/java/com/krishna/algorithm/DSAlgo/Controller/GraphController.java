@@ -41,4 +41,10 @@ public class GraphController {
 	{
 		return graphService.DFS();
 	}
+	
+	@GetMapping(value  = AppConstants.GRAPH + AppConstants.FIND_CYCLE)
+	public String findCycle()
+	{
+		return graphService.findCycle();
+	}
 }

@@ -318,6 +318,51 @@ public class GraphServiceImpl implements GraphService{
             sb.append(String.format("%02x", b));
         }
         return sb.toString();
-    } 
+    }
+
+
+
+	@Override
+	public String findCycle() {
+		int count = 0;
+		String isCycle = "false";
+		
+		Map<Integer, Boolean> visited = new HashMap<Integer, Boolean>();
+		LinkedList< Graph> graphs =new LinkedList<Graph>();
+		graphs.add(head);
+		visited.put(head.getValue(), true);
+		System.out.println(count+" value of current is "+ head.getValue());
+		
+		Map<Integer, Integer> indexes = new HashMap<Integer, Integer>();
+		while(!graphs.isEmpty()) {
+			boolean isEmpty = true;
+			Graph current = graphs.getFirst();
+			int start =0;
+			if(indexes.get(current.getValue())!=null) {
+				start = indexes.get(current.getValue());
+			}
+			
+			for(int i = start ;i<current.getGraphs().size();i++) {
+				if(visited.get(current.getGraphs().get(i).getValue())==null) {
+					visited.put(current.getGraphs().get(i).getValue(), true);
+					graphs.addFirst(current.getGraphs().get(i));
+					isEmpty=false;
+					indexes.put(current.getValue(), i+1);
+					System.out.println(count+" value of current is "+ current.getGraphs().get(i).getValue());
+
+					break;
+
+				}else {
+					isCycle="true";
+				}
+			}
+			if(isEmpty) {
+				graphs.removeFirst();
+			}
+		}
+		
+		return isCycle;
+
+	} 
 
 }

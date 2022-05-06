@@ -11,4 +11,6 @@ public interface GraphService {
 	
 	public String bellmanFord(int sourse, int destination);
 
+	public String findCycle();
+
 }

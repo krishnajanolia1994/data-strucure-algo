@@ -1,8 +1,12 @@
 package com.krishna.algorithm.DSAlgo.service.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.stereotype.Component;
 
 import com.krishna.algorithm.DSAlgo.model.Tree;
+import com.krishna.algorithm.DSAlgo.model.TreeWithRandom;
 import com.krishna.algorithm.DSAlgo.service.TreeService;
 
 @Component
@@ -305,6 +309,239 @@ private static Tree root;
 		if(height2>height)
 			max=height2;
 		return max ;
+	}
+
+	@Override
+	public Tree inorder() {
+		Tree temp = root;
+		inorderTavest(temp);
+		return root;
+	}
+
+	private void inorderTavest(Tree temp) {
+		if(temp!=null) {
+			inorderTavest(temp.getLeft());
+			System.out.println(temp.getValue());
+			inorderTavest(temp.getLeft());
+
+		}
+	}
+
+	@Override
+	public Tree preorder() {
+		Tree temp = root;
+		preorderTavest(temp);
+		return root;
+	}
+
+	private void preorderTavest(Tree temp) {
+		if(temp!=null) {
+			System.out.println(temp.getValue());
+			inorderTavest(temp.getLeft());
+			inorderTavest(temp.getLeft());
+
+		}
+
+		
+	}
+
+	@Override
+	public Tree postorder() {
+		Tree temp = root;
+		postorderTavest(temp);
+		return root;
+	}
+
+	private void postorderTavest(Tree temp) {
+		if(temp!=null) {
+			inorderTavest(temp.getLeft());
+			inorderTavest(temp.getLeft());
+			System.out.println(temp.getValue());
+
+		}
+
+	}
+
+	@Override
+	public int getDiameter() {
+		Tree temp = root;
+		
+		return getDiameter(temp);
+	}
+
+	private int getDiameter(Tree temp) {
+		
+		if(temp==null)
+			return 0;
+		
+		int lHeight = getHeight(temp.getLeft());
+		int rHeight = getHeight(temp.getRight());
+		
+		int lDiameter = getDiameter(temp.getLeft());
+		int rDiameter = getDiameter(temp.getLeft());
+		
+		
+
+
+		return max((1+lHeight+rHeight), max(lDiameter,rDiameter));
+	}
+
+	@Override
+	public Tree convertIntoThreadeBinaryTree(int[] inorder, int[] preorder) {
+		Tree tree = new Tree();
+		if(inorder!=null&&inorder.length!=0 && preorder!=null && preorder.length!=0) {
+			Tree root = new Tree();
+			int length = inorder.length;
+			root.setValue(preorder[0]);
+			int index=0;
+			try {
+				index = getIndex(inorder,preorder,0,length-1);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			addSubTree(inorder,0,index-1,preorder,root);
+			addSubTree(inorder,index+1,length-1,preorder,root);
+
+		}
+		return tree;
+	}
+
+	private void addSubTree(int[] inorder, int start, int end, int[] preorder, Tree root) {
+		int index=0;
+		try {
+			index = getIndex(inorder, preorder, start, end);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Tree node = new Tree();
+		node.setValue(inorder[index]);
+		if(start==0||(end+1<inorder.length&&inorder[end+1]==root.getValue())) {
+			root.setLeft(node);
+		}else {
+			root.setRight(node);
+		}
+		if(start!=end) {
+			addSubTree(inorder,start,index-1,preorder,root);
+			addSubTree(inorder,index+1,end,preorder,root);
+
+		}
+	}
+
+	private int getIndex(int[] inorder, int[] preorder, int start, int end) throws Exception {
+		int index=-1;
+		for(int i=0;i<preorder.length;i++) {
+			for(int j=start;j<=end;j++) {
+				if(preorder[i]==inorder[j]) {
+					index=j;
+					break;
+				}
+			}
+			if(index!=-1)
+				break;
+		}
+		if(index==-1)
+			throw new Exception("index out of bound");
+		return index;
+	}
+
+	@Override
+	public String copyTreeWithRandomNode(int[] values) {
+		String response = "";
+		if(values.length==0) {
+			response="no value";
+		}else {
+			TreeWithRandom root = new TreeWithRandom();
+			
+			
+		}
+		return response;
+	}
+
+	@Override
+	public String getWidth() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void isBst() {
+		Tree temp = root;
+		Boolean isBst = true;
+		isBst=isBST(isBst,temp);
+	}
+
+	private Boolean isBST(Boolean isBst, Tree temp) {
+		if(temp!=null)
+		{
+			if((temp.getLeft()!=null&&temp.getValue()<temp.getLeft().getValue())||(temp.getRight()!=null&&temp.getValue()>temp.getRight().getValue()))
+			{
+				isBst=false;
+			}
+			if(isBst) {
+				isBST(isBst, temp.getLeft());
+				isBST(isBst, temp.getRight());
+
+			}
+		}
+		return isBst;
+		
+	}
+
+	@Override
+	public Integer getLCA(int value, int value1) {
+		int small;
+		int big;
+		if(value>value1)
+		{
+			big=value;
+			small = value1;
+		}else {
+			big=value1;
+			small = value;
+
+		}
+		Tree tree = root;
+		while(tree!=null){
+			if(tree.getValue()==small||tree.getValue()==big||tree.getValue()<big||tree.getValue()>small)
+			{
+				break;
+			}
+			if(small<tree.getValue()&&big<tree.getValue())
+				tree = tree.getLeft();
+			else
+				tree=tree.getRight();
+		}
+		return null;
+	}
+
+	@Override
+	public Tree getKthSmallestElement(int maxCount) {
+		Tree value =new Tree();
+//		Integer count = 0;
+		Tree temp =root;
+		Tree count = new Tree();
+		count.setValue(0);
+		Map< Integer, Integer> map = new HashMap<Integer, Integer>();
+		
+		getKthSmallestElement(temp,count,maxCount,map);
+		value.setValue(map.get(maxCount));
+		return value;
+	}
+
+	private Tree getKthSmallestElement(Tree temp, Tree count, int maxCount, Map<Integer, Integer> map) {
+			if(temp!=null&&count.getValue()<maxCount) {
+			getKthSmallestElement(temp.getLeft(), count, maxCount,map);
+			count.setValue(count.getValue()+1);
+			map.put(count.getValue(), temp.getValue());
+			
+			
+			getKthSmallestElement(temp.getRight(), count, maxCount,map);
+
+			
+		}
+		return temp;
 	}
 
 }

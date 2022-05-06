@@ -12,5 +12,26 @@ public interface TreeService {
 
 	public Tree addAvlNode(int value);
 
+	public Tree inorder();
+
+	public Tree preorder();
+
+	public Tree postorder();
+
+	public int getDiameter();
+
+	public Tree convertIntoThreadeBinaryTree(int[] inorder, int[] preorder);
+
+	public String copyTreeWithRandomNode(int[] values);
+
+	public String getWidth();
+
+	public void isBst();
+
+	public Integer getLCA(int value, int value1);
+
+	public Tree getKthSmallestElement(int maxCount);
+
+
 
 }
