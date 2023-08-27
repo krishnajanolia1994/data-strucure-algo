@@ -17,4 +17,10 @@ public class AlgebraController {
 	{
 		return algebraService.getRthRoot(root, number);
 	}
+	
+	@GetMapping(value  = AppConstants.GET + AppConstants.MINIMUM+AppConstants.PLATFORM)
+	public double getMinimumPlatform(@RequestParam("ar") String [] ar,@RequestParam("dep") String [] dep)
+	{
+		return algebraService.getMinimumPlatform(ar, dep);
+	}
 }

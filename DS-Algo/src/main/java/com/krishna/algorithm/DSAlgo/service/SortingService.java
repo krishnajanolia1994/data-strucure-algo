@@ -12,5 +12,15 @@ public interface SortingService {
 	
 	public int[] insertionSort(int [] ar);
 
+	public int[] sorartAlmostSoartArray(int[] ar);
+
+	public int[] arrangeArrayInWaveForm(int[] ar);
+
+	public int[] findAPairHavngClosesetSumToX(int[] ar, int x);
+
+	public int findCountOfOne(int[] ar);
+
+	public int findMinimumSwap(int[] ar);
+
 
 }

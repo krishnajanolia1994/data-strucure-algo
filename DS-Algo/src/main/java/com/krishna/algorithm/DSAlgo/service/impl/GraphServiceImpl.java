@@ -7,8 +7,10 @@ import java.util.Map;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.stereotype.Component;
 
+import com.krishna.algorithm.DSAlgo.model.DataStructure;
 import com.krishna.algorithm.DSAlgo.model.Graph;
 import com.krishna.algorithm.DSAlgo.model.WeightedGraph;
+import com.krishna.algorithm.DSAlgo.model.WeightedUndirecteGraph;
 import com.krishna.algorithm.DSAlgo.service.GraphService;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -175,6 +177,7 @@ public class GraphServiceImpl implements GraphService{
 
 
 
+	
 	private WeightedGraph[] getParentWightGraph(int sourse, int destination) {
 		totalHead=0;
 		WeightedGraph[] graphsToBeReturn = new WeightedGraph[2];
@@ -363,6 +366,116 @@ public class GraphServiceImpl implements GraphService{
 		
 		return isCycle;
 
+	}
+
+
+
+	@Override
+	public String addNodeToUndirectedWeightedGraph(int sourse, int destination, int distance) {
+		
+		while(!DataStructure.getDataStruture().isAccessWeightedUndirecteGraph()) {}
+		
+		DataStructure.getDataStruture().setAccessWeightedUndirecteGraph(false);
+		WeightedUndirecteGraph graph = DataStructure.getDataStruture().getWeightedUndirecteGraph();
+		String result = "";
+		try {
+			if(graph==null) {
+				graph = new WeightedUndirecteGraph();
+				WeightedUndirecteGraph destinationGraph = new WeightedUndirecteGraph();
+
+				graph.getDistences()[0]=distance;
+				graph.getGraphs()[0]=destinationGraph;
+				graph.setValue(sourse);
+				destinationGraph.getDistences()[0]=distance;
+				destinationGraph.getGraphs()[0]= graph;
+				graph.setTotalNode(1);
+				destinationGraph.setTotalNode(1);
+				destinationGraph.setValue(destination);
+				DataStructure.getDataStruture().setWeightedUndirecteGraph(graph);
+				result="graph created successfully";
+			}else {
+				if(graph.getTotalNode()==graph.getArraySize()) {
+					increseSizeOfArray(graph);
+				}
+				WeightedUndirecteGraph parentAndChild[] = getParentWightUndirectedGraph(sourse, destination);
+				if(parentAndChild[0]==null)
+					result="source does not exist";
+				else {
+					if(parentAndChild[1].getTotalNode()==parentAndChild[1].getArraySize())
+						increseSizeOfArray(parentAndChild[1]);
+					
+					parentAndChild[0].getGraphs()[parentAndChild[0].getTotalNode()] = parentAndChild[1];
+					parentAndChild[0].getDistences()[parentAndChild[0].getTotalNode()] = distance;
+					parentAndChild[0].setTotalNode(parentAndChild[0].getTotalNode()+1);
+				
+					parentAndChild[1].getGraphs()[parentAndChild[1].getTotalNode()] = parentAndChild[0];
+					parentAndChild[1].getDistences()[parentAndChild[1].getTotalNode()] = distance;
+					parentAndChild[1].setTotalNode(parentAndChild[1].getTotalNode()+1);
+					result="Desination Added successfully";
+				}
+				
+			}
+			DataStructure.getDataStruture().setAccessWeightedUndirecteGraph(true);
+
+		} catch (Exception e) {
+			DataStructure.getDataStruture().setAccessWeightedUndirecteGraph(true);
+
+		}
+		
+		return result;
+	}
+
+
+
+	private WeightedUndirecteGraph[] getParentWightUndirectedGraph(int sourse, int destination) {
+		WeightedUndirecteGraph[] graphsToBeReturn = new WeightedUndirecteGraph[2];
+		int count =0;
+		LinkedList<WeightedUndirecteGraph> graphs = new LinkedList<WeightedUndirecteGraph>();
+		Map<Integer, Boolean> isVisited = new HashMap<Integer, Boolean>();
+		graphs.addLast(DataStructure.getDataStruture().getWeightedUndirecteGraph());
+		isVisited.put(DataStructure.getDataStruture().getWeightedUndirecteGraph().getValue(), true);
+		while(!graphs.isEmpty()) {
+			WeightedUndirecteGraph currentGraph = graphs.removeFirst();
+			System.out.println(count + " the value "+ currentGraph.getValue());
+			count ++;
+			if(currentGraph.getValue()==sourse)
+				graphsToBeReturn[0]= currentGraph;
+			if(currentGraph.getValue()==destination)
+				graphsToBeReturn[1]= currentGraph;
+
+			for(WeightedUndirecteGraph child : currentGraph.getGraphs()) {
+				if(child!=null&&isVisited.get(child.getValue())==null) {
+					isVisited.put(child.getValue(), true);
+					graphs.addLast(child);
+				}
+			}
+		}
+		if(graphsToBeReturn[1]==null) {
+			WeightedUndirecteGraph destinationGraph = new WeightedUndirecteGraph();
+			destinationGraph.setValue(destination);
+			graphsToBeReturn[1]=destinationGraph;
+		}
+		
+		return graphsToBeReturn;
+
+	}
+
+
+
+	private void increseSizeOfArray(WeightedUndirecteGraph graph) {
+		WeightedUndirecteGraph[] temp = new WeightedUndirecteGraph[graph.getArraySize()];
+		int [] distancesTemp = new  int [graph.getArraySize()];
+		for(int i=0;i<graph.getArraySize();i++) {
+			temp[i] = graph.getGraphs()[i]; 
+			distancesTemp[i] = graph.getDistences()[i];
+		}
+		graph.setDistences(new int[graph.getArraySize()*2]);
+		graph.setGraphs(new WeightedUndirecteGraph[graph.getArraySize()*2]);
+		for(int i=0;i<graph.getArraySize();i++) {
+			graph.getGraphs()[i] = temp[i];
+			graph.getDistences()[i] = distancesTemp[i];
+		}
+		graph.setArraySize(graph.getArraySize()*2);
 	} 
 
 }

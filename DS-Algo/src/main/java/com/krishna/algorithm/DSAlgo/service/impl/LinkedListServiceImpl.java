@@ -11,13 +11,12 @@ import com.krishna.algorithm.DSAlgo.service.LinkedListService;
 
 @Component
 public class LinkedListServiceImpl implements LinkedListService{
-	DataStructure dataStructure = DataStructure.getDataStruture();
 
 
 	@Override
 	public LinkedList AddNode(String name, String surname) {
 		
-		LinkedList linkedList = dataStructure.getHead();
+		LinkedList linkedList = DataStructure.getDataStruture().getHead();
 		
 		LinkedList linkedListNode = new LinkedList();
 		
@@ -32,14 +31,14 @@ public class LinkedListServiceImpl implements LinkedListService{
 			
 			linkedListNode.setSurName(surname);
 			linkedListNode.setNext(null);
-			dataStructure.setHead(linkedListNode);
+			DataStructure.getDataStruture().setHead(linkedListNode);
 		}else { 
 			LinkedList temp = linkedList;
 			LinkedList lastNode = getLastNode(temp);
 			lastNode.setNext(linkedListNode);         
 		}
 		
-		return dataStructure.getHead();
+		return DataStructure.getDataStruture().getHead();
 		
 	}
 
@@ -55,24 +54,24 @@ public class LinkedListServiceImpl implements LinkedListService{
 	@Override
 	public LinkedList delete(String name) {
 		
-		LinkedList linkedList = dataStructure.getHead();
+		LinkedList linkedList = DataStructure.getDataStruture().getHead();
 		
 		if(linkedList==null)
 			return linkedList;
 		if(linkedList.getName().equals(name)) {
-			dataStructure.setHead(linkedList.getNext());
-			return dataStructure.getHead();
+			DataStructure.getDataStruture().setHead(linkedList.getNext());
+			return DataStructure.getDataStruture().getHead();
 
 		}
 		
-		LinkedList parent = getParentNode(dataStructure.getHead(),name);
+		LinkedList parent = getParentNode(DataStructure.getDataStruture().getHead(),name);
 		if(parent!=null) {
 			
 			LinkedList grandChild = parent.getNext().getNext();
 			parent.setNext(grandChild);
 			
 		}
-		return dataStructure.getHead();
+		return DataStructure.getDataStruture().getHead();
 	}
 
 
@@ -91,12 +90,12 @@ public class LinkedListServiceImpl implements LinkedListService{
 
 	@Override
 	public LinkedList deleteByPosition(int index) {
-		LinkedList linkedList = dataStructure.getHead();
+		LinkedList linkedList = DataStructure.getDataStruture().getHead();
 		
 		if(linkedList==null)
 			return linkedList;
 		
-		LinkedList parent = getParentNodeByIndex(dataStructure.getHead(), index);
+		LinkedList parent = getParentNodeByIndex(DataStructure.getDataStruture().getHead(), index);
 		if(parent!=null) {
 			
 			LinkedList grandChild = parent.getNext().getNext();
@@ -104,7 +103,7 @@ public class LinkedListServiceImpl implements LinkedListService{
 			
 		}
 		
-		return dataStructure.getHead();
+		return DataStructure.getDataStruture().getHead();
 	}
 
 
@@ -120,8 +119,8 @@ public class LinkedListServiceImpl implements LinkedListService{
 	public Integer findLength() {
 		
 		int count = 0;
-		if(dataStructure.getHead()!=null) {
-			LinkedList linkedList = dataStructure.getHead();
+		if(DataStructure.getDataStruture().getHead()!=null) {
+			LinkedList linkedList = DataStructure.getDataStruture().getHead();
 			while(linkedList!=null) {
 				count++;
 				linkedList=linkedList.getNext();
@@ -133,7 +132,7 @@ public class LinkedListServiceImpl implements LinkedListService{
 
 	@Override
 	public Integer findLengthByRecursion() {
-		LinkedList linkedList = dataStructure.getHead();
+		LinkedList linkedList = DataStructure.getDataStruture().getHead();
 		int length=getLength(linkedList);
 		return length;
 	}
@@ -150,10 +149,10 @@ public class LinkedListServiceImpl implements LinkedListService{
 	public LinkedList swap(String first, String second) {
 		if(first==second) {
 			System.out.println("same element");
-			return dataStructure.getHead();
+			return DataStructure.getDataStruture().getHead();
 		}
 		
-		LinkedList linkedList = dataStructure.getHead();
+		LinkedList linkedList = DataStructure.getDataStruture().getHead();
 		if(linkedList.getName().equals(first)||linkedList.getName().equals(second)) {
 			LinkedList firstNode = null;
 			LinkedList secondNodeParent = null;
@@ -208,7 +207,7 @@ public class LinkedListServiceImpl implements LinkedListService{
 			}
 		}
 		 
-		return dataStructure.getHead(); 
+		return DataStructure.getDataStruture().getHead(); 
 	}
 
 
@@ -220,28 +219,28 @@ public class LinkedListServiceImpl implements LinkedListService{
 			secondNode.setNext(firstChildNode);
 			secondNodeParent.setNext(firstNode);
 			firstNode.setNext(secondChildNode);
-			dataStructure.setHead(secondNode);
+			DataStructure.getDataStruture().setHead(secondNode);
 		}
 	}
 
 
 	@Override
 	public LinkedList getLinkedList() {
-		return dataStructure.getHead();
+		return DataStructure.getDataStruture().getHead();
 	}
 
 
 	@Override
 	public LinkedList reverse() {
-		LinkedList head = dataStructure.getHead();
+		LinkedList head = DataStructure.getDataStruture().getHead();
 		reverse(head,true);
-		return dataStructure.getHead();
+		return DataStructure.getDataStruture().getHead();
 	}
 
 
 	private LinkedList reverse(LinkedList head,boolean isHead) {
 		if(head.getNext()==null) {
-			dataStructure.setHead(head);
+			DataStructure.getDataStruture().setHead(head);
 			return head;
 		}
 		LinkedList next = head.getNext();
@@ -257,11 +256,11 @@ public class LinkedListServiceImpl implements LinkedListService{
 
 	@Override
 	public LinkedList meargeSoart() {
-		LinkedList  head = dataStructure.getHead();
-		LinkedList  tail = getTail(dataStructure.getHead());
+		LinkedList  head = DataStructure.getDataStruture().getHead();
+		LinkedList  tail = getTail(DataStructure.getDataStruture().getHead());
 		 meargeSoart(head,tail);
-		dataStructure.setHead(head);
-		return dataStructure.getHead();
+		DataStructure.getDataStruture().setHead(head);
+		return DataStructure.getDataStruture().getHead();
 	}
 
 
@@ -377,14 +376,14 @@ public class LinkedListServiceImpl implements LinkedListService{
 	@Override
 	public LinkedList rotate(int number) {
 		
-		if(dataStructure.getHead()!=null&&dataStructure.getHead().getNext()!=null) {
+		if(DataStructure.getDataStruture().getHead()!=null&&DataStructure.getDataStruture().getHead().getNext()!=null) {
 			for(int i=0;i<number ;i++) {
-				LinkedList head = dataStructure.getHead();
+				LinkedList head = DataStructure.getDataStruture().getHead();
 				LinkedList parentTail = getParentTail(head);
 				LinkedList tail = parentTail.getNext();
 				parentTail.setNext(null);
 				tail.setNext(head);
-				dataStructure.setHead(tail);
+				DataStructure.getDataStruture().setHead(tail);
 				
 				
 			}
@@ -392,7 +391,7 @@ public class LinkedListServiceImpl implements LinkedListService{
 			System.out.println("there is only one element in list or empty");
 		
 		
-		return dataStructure.getHead();
+		return DataStructure.getDataStruture().getHead();
 	}
 
 

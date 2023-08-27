@@ -114,5 +114,11 @@ public class TreeController {
 	{
 		return treeService.getWidth();	
 	}
+	
+	@PostMapping(value  = AppConstants.TREE+AppConstants.HUFFMAN_COADING)
+	public String[] huffmanCoading(@RequestParam("values") int[] values, @RequestParam("character") char [] character)
+	{
+		return treeService.huffmanCoading(values,character);	
+	}
 
 }

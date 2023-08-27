@@ -9,11 +9,11 @@ import com.krishna.algorithm.DSAlgo.constent.AppConstants;
 import com.krishna.algorithm.DSAlgo.service.BackTrackService;
 
 @RestController
-public class BackTackController {
+public class MathematicaController {
 	
 	@Autowired
 	private BackTrackService backTrackService;;
-	@GetMapping(value  = AppConstants.GET +AppConstants.PERMUTATION)
+	@GetMapping(value  = AppConstants.GET + AppConstants.ALL+AppConstants.PERMUTATION)
 	public String getPermutationOfString(@RequestParam("str") String str)
 	{
 		return backTrackService.getPermutationOfString(str)  ;

@@ -41,7 +41,72 @@ public class SortingServiceImpl implements SortingService {
 
 	@Override
 	public int[] mergeSort(int[] ar) {
+		
+		int inversion = getInversion(ar, 0, ar.length - 1);
+		System.out.println(inversion);
 		return mergeSortArr(ar, 0, ar.length - 1);
+	}
+
+	private int getInversion(int[] ar, int first, int last) {
+		int result=0;
+		int left=0;
+		int right=0;
+		int merge =0;
+		if (first < last) {
+			int mid = (first + last) / 2;
+			left=getInversion(ar, first, mid);
+			right=getInversion(ar, mid + 1, last);
+			merge=mergeInvesion(ar, first, mid, last);
+			result=left+right+merge;
+
+		}
+
+		return result;
+	}
+
+	private int mergeInvesion(int[] ar, int first, int mid, int last) {
+		
+		int inversion=0;
+		int[] firstArr = new int[mid - first + 1];
+		int[] secondArr = new int[last - mid];
+		int firstArrayLenght = firstArr.length;
+
+		int index = 0;
+
+		int i;
+		for (i = first; i <= mid; i++) {
+			firstArr[index] = ar[i];
+			index++;
+		}
+		index = 0;
+
+		for (i = mid + 1; i <= last; i++) {
+			secondArr[index] = ar[i];
+			index++;
+		}
+
+		int firstArrIndex = 0;
+		int secondArrIndex = 0;
+
+		for (i = first; i <= last; i++) {
+			if (firstArr.length == firstArrIndex) {
+				ar[i] = secondArr[secondArrIndex];
+				secondArrIndex++;
+			} else if (secondArr.length == secondArrIndex) {
+				ar[i] = firstArr[firstArrIndex];
+				firstArrIndex++;
+			} else if (firstArr[firstArrIndex] < secondArr[secondArrIndex]) {
+				ar[i] = firstArr[firstArrIndex];
+				firstArrIndex++;
+			} else {
+				ar[i] = secondArr[secondArrIndex];
+				secondArrIndex++;
+				inversion+=(firstArrayLenght-firstArrIndex);
+			}
+		}
+
+		return inversion;
+		
 	}
 
 	private int[] mergeSortArr(int[] ar, int first, int last) {
@@ -274,6 +339,198 @@ public class SortingServiceImpl implements SortingService {
 			maxDigit++;
 		}
 		return maxDigit; 
+	}
+
+	@Override
+	public int[] sorartAlmostSoartArray(int[] ar) {
+		
+		int [] result = new int[2];
+		
+		int low =-1;
+		int high=-1;
+		int minIndex =-1;
+		int maxIndex =-1;
+		
+		for(int i=0;i<ar.length-1;i++) {
+			if(ar[i]>ar[i+1]) {
+				low=i+1;
+				break;
+			}
+		}
+		
+		for(int i = ar.length-1 ;i>0 ;i--) {
+			if(ar[i]<ar[i-1]) {
+				high = i-1;
+				break;
+			}
+		}
+		if(low!=-1&&high!=-1) {
+			
+			if(high <low)
+				high = low;
+			
+			int min = 0,max = 0;
+			for(int i=low;i<=high;i++) {
+				if(i==low) {
+					min=ar[i];
+				}else {
+					if(ar[i]<min)
+						min=ar[i];
+				}
+			}
+			
+			
+			for(int i = 0;i<low;i++) {
+				if(ar[i]>min) {
+					minIndex=i;
+					break;
+
+				}
+				
+			}
+			if(minIndex==-1)
+				minIndex=low;
+			for(int i=minIndex;i<=high;i++)
+			{
+				if(i==minIndex) {
+					max=ar[i];
+				}else {
+					if(ar[i]>max)
+						max=ar[i];
+				}
+			}
+			for(int i=ar.length-1;i>high;i--) {
+				if(ar[i]<max)
+				{
+					maxIndex=i;
+					break;
+
+				}
+					
+	
+			}
+			if(maxIndex==-1)
+				maxIndex=high;
+			
+		}
+		result[0]=minIndex;
+		result[1]=maxIndex;
+		return result;
+	}
+
+	@Override
+	public int[] arrangeArrayInWaveForm(int[] ar) {
+		if(ar[0]<ar[1]) {
+			swap(ar,0,1);
+		}
+		for(int i=2;i<ar.length;i+=2) {
+			if(ar[i-1]>ar[i])
+				swap(ar, i, i-1);
+			if((i+1)!=ar.length&&ar[i+1]>ar[i])
+				swap(ar, i, i+1);
+		}
+		return ar;
+	}
+
+	@Override
+	public int[] findAPairHavngClosesetSumToX(int[] ar, int x) {
+		int []result = {-1,-1};
+		if(ar.length>1) {
+			int i=0;
+			int j=ar.length-1;
+			int closestI = i;
+			int closestJ = j;
+			int diff = x-(ar[i]+ar[j]);
+			if(diff<0)
+				diff*=-1;
+			int currentDiff =-1;
+			while(i<j) {
+				if((ar[i]+ar[j])>x)
+					j--;
+				else
+					i++;
+				
+				currentDiff = x-(ar[i]+ar[j]);
+				if(currentDiff<0)
+					currentDiff*=-1;
+				if(currentDiff<diff) {
+					closestI=i;
+					closestJ = j;
+					diff=currentDiff;
+				}
+			}
+			result[0] = closestI;
+			result[1] = closestJ;
+		}
+		
+		
+		
+		return result;
+	}
+
+	@Override
+	public int findCountOfOne(int[] ar) {
+		int output = 0;
+		
+		if(ar.length>0) {
+			int mid =0;
+			int low = 0;
+			int high = ar.length-1;
+			while(low<=high) {
+				mid = low + (high-low)/2;
+				
+				if(ar[mid]==1 && (mid+1)<ar.length&&ar[mid+1]==0) {
+					output=mid+1;
+					break;
+				}
+				else if(ar[mid]==0 && (mid-1)>-1&&ar[mid-1]==1) {
+					output = mid;
+					break;
+				}
+				else if(ar[mid]==1 && (ar.length==1||mid==(ar.length-1))) {
+					output=mid+1;
+					break;
+
+				}
+				if(ar[mid]==1)
+					low = mid+1;
+				else
+					high = mid-1;
+				
+				
+			}
+		}
+		return output;
+	}
+
+	@Override
+	public int findMinimumSwap(int[] ar) {
+		int length = ar.length;
+		int output =-1;
+		if(length>1) {
+			int min = ar[length-1];
+			int minIndex = length-1;
+			for(int i=length-2;i>=0;i--)
+				if(ar[i]<min) {
+					min=ar[i];
+					minIndex=i;
+				}
+			int max = ar[0];
+			int MaxIndex = 0;
+			for(int i=1;i<length;i++)
+				if(ar[i]>max) {
+					max=ar[i];
+					MaxIndex=i;
+				}
+			int swapForMin = (length-1)-minIndex;
+			int totalSwap = 0;
+			if(minIndex<MaxIndex)
+				totalSwap = swapForMin+MaxIndex-1;
+			else 
+				totalSwap = swapForMin+MaxIndex;
+			output=totalSwap;
+		}
+		return output;
 	}
 
 }

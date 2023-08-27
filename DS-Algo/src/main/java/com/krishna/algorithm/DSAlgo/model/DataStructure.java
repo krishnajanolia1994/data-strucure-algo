@@ -16,13 +16,17 @@ private List<String> list = new ArrayList<String>();
 	
 	private LinkedList linkedList = null;
 	
+	private WeightedUndirecteGraph weightedUndirecteGraph = null;
+	
+	private boolean accessWeightedUndirecteGraph = true;
+	
 	
 	
 	private static DataStructure dataStrucure = null;
 	
 	private DataStructure() {}
 	
-	public static DataStructure getDataStruture() {
+	public static synchronized DataStructure getDataStruture() {
 		
 		if(dataStrucure == null) {
 			dataStrucure = new DataStructure();
@@ -69,6 +73,22 @@ private List<String> list = new ArrayList<String>();
 
 	public void setTailCircularLinkedList(CircularLinkedList tailCircularLinkedList) {
 		this.tailCircularLinkedList = tailCircularLinkedList;
+	}
+
+	public WeightedUndirecteGraph getWeightedUndirecteGraph() {
+		return weightedUndirecteGraph;
+	}
+
+	public void setWeightedUndirecteGraph(WeightedUndirecteGraph weightedUndirecteGraph) {
+		this.weightedUndirecteGraph = weightedUndirecteGraph;
+	}
+
+	public boolean isAccessWeightedUndirecteGraph() {
+		return accessWeightedUndirecteGraph;
+	}
+
+	public void setAccessWeightedUndirecteGraph(boolean accessWeightedUndirecteGraph) {
+		this.accessWeightedUndirecteGraph = accessWeightedUndirecteGraph;
 	}
 
 	

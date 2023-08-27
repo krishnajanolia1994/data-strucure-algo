@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
+import com.krishna.algorithm.DSAlgo.model.HuffmanTree;
 import com.krishna.algorithm.DSAlgo.model.Tree;
 import com.krishna.algorithm.DSAlgo.model.TreeWithRandom;
 import com.krishna.algorithm.DSAlgo.service.TreeService;
@@ -412,7 +413,6 @@ private static Tree root;
 		try {
 			index = getIndex(inorder, preorder, start, end);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Tree node = new Tree();
@@ -543,5 +543,116 @@ private static Tree root;
 		}
 		return temp;
 	}
+
+	@Override
+	public String[] huffmanCoading(int[] values, char[] character) {
+		
+		if(values.length>0) {
+			HuffmanTree head = new HuffmanTree();
+			head.setValue(values[0]);
+			head.setCharecter(character[0]);
+			head.setLeft(null);
+			head.setRight(null);
+			head.setNext(null);
+			HuffmanTree tail = head;
+			
+			for(int i=1;i<values.length;i++) {
+				HuffmanTree node = new HuffmanTree();
+				node.setValue(values[i]);
+				node.setCharecter(character[i]);
+				node.setLeft(null);
+				node.setRight(null);
+				node.setNext(null);	
+				tail.setNext(node);
+				tail = node;
+
+			}
+			
+			while(head.getNext()!=null) {
+				HuffmanTree left =null;
+				HuffmanTree right =null;
+
+				if(head.getValue()<head.getNext().getValue()) {
+					left = head;
+					right= head.getNext();
+				}
+				HuffmanTree node = new HuffmanTree();
+				node.setValue(left.getValue()+right.getValue());
+				if(head.getNext().getNext()==null) {
+					head=node;
+					left.setNext(null);
+					right.setNext(null);
+					head.setLeft(left);
+					head.setRight(right);
+				}
+				else {
+					head = head.getNext().getNext();
+					if(node.getValue()<head.getValue()) {
+						node.setNext(head);
+						left.setNext(null);
+						right.setNext(null);
+						head=node;
+						head.setLeft(left);
+						head.setRight(right);
+					}else {
+						HuffmanTree temp = head;
+						while(temp.getNext()!=null) {
+							if(node.getValue()<temp.getNext().getValue())
+								break;
+							temp=temp.getNext();
+						}
+						HuffmanTree next = temp.getNext();
+						temp.setNext(node);
+						node.setNext(next);
+						left.setNext(null);
+						right.setNext(null);
+						node.setLeft(left);
+						node.setRight(right);
+
+					}
+										
+				}
+				
+			}
+			int [] auxilary =  new int [values.length];
+			int index =0;
+			
+			printHuffmanCode(auxilary,index,head);
+			
+		}
+		return null;
+	}
+
+	private void printHuffmanCode(int[] auxilary, int index, HuffmanTree head) {
+		if(head!=null) {
+			if(head.getLeft()==null&&head.getRight()==null) {
+				printArray(auxilary,index,head.getCharecter());
+			}
+			if(head.getLeft()!=null) {
+				auxilary[index]=0;
+				printHuffmanCode(auxilary, index+1, head.getLeft());
+
+			}
+			if(head.getRight()!=null) {
+				auxilary[index]=1;
+				printHuffmanCode(auxilary, index+1, head.getRight());
+
+			}
+
+
+		}
+	}
+
+	private void printArray(int[] auxilary, int index, char c) {
+		System.out.print(c);
+		System.out.print(" : ");
+
+		for(int i=0;i<index;i++)
+			System.out.print(auxilary[i]);
+		System.out.println();
+
+	}
+
+	
 
 }

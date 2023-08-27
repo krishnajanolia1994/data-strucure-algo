@@ -47,4 +47,10 @@ public class GraphController {
 	{
 		return graphService.findCycle();
 	}
+	
+	@GetMapping(value  = AppConstants.WEIGHT+AppConstants.UNDIRECTED_GRAPH + AppConstants.ADD+AppConstants.NODE)
+	public String addNodeToUndirectedWeightedGraph(@RequestParam("sourse") int sourse , @RequestParam("destination") int destination, @RequestParam("distance") int distance)
+	{
+		return graphService.addNodeToUndirectedWeightedGraph(sourse, destination,distance);
+	}
 }

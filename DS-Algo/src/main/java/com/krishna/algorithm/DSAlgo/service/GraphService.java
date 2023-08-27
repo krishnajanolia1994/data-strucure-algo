@@ -13,4 +13,6 @@ public interface GraphService {
 
 	public String findCycle();
 
+	public String addNodeToUndirectedWeightedGraph(int sourse, int destination, int distance);
+
 }

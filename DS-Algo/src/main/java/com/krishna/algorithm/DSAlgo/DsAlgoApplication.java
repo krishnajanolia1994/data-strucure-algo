@@ -1,5 +1,6 @@
 package com.krishna.algorithm.DSAlgo;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -11,6 +12,8 @@ import com.krishna.algorithm.DSAlgo.model.CircularLinkedList;
 import com.krishna.algorithm.DSAlgo.model.DataStructure;
 import com.krishna.algorithm.DSAlgo.model.DoublyLinkedList;
 import com.krishna.algorithm.DSAlgo.model.LinkedList;
+import com.krishna.algorithm.DSAlgo.model.Tree;
+
 
 @SpringBootApplication
 public class DsAlgoApplication { 
@@ -18,20 +21,48 @@ public class DsAlgoApplication {
 
 	public static void main(String[] args) {
 		
+//		int [][] mat = new int [2][5];
+//		
+//		System.out.println(mat.length);
+//		System.out.println(mat[0].length);
+//
+//		File file = new File("/home/ubuntu/myfolde");
+//		Math.atan(-1/3);
+//		System.out.println(Math.toDegrees(Math.atan2(0, -3)));
+//		
+//		//efficient way to multiply a number 
+//		myltiplyBySaven(5);
+//		isLucky(7);
+//		addNumberOfBase16("12A","CD3");
+//		
+//		power(4,4);
+//		
+//		shafleAnArray(new int []{1,2,3,4,5,6,7,8});
+//
+//		file.mkdir();
 		
-		org.apache.wink.client.ClientConfig clientConfig = new org.apache.wink.client.ClientConfig();
+//		createKeyStore();
+//		pascalTriangle(7);
 		
 		
-		Boolean b = false;
-		int k=10;
-		Map<String, Boolean> map = new HashMap<String, Boolean>();
-		System.out.println("b "+b);
-		System.out.println("b in map "+b);
+		
+//		sieveOfEratostheneses
+//		org.apache.wink.client.ClientConfig clientConfig = new org.apache.wink.client.ClientConfig();
+		
+		
+//		Boolean b = false;
+//		int k=10;
+//		Map<String, Boolean> map = new HashMap<String, Boolean>();
+//		System.out.println("b "+b);
+//		System.out.println("b in map "+b);		double d= -1/2;
 
-		changeB(k,b,map);
-		System.out.println("b "+b);
-		System.out.println("b in map "+map.get("b"));
+//
+//		changeB(k,b,map);
+//		System.out.println("b "+b);
+//		System.out.println("b in map "+map.get("b"));
 		
+		
+
 		
 //		String b="b";
 //		String c= a+b;
@@ -59,8 +90,8 @@ public class DsAlgoApplication {
 
 
 //		ClientConfig clientConfig= new ClientConfig();
-		clientConfig.connectTimeout(10000);
-		clientConfig.readTimeout(10000);
+//		clientConfig.connectTimeout(10000);
+//		clientConfig.readTimeout(10000);
 //		clientConfig.handlers(new ClientHandler() {
 //			
 //			@Override
@@ -73,8 +104,8 @@ public class DsAlgoApplication {
 //		RestClient client = new RestClient();
 //		Resource resource = client.resource("https://postman-echo.com/post");
 //		ClientResponse response =resource.contentType(MediaType.APPLICATION_JSON_TYPE).accept(MediaType.APPLICATION_JSON_TYPE).post("");
-		SpringApplication.run(DsAlgoApplication.class, args);
-//		System.out.println("The response code is: " + response.getStatusCode());
+//		SpringApplication.run(DsAlgoApplication.class, args);
+		//		System.out.println("The response code is: " + response.getStatusCode());
 //		System.out.println("The response message body is: " + response.getEntity(String.class));
 
 //		removeLoopFromAList();
@@ -84,7 +115,7 @@ public class DsAlgoApplication {
 //		createStack();
 //		infixToPostFix();
 //		executePostfix();
-//		reverseStack();
+		reverseStack();
 //		createTwoStack();
 //		balanceParentheses();
 //		sortStack();
@@ -96,8 +127,360 @@ public class DsAlgoApplication {
 		
 //		queueWithAraay();
 		
-		priorityQueue();		
+//		priorityQueue();	
+//		printCombination();
+		// bit algo
+		findNonDuplicate();
+//		checkOpositSign(-2,-5);
+
 		
+//		 rotatRight();
+		 
+//		 int []ar = new int [] {2,3,5,7,6,7,3,2};
+//		 
+//		 int result = 0;
+//		 for(int i=0;i<ar.length;i++) {
+//			 result^=ar[i]; 
+//		 }
+//		 
+//		 for(int i=0;i<ar.length;i++) {
+//			 if((result^ar[i])==result) {
+//					System.out.println(ar[i]);
+//
+//			 }
+//		 }
+		
+		Tree tree = new Tree();
+		tree.setValue(10);
+		
+		Tree t1 = tree;
+		Tree t2 = tree;
+		if(t1==t2) {
+			System.out.println("yes");
+
+		}
+		
+		
+		int n = swapLowAndHighBit();
+		System.out.println(n);
+		
+		int a = 5;
+		int b = 10;
+		a=a+b;
+		b=a-b;
+		a=a-b;
+		System.out.println(a);
+		System.out.println(b);
+
+	}
+
+	private static int swapLowAndHighBit() {
+		int i=1;
+		
+		int low=16384;
+		int high=65536;
+		int n=1073741824;
+		int highBit,lowBit;
+		for(i=0;i<15;i++) {
+			highBit=n^high;
+			lowBit=n^low;
+			
+			if((highBit!=0&&lowBit==0)||(highBit==0&&lowBit!=0)) {
+				n=n^high;
+				n=n^low;
+			}
+			high+=high;
+			low/=2;
+		}
+		return n;
+	}
+
+	private static void rotatRight() {
+		int i;
+		i=1073741825;
+			System.out.println(i>>1);
+			if((i^1)<i)
+			{
+				i=(i>>1);
+				i=i^1073741824;
+				System.out.println(i);
+
+			}
+	}
+	
+	private static void checkOpositSign(int i, int j) {
+		if((i^j)<0)
+			System.out.println("true");
+		else
+			System.out.println("flase");
+
+	}
+
+	private static void findNonDuplicate() {
+		int arr[] = {12, 3, 12, 1, 1, 2,2,2,5, 3} ;
+		
+		int finalResult = arr[0];
+		int result=0;
+		for(int i=1;i<arr.length;i++) {
+			if(finalResult!=(finalResult^arr[i])) {
+				finalResult^=arr[i];
+			}else if(result!=(result^arr[i])) {
+				result^=arr[i];
+			}
+		}
+		finalResult^=result;
+
+		
+		System.out.println(finalResult);
+	}
+
+	private static void printCombination() {
+		int [] ar = new int [] {1,2,3,4,5};
+		int [] per= new int [3];
+		
+		printCombination(ar,per,0,0);
+	}
+
+	private static void printCombination(int[] ar, int[] per, int start, int current) {
+		
+		if(current==per.length)
+			print(per);
+		else for(int i=start;i<ar.length;i++) {
+			per[current]= ar[i];
+			current++;
+			printCombination(ar, per, i+1, current);
+			if(current>0)
+				current--;
+		}
+		
+	}
+
+	private static void print(int[] per) {
+
+		for(int i=0;i<per.length;i++)
+			System.out.print(per[i]);
+		System.out.println();
+	}
+
+
+
+	private static void pascalTriangle(int n) {
+		int [][]ar = new int [n][n];
+		int i,j;
+		for(i=0;i<n;i++ ) {
+			ar[i][0]=1;
+			ar[i][i]=1;
+		}
+		
+		for(i=2;i<n;i++) {
+			for(j=1;j<i;j++) {
+				ar[i][j]= ar[i-1][j-1]+ar[i-1][j];
+				
+			}
+		}
+		for(i=0;i<n;i++) {
+			for(j=0;j<=i;j++) {
+				System.out.print(ar[i][j]);
+				System.out.print(" ");
+
+			}
+			System.out.println();
+
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+//	private static void createKeyStore() {
+//		 KeySetManager keySetMgr = KeySetManager.getInstance();
+//	        WSKeySet keySet = keySetMgr.getKeySet(KEY_SET_NAME);
+//	        KeyReference[] allKeyReferences = keySet.getAllKeyReferences();
+//	        for (int i = 0; i < allKeyReferences.length; ++i) {
+//	            try {
+//	                KeyReference kref = allKeyReferences[i];
+//	                String keyAlias = kref.getKeyAlias();               
+//	                if (!SIGNER_CERT_ALIAS.equals(keyAlias)) { continue; }
+//	                WSKeyStore wsKeyStore = kref.getWSKeyStore();
+//	                
+//	                String location = wsKeyStore.getLocation();
+//	                
+//	                String type = wsKeyStore.getProperty("com.ibm.ssl.keyStoreType");
+//	            
+//	                String name = wsKeyStore.getProperty("com.ibm.ssl.keyStoreName");
+//	                
+//	                String provider = wsKeyStore.getProperty("com.ibm.ssl.keyStoreProvider");
+//	            
+//	                String password = wsKeyStore.getProperty("com.ibm.ssl.keyStorePassword");
+//	                
+//	                String scope = wsKeyStore.getProperty("com.ibm.ssl.keyStoreScope");
+//	                
+//	                KeyStore keyStore = KeyStoreManager.getInstance().getKeyStore(name, type, provider, location, password, scope, true, null);
+//	                
+//	                Certificate certificate = keyStore.getCertificate(keyAlias);
+//	                
+//	                PublicKey publicKey = certificate.getPublicKey();               
+//
+//	                return publicKey;
+//	            } catch (Exception e) {
+//	                e.printStackTrace();
+//	            }
+//	        }
+//	        return null;
+//	}
+
+	private static void shafleAnArray(int[] ar) {
+		int length = ar.length-1;
+		Random random = new Random();
+		int rand = 0;
+		for(int i =0;i<length;i++ ) {
+			rand = random.nextInt()%(length-i);
+			if(rand<0)
+				rand*=-1;
+			swap(ar,rand,length-i);
+		}
+		
+		for(int i =0;i<length;i++ ) {
+			System.out.println(ar[i]);
+		}
+	}
+
+	private static void power(int n, int m) {
+		int result=n;
+		int sum=0;
+		for(int i=1;i<m;i++) {
+			sum=0;
+			for(int j=0;j<m;j++) {
+				sum+=result;
+			}
+			result=sum;
+		}
+		
+		System.out.println(result);
+	}
+
+	private static void addNumberOfBase16(String num1, String num2) {
+		// A 65 B 66 C 67 D 68
+		//A 10 B 11 C 12 D 13
+
+		int length1=num1.length()-1;
+		int length2=num2.length()-1;
+		
+		int cary=0;
+		
+		int op1=0;
+		int op2=0;
+		String result="";
+		int temp=0;
+		
+		while(length1>=0||length2>=0) {
+			op1=0;
+			op2=0;
+			if(length1>=0) {
+				if(num1.charAt(length1)==65) {
+					op1=10;
+				}else if(num1.charAt(length1)==66) {
+					op1=11;
+				}else if(num1.charAt(length1)==67) {
+					op1=12;
+				}else if(num1.charAt(length1)==68) {
+					op1=13;
+				}else {
+					op1= Integer.parseInt(num1.charAt(length1)+"");
+				}
+				length1--;
+			}
+				
+			
+			if(length2>=0) {
+				if(num2.charAt(length2)==65) {
+					op2=10;
+				}else if(num2.charAt(length2)==66) {
+					op2=11;
+				}else if(num2.charAt(length2)==67) {
+					op2=12;
+				}else if(num2.charAt(length2)==68) {
+					op2=13;
+				}else {
+					op2= Integer.parseInt(num2.charAt(length2)+"");
+				}
+				length2--;
+			}
+				
+			
+			temp=op1+op2+cary;
+			if(temp<14) {
+				cary=0;
+				result =getHaxValue(temp)+ result;
+			}else {
+				cary=1;
+				result =getHaxValue((temp-14))+ result;
+
+			}
+		}
+		if(cary>0) {
+			result =getHaxValue(cary)+ result;
+			cary=0;
+
+		}
+		System.out.println(result);
+
+		
+	}
+
+	private static String getHaxValue(int temp) {
+		String haxValue = "";
+		int value = temp;
+		if(value<10) {
+			haxValue+=value;
+		}else if(value==10)
+			haxValue+="A";
+		else if(value==11)
+			haxValue+="B";
+		else if(value==12)
+			haxValue+="C";
+		else if(value==13)
+			haxValue+="D";
+
+		return haxValue;
+	}
+
+	private static void isLucky(int n) {
+		boolean isLuckky = true;
+		
+		int index = n;
+		int i=2;
+		int priorNumber;
+		while(i<index) {
+			if(index%i==0)
+			{
+				isLuckky=false;
+				break;
+			}
+			priorNumber=index-1;
+			
+			if(priorNumber>0) {
+				
+				index-=priorNumber/i;
+				i++;
+			}else {
+				break;
+			}
+		}
+		if(isLuckky)
+			System.out.println("lucky");
+	}
+
+	private static void myltiplyBySaven(int i) {
+		System.out.println((i<<3)-i);
 	}
 
 	private static void changeB(int k, Boolean b, Map<String, Boolean> map) {
@@ -539,7 +922,7 @@ public class DsAlgoApplication {
 		int top = -1;
 		
 		
-		String [] infix = {"A","+","B","-","C","+","D"};
+		String [] infix = {"A","+","B","-","C","*","D"};
 		
 		Map<String, Integer> priorty = new HashMap<String, Integer>();
 		priorty.put("-", 1);

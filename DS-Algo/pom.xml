@@ -29,6 +29,13 @@
 			<artifactId>wink-client</artifactId>
 			<version>1.4</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.ibm.ws.java/com.ibm.ws.java.mediaServerControl.1.0 -->
+		<dependency>
+		    <groupId>com.ibm.ws.java</groupId>
+		    <artifactId>com.ibm.ws.java.mediaServerControl.1.0</artifactId>
+		    <version>1.0.14</version>
+		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api -->
 		<dependency>
 			<groupId>javax.ws.rs</groupId>

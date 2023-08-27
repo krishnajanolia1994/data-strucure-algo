@@ -32,6 +32,8 @@ public interface TreeService {
 
 	public Tree getKthSmallestElement(int maxCount);
 
+	public String[] huffmanCoading(int[] values, char[] character);
+
 
 
 }
