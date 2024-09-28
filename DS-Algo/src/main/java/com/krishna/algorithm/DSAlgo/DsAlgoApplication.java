@@ -1,25 +1,174 @@
 package com.krishna.algorithm.DSAlgo;
 
-import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 import com.krishna.algorithm.DSAlgo.model.CircularLinkedList;
 import com.krishna.algorithm.DSAlgo.model.DataStructure;
 import com.krishna.algorithm.DSAlgo.model.DoublyLinkedList;
 import com.krishna.algorithm.DSAlgo.model.LinkedList;
-import com.krishna.algorithm.DSAlgo.model.Tree;
+import com.krishna.algorithm.DSAlgo.model.LinkedList2;
 
 
 @SpringBootApplication
-public class DsAlgoApplication { 
+class DsAlgoApplication extends SpringBootServletInitializer implements ApplicationRunner{ 
 	
 
-	public static void main(String[] args) {
+	 @Override
+	   protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+	      return application.sources(DsAlgoApplication.class);
+	   }
+	 
+	 
+	public static void main(String[] args) throws IOException {
+		
+		linkedList();
+		//array();
+		//string();
+		
+		//SpringApplication.run(DsAlgoApplication.class, args);
+
+		/*String str= "bsdk7jhc,b";
+		
+		System.out.println(str.matches("[^1-9]+"));
+		
+		PriorityQueue<Integer> priorityQueue  = new PriorityQueue<Integer>(Collections.reverseOrder());
+		
+		priorityQueue.add(1);
+		priorityQueue.add(2);
+		priorityQueue.add(3);
+		priorityQueue.add(4);
+
+		System.out.println(priorityQueue.poll());
+		String name="krishna";
+		name=revName(name,0);
+		System.out.println(name);
+		
+		/*MyList l1=new MyList(1);
+		MyList l2=new MyList(2);
+		MyList l3=new MyList(3);
+		MyList l4=new MyList(4);
+		l1.next=l2;
+		l2.next=l3;
+		l3.next=l4;
+		
+		reverseLinkedList(l1);
+		
+		MyList head = l4;
+		while(head!=null) {
+			System.out.println(head.x);
+			head=head.next;
+		}
+		
+		int a=5;
+		int b=10;
+		
+		a=a*b;
+		
+		b=a/b;
+		
+		a=a/b;
+		
+		System.out.println(a+" "+b);
+		
+		/*int []  = {4,2,5,3,6,3,7};
+		
+		int start =0;
+		
+		int end = ar.length-1;
+		while(start<end) {
+			swap(ar, start, end);
+			start++;
+			end--;
+		}
+		for(int i: ar)
+			System.out.print(i+" ");
+		
+		ar = mergeSoart(ar,0,ar.length);
+		
+		long max=0;
+		List<List<Integer>>  queries = new ArrayList<List<Integer>>();
+		
+		queries.add(Arrays.asList(1,2,100));
+		queries.add(Arrays.asList(2,5,100));
+		queries.add(Arrays.asList(3,4,100));
+
+//	    int [] ar = new int [n];
+	    Map<String, Integer> map = new HashMap<>();
+	    boolean isOverlape;
+	    String key;
+	    String mapKey ;
+	     queries= queries.stream().sorted((l1,l2)-> l1.get(0).compareTo(l2.get(0))).collect(Collectors.toList());
+	    for(List<Integer> query : queries){
+	        isOverlape  = false;
+	        key = query.get(0)+"_"+query.get(1)+"";
+	       
+	        String[] indexes;
+	        int i,j;
+	        for(Map.Entry<String, Integer> entry : map.entrySet()){
+	            System.err.println(entry.getKey()+" "+ entry.getValue());
+	            mapKey= entry.getKey();
+	            indexes= mapKey.split("_");
+	            i=Integer.parseInt(indexes[0]);
+	            j=Integer.parseInt(indexes[1]);
+	            if(query.get(0)<j){
+	                isOverlape= true;
+	                
+	                map.put(i+"_"+(query.get(0)),entry.getValue());
+	                map.put(query.get(0)+"_"+j, entry.getValue()+query.get(2));
+	                map.put((j+1)+"_"+(query.get(1)),query.get(2));
+	                map.remove(mapKey);
+
+	            }
+	            
+	            
+	        }
+	        if(!isOverlape){
+	            map.put((query.get(0))+"_"+(query.get(1)),query.get(2));
+
+	        }
+	    }
+	    
+	    for(Map.Entry<String, Integer> entry : map.entrySet()){
+	        if(entry.getValue()>max){
+	            max=entry.getValue();
+	        }
+	        
+	    }
+	    
+	    System.out.println(max);*/
+		
+//		String str="abc";
+//		
+//		permu(str.toCharArray(),0);
+		
+		/*printCombination();
+		
+		if(true||true)
+			System.out.println("fdnjch");
+		
+		 PriorityQueue<Integer> pr = new PriorityQueue(Collections.reverseOrder());
+		 
+		 pr.add(1);
+		 pr.add(10);
+		 System.out.println(pr.poll()+" fdvb");
 		
 //		int [][] mat = new int [2][5];
 //		
@@ -104,7 +253,7 @@ public class DsAlgoApplication {
 //		RestClient client = new RestClient();
 //		Resource resource = client.resource("https://postman-echo.com/post");
 //		ClientResponse response =resource.contentType(MediaType.APPLICATION_JSON_TYPE).accept(MediaType.APPLICATION_JSON_TYPE).post("");
-//		SpringApplication.run(DsAlgoApplication.class, args);
+		//SpringApplication.run(DsAlgoApplication.class, args);
 		//		System.out.println("The response code is: " + response.getStatusCode());
 //		System.out.println("The response message body is: " + response.getEntity(String.class));
 
@@ -115,7 +264,7 @@ public class DsAlgoApplication {
 //		createStack();
 //		infixToPostFix();
 //		executePostfix();
-		reverseStack();
+		//reverseStack();
 //		createTwoStack();
 //		balanceParentheses();
 //		sortStack();
@@ -130,7 +279,7 @@ public class DsAlgoApplication {
 //		priorityQueue();	
 //		printCombination();
 		// bit algo
-		findNonDuplicate();
+		//findNonDuplicate();
 //		checkOpositSign(-2,-5);
 
 		
@@ -150,7 +299,7 @@ public class DsAlgoApplication {
 //			 }
 //		 }
 		
-		Tree tree = new Tree();
+		/*Tree tree = new Tree();
 		tree.setValue(10);
 		
 		Tree t1 = tree;
@@ -170,8 +319,382 @@ public class DsAlgoApplication {
 		b=a-b;
 		a=a-b;
 		System.out.println(a);
-		System.out.println(b);
+		System.out.println(b);*/
 
+	}
+
+
+	private static void linkedList() {
+		//reverseLinkedList();
+		flat();
+		
+
+		
+	}
+
+
+	private static void flat() {
+		// TODO Auto-generated method stub
+		LinkedList2 l5 = new LinkedList2();
+		l5.setName(5);
+		LinkedList2 l10 = new LinkedList2();
+		l10.setName(10);
+		LinkedList2 l19 = new LinkedList2();
+		l19.setName(19);
+		LinkedList2 l28 = new LinkedList2();
+		l28.setName(28);
+		LinkedList2 l7 = new LinkedList2();
+		l7.setName(7);
+		LinkedList2 l8 = new LinkedList2();
+		l8.setName(8);
+
+		LinkedList2 l30 = new LinkedList2();
+		l30.setName(30);
+		LinkedList2 l20 = new LinkedList2();
+		l20.setName(20);
+
+		LinkedList2 l22 = new LinkedList2();
+		l22.setName(22);
+		LinkedList2 l50 = new LinkedList2();
+		l50.setName(50);
+		LinkedList2 l35 = new LinkedList2();
+		l35.setName(35);
+		LinkedList2 l40 = new LinkedList2();
+		l40.setName(40);
+		
+		
+		l5.setNext(l10);
+		l10.setNext(l19);
+		l19.setNext(l28);
+		
+		l7.setNext(l8);
+		l8.setNext(l30);
+		l5.setBottom(l7);
+		
+		l10.setBottom(l20);
+		
+		l22.setNext(l50);
+		l19.setBottom(l22);
+
+		l35.setNext(l40);
+		l28.setBottom(l35);
+		
+		System.out.println("");
+		
+        java.util.PriorityQueue<LinkedList2> pr=
+        		new java.util.PriorityQueue<>((a,b)->a.getName()-b.getName());
+
+		
+        LinkedList2 temp=l5;
+        LinkedList2 bottom=null;
+        while(temp!=null){
+            if(temp.getBottom()!=null){
+                bottom=temp.getBottom();
+                pr.add(bottom);
+                temp.setBottom(null);
+            }
+            temp=temp.getNext();
+
+        }
+        pr.add(l5);
+        
+        LinkedList2 head=null;
+        LinkedList2 tail=null;
+        LinkedList2 node=null;
+        LinkedList2 next=null;
+        while(pr.size()>0){
+            node=pr.remove();
+
+            next=node.getNext();
+            if(next!=null){
+                pr.add(next);
+            }
+            node.setNext(null);
+            if(head==null){
+                head=node;
+                tail=node;
+            }else{
+                tail.setBottom(node);
+                tail=tail.getBottom();
+            }
+        }
+        
+        while(head!=null) {
+        	System.out.println(head.getName());
+        	head=head.getBottom();
+        }
+        
+
+		
+	}
+
+
+	private static void reverseLinkedList() {
+		LinkedList head = new LinkedList();
+		head.setName("1");
+		LinkedList l2 = new LinkedList();
+		l2.setName("2");
+		LinkedList l3 = new LinkedList();
+		l3.setName("3");
+		LinkedList l4 = new LinkedList();
+		l4.setName("4");
+		LinkedList l5 = new LinkedList();
+		l5.setName("5");
+		LinkedList l6 = new LinkedList();
+		l6.setName("6");
+		
+		head.setNext(l2);
+		l2.setNext(l3);
+		l3.setNext(l4);
+		l4.setNext(l5);
+		l5.setNext(l6);
+		
+		LinkedList next=head.getNext();
+		head.setNext(null);
+		LinkedList nextnext=null;
+
+		while(next!=null) {
+			nextnext=next.getNext();
+			next.setNext(head);
+			head=next;
+			next=nextnext;
+			
+		}
+		System.out.println("");
+		
+	}
+
+
+	private static void string() {
+		// TODO Auto-generated method stubS
+		removeDupRecursively();
+		
+
+	}
+
+
+	private static void removeDupRecursively() {
+		String s = "acaaabbbacdddd";
+		int i = 0;
+		while (s.length() > 0 && i < s.length() - 1) {
+			int j = i + 1;
+			if (s.charAt(i) == s.charAt(i + 1)) {
+				System.out.println(s + " 34");
+				for (j = i + 1; j < s.length(); j++)
+					if (!(s.charAt(i) == s.charAt(j)))
+						break;
+				s = s.replace(s.substring(i, j), "");
+				if(i!=0)
+					i--;
+
+
+			}else {
+				i++;
+			}
+		}
+
+		System.out.println(s);
+	}
+	
+	static String  rem(String s,int start){
+        for(int i=start;i<s.length()-1;i++){
+            int j=i+1;
+            if(s.charAt(i)==s.charAt(i+1)){
+                System.out.println(s+" 34");
+                for(j=i+1;j<s.length();j++)
+                    if(!(s.charAt(i)==s.charAt(j)))
+                        break;
+                s=s.replace(s.substring(i,j),"");
+               
+                    rem(s,0);
+                    
+            }
+        }
+        return s;
+    }
+
+
+	private static void array() {
+		getInversion();
+		tappingOfWater();
+		stockExchange();
+	}
+
+	private static void stockExchange() {
+		int n = 7;
+		int A[] = {100,180,260,310,40,535,695};
+		ArrayList<ArrayList<Integer> > result=new ArrayList<ArrayList<Integer>>();
+		int maxIndexArray []=new int [n];
+		maxIndexArray[n-1]=n-1;
+		
+		for(int i=n-2;i>=0;i--) {
+			if(A[i]<A[i+1]) {
+				maxIndexArray[i]=maxIndexArray[i+1];
+			}else {
+				maxIndexArray[i]=i;
+			}
+		}
+		int i=0;
+		ArrayList<Integer> list;
+		while(i<n-1) {
+			if(A[i]<A[i+1]) {
+				list=new ArrayList<Integer>();
+				list.add(i);
+				list.add(maxIndexArray[i]);
+				result.add(list);
+				i=maxIndexArray[i];
+			}else {
+				i++;
+			}
+		}
+		
+		 List<String>list1  = new ArrayList<>();
+	        
+	       
+	        
+	         list1= list1.stream().sorted((a,b)->a.compareTo(b)).
+	        collect(Collectors.toList());
+		
+	}
+
+
+	private static void tappingOfWater() {
+		int arr[] = {3,0,0,2,0,4};
+		int n=6;
+		java.util.LinkedList<Integer> stack = new java.util.LinkedList<>();
+		
+		int nge[]=new int [6];
+		
+		for(int i=0;i<arr.length;i++) {
+			if(stack.size()==0)
+				stack.addFirst(i);
+			else {
+				if(arr[i]>stack.peekFirst()) {
+					nge[stack.removeFirst()]=i;
+					
+				}
+			}
+		}
+		
+	}
+
+
+	//need to be correct 
+	
+	private static void getInversion() {
+		AtomicLong count= new AtomicLong(0);
+		
+		int n = 8;
+		int arr[] = {57, 38, 91, 10, 38 ,28, 79, 41};
+		
+		mergeSort(arr,0,n-1,count);
+		System.out.println(count.get());
+	}
+
+
+	private static void mergeSort(int[] arr, int start, int end, AtomicLong count) {
+		if(start<end) {
+			int mid=(start+end)/2;
+			mergeSort(arr, start, mid, count);
+			mergeSort(arr, mid+1, end, count);
+			merge(arr,start,mid,end,count);
+
+		}
+	}
+
+
+	private static void merge(int[] arr, int start, int mid, int end, AtomicLong count) {		
+		int [] a1=new int [mid-start+1];
+		int [] a2=new int [end-mid];
+		int index=0;
+		for(int i=start;i<=mid;i++) {
+			a1[index]=arr[i];
+			index++;
+		}
+		index=0;
+		for(int i=mid+1;i<=end;i++) {
+			a2[index]=arr[i];
+			index++;
+		}
+		int a1Index=0;
+		int a2Index=0;
+		index=start;
+		while(a1Index<a1.length&&a2Index<a2.length) {
+			if(a1[a1Index]<a2[a2Index]) {
+				arr[index] = a1[a1Index];
+				a1Index++;
+			}else {
+				if(a1[a1Index]!=a2[a2Index])
+					count.addAndGet(a1.length-a1Index);
+				arr[index] = a2[a2Index];
+				a2Index++;
+			}
+			index++;
+			
+		}
+		while(a1Index<a1.length) {
+			arr[index] = a1[a1Index];
+			a1Index++;
+			index++;
+		}
+		
+		while(a2Index<a2.length) {
+			arr[index] = a2[a2Index];
+			a2Index++;
+			index++;
+		}
+	}
+
+
+	private static String revName(String name,int index) {
+		
+		if(index==name.length()-1) {
+			return name.charAt(index)+"";
+		}
+		
+		String next = revName(name, index+1);
+		
+		return next+name.charAt(index);
+	}
+
+	private static MyList reverseLinkedList(MyList l) {
+		if(l.next==null) {
+			return l;
+		}
+		
+		MyList next = reverseLinkedList(l.next);
+		next.next=l;
+		l.next=null;
+		
+		return l;
+	}
+
+	private static int[] mergeSoart(int[] ar, int start, int end) {
+		if(start<end) {
+			
+		}
+		
+		
+		return null;
+	}
+
+	private static void permu(char[] charArray, int i) {
+		if(i==charArray.length-1) {
+			System.out.println(new String(charArray));
+		}else {
+			for(int j=i;j<charArray.length;j++) {
+				swap(charArray,i,j);
+				permu(charArray, i+1);
+				swap(charArray,i,j);
+
+			}
+		}
+	}
+
+	private static void swap(char[] charArray, int i, int j) {
+		char temp=charArray[i];
+		charArray[i]=charArray[j];
+		charArray[j]=temp;
 	}
 
 	private static int swapLowAndHighBit() {
@@ -236,7 +759,7 @@ public class DsAlgoApplication {
 
 	private static void printCombination() {
 		int [] ar = new int [] {1,2,3,4,5};
-		int [] per= new int [3];
+		int [] per= new int [5];
 		
 		printCombination(ar,per,0,0);
 	}
@@ -1381,6 +1904,13 @@ public class DsAlgoApplication {
 		}
 		
 		return slow;
+		
+	}
+
+
+	@Override
+	public void run(ApplicationArguments args) throws Exception {
+		// TODO Auto-generated method stub
 		
 	}
 

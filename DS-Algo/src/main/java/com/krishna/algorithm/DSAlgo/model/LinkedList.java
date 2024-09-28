@@ -5,6 +5,8 @@ public class LinkedList {
 	private String name;
 	private String surName;
 	private LinkedList next;
+	private LinkedList bottom;
+
 	public String getName() {
 		return name;
 	}
@@ -24,4 +26,14 @@ public class LinkedList {
 	public void setNext(LinkedList next) {
 		this.next = next ;
 	}
+
+	public LinkedList getBottom() {
+		return bottom;
+	}
+
+	public void setBottom(LinkedList bottom) {
+		this.bottom = bottom;
+	}
+	
+	
 }

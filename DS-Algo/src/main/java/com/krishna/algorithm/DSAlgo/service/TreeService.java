@@ -34,6 +34,8 @@ public interface TreeService {
 
 	public String[] huffmanCoading(int[] values, char[] character);
 
+	public Tree convertTravesalToTree(int[] inorder, int[] preotder);
+
 
 
 }

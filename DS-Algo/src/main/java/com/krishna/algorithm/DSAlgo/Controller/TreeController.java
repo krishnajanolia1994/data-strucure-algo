@@ -120,5 +120,11 @@ public class TreeController {
 	{
 		return treeService.huffmanCoading(values,character);	
 	}
+	
+	@PostMapping(value  = AppConstants.TREE+AppConstants.PREORDER_TO_TREE)
+	public Tree convertTravesalToTree(@RequestParam("inorder") int[] inorder, @RequestParam("preotder") int [] preotder)
+	{
+		return treeService.convertTravesalToTree(inorder,preotder);	
+	}
 
 }

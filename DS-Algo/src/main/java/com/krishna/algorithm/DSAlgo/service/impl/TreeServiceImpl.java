@@ -653,6 +653,43 @@ private static Tree root;
 
 	}
 
+	@Override
+	public Tree convertTravesalToTree(int[] inorder, int[] preotder) {
+		
+		Tree root = new Tree();
+		if(inorder.length>0)
+			convertTravesalToTree(inorder,0,inorder.length-1,preotder,root);
+		
+		return root;
+	}
+
+	private Tree convertTravesalToTree(int[] inorder, int start, int end, int[] preotder, Tree root) {
+		if(start<=end) {
+			int index = getValue(inorder,start,end,preotder);
+			if(index!=-1) {
+				root.setValue(inorder[index]);
+				root.setLeft(convertTravesalToTree(inorder,start,index-1,preotder,new Tree()));
+				root.setRight(convertTravesalToTree(inorder,index+1,end,preotder,new Tree()));
+				return root;
+			}
+			
+		}
+		return null;
+	}
+
+	private int getValue(int[] inorder, int start, int end, int[] preotder) {
+		
+		int i;
+		for( i=0;i<preotder.length;i++) {
+			for(int j=start;j<=end;j++) {
+				if(preotder[i]==inorder[j])
+					return j;
+			}
+		}
+		
+		return -1;
+	}
+
 	
 
 }

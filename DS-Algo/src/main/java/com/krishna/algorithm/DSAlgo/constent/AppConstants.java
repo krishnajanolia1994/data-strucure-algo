@@ -1,6 +1,8 @@
 package com.krishna.algorithm.DSAlgo.constent;
 
 public class AppConstants {
+	
+	
 	public final static String LINKED_LIST ="/linkedlist";
 	
 	public final static String BY_KEY ="/by/key";
@@ -187,4 +189,8 @@ public class AppConstants {
 
 	
 	public static final String SUDOKU = "/sudoku";
+
+	public static final String PREORDER_TO_TREE = "/preorder/tree";
+	
+	private int x;
 }
