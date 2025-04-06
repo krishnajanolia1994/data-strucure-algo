@@ -1,272 +1,570 @@
-package com.krishna.algorithm.DSAlgo;
+package com.keishna;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Random;
-import java.util.Set;
-import java.util.TimerTask;
-import java.util.TreeSet;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.Collectors;
-import java.util.stream.DoubleStream;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-
-import com.krishna.algorithm.DSAlgo.model.CircularLinkedList;
-import com.krishna.algorithm.DSAlgo.model.DataStructure;
-import com.krishna.algorithm.DSAlgo.model.DoublyLinkedList;
-import com.krishna.algorithm.DSAlgo.model.LinkedList;
-import com.krishna.algorithm.DSAlgo.model.LinkedList2;
-import com.krishna.algorithm.DSAlgo.model.Tree;
 
 
-@SpringBootApplication
-class DsAlgoApplication extends SpringBootServletInitializer implements ApplicationRunner{ 
-	
-	private int x;
-	
-	
-	
 
-	 public DsAlgoApplication(int x) {
-		super();
-		this.x = x;
+public class MyClass {
+
+	public static void main(String[] args) {
+		
+		graph();
+//		bit();
+
+//		missLaniouse();
+//
+//		linkedList();
+//		
+//		stack();
+//		
+//		
+//		queue();
+//		// bit algo
+//		 
+//		 abc();
+
 	}
 
 
-	@Override
-	   protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+	private static void graph() {
+//		dfs();
+//		bfs();
+//		topologicalSorting();
+//		shortestSourceDestination();
 		
-		
-		
-		  Outer outer = new Outer(9); // First, create an instance of Outer class
-	        Outer.Inner inner = outer.new Inner(); // Then, create Inner class object
-	        inner.show();
-	      return application.sources(DsAlgoApplication.class);
-	      
-	   }
-	 
-	 
-	public static void main(String[] args) throws IOException {
-		 designPattern();
-//		remove();
-//		
-//		String str="jk";
-//		String s=null;
-//		
-//		try {
-//			str.charAt(10);
-//		} catch (Exception e) {
-//			e.addSuppressed(new NullPointerException());
-//			e.printStackTrace();
-//			// TODO: handle exception
-//		}
-//		
-		
-//		List<Integer> list = Arrays.asList(1,2,3,4,2,3,5,6);
-//		Set<Integer> set=new HashSet<Integer>();
-//		
-//		list.stream().filter(num-> !set.add(num)).forEach(System.out::println);
-		
-//		java8();
-//		java();
-		
-//		linkedList();
-		//array();
-		//string();
-		
-		//SpringApplication.run(DsAlgoApplication.class, args);
-
-		/*String str= "bsdk7jhc,b";
-		
-		System.out.println(str.matches("[^1-9]+"));
-		
-		PriorityQueue<Integer> priorityQueue  = new PriorityQueue<Integer>(Collections.reverseOrder());
-		
-		priorityQueue.add(1);
-		priorityQueue.add(2);
-		priorityQueue.add(3);
-		priorityQueue.add(4);
-
-		System.out.println(priorityQueue.poll());
-		String name="krishna";
-		name=revName(name,0);
-		System.out.println(name);
-		
-		/*MyList l1=new MyList(1);
-		MyList l2=new MyList(2);
-		MyList l3=new MyList(3);
-		MyList l4=new MyList(4);
-		l1.next=l2;
-		l2.next=l3;
-		l3.next=l4;
-		
-		reverseLinkedList(l1);
-		
-		MyList head = l4;
-		while(head!=null) {
-			System.out.println(head.x);
-			head=head.next;
-		}
-		
-		int a=5;
-		int b=10;
-		
-		a=a*b;
-		
-		b=a/b;
-		
-		a=a/b;
-		
-		System.out.println(a+" "+b);
-		
-		/*int []  = {4,2,5,3,6,3,7};
-		
-		int start =0;
-		
-		int end = ar.length-1;
-		while(start<end) {
-			swap(ar, start, end);
-			start++;
-			end--;
-		}
-		for(int i: ar)
-			System.out.print(i+" ");
-		
-		ar = mergeSoart(ar,0,ar.length);
-		
-		long max=0;
-		List<List<Integer>>  queries = new ArrayList<List<Integer>>();
-		
-		queries.add(Arrays.asList(1,2,100));
-		queries.add(Arrays.asList(2,5,100));
-		queries.add(Arrays.asList(3,4,100));
-
-//	    int [] ar = new int [n];
-	    Map<String, Integer> map = new HashMap<>();
-	    boolean isOverlape;
-	    String key;
-	    String mapKey ;
-	     queries= queries.stream().sorted((l1,l2)-> l1.get(0).compareTo(l2.get(0))).collect(Collectors.toList());
-	    for(List<Integer> query : queries){
-	        isOverlape  = false;
-	        key = query.get(0)+"_"+query.get(1)+"";
-	       
-	        String[] indexes;
-	        int i,j;
-	        for(Map.Entry<String, Integer> entry : map.entrySet()){
-	            System.err.println(entry.getKey()+" "+ entry.getValue());
-	            mapKey= entry.getKey();
-	            indexes= mapKey.split("_");
-	            i=Integer.parseInt(indexes[0]);
-	            j=Integer.parseInt(indexes[1]);
-	            if(query.get(0)<j){
-	                isOverlape= true;
-	                
-	                map.put(i+"_"+(query.get(0)),entry.getValue());
-	                map.put(query.get(0)+"_"+j, entry.getValue()+query.get(2));
-	                map.put((j+1)+"_"+(query.get(1)),query.get(2));
-	                map.remove(mapKey);
-
-	            }
-	            
-	            
-	        }
-	        if(!isOverlape){
-	            map.put((query.get(0))+"_"+(query.get(1)),query.get(2));
-
-	        }
-	    }
-	    
-	    for(Map.Entry<String, Integer> entry : map.entrySet()){
-	        if(entry.getValue()>max){
-	            max=entry.getValue();
-	        }
-	        
-	    }
-	    
-	    System.out.println(max);*/
-		
-//		String str="abc";
-//		
-//		permu(str.toCharArray(),0);
-		
-		/*printCombination();
-		
-		if(true||true)
-			System.out.println("fdnjch");
-		
-		 PriorityQueue<Integer> pr = new PriorityQueue(Collections.reverseOrder());
+		 Package []  ar=Thread.currentThread().getContextClassLoader().getDefinedPackages();
 		 
-		 pr.add(1);
-		 pr.add(10);
-		 System.out.println(pr.poll()+" fdvb");
-		
-//		int [][] mat = new int [2][5];
-//		
-//		System.out.println(mat.length);
-//		System.out.println(mat[0].length);
-//
-//		File file = new File("/home/ubuntu/myfolde");
-//		Math.atan(-1/3);
-//		System.out.println(Math.toDegrees(Math.atan2(0, -3)));
-//		
-//		//efficient way to multiply a number 
-//		myltiplyBySaven(5);
-//		isLucky(7);
-//		addNumberOfBase16("12A","CD3");
-//		
-//		power(4,4);
-//		
-//		shafleAnArray(new int []{1,2,3,4,5,6,7,8});
-//
-//		file.mkdir();
-		
-//		createKeyStore();
-//		pascalTriangle(7);
-		
-		
-		
-//		sieveOfEratostheneses
-//		org.apache.wink.client.ClientConfig clientConfig = new org.apache.wink.client.ClientConfig();
-		
-		
-//		Boolean b = false;
-//		int k=10;
-//		Map<String, Boolean> map = new HashMap<String, Boolean>();
-//		System.out.println("b "+b);
-//		System.out.println("b in map "+b);		double d= -1/2;
+		 for(Package p: ar) {
+			 System.out.println(p.getName());
+		 }
+		minimumCost();
+		Arrays();
+	}
 
-//
-//		changeB(k,b,map);
-//		System.out.println("b "+b);
-//		System.out.println("b in map "+map.get("b"));
+
+	private static void Arrays() {
+		
+		mergeWithoutExtraSpac();
+	}
+
+
+	private static void mergeWithoutExtraSpac() {
+		int n = 4, arr1[] = {10,12}; 
+		int m = 5, arr2[] = {5,18,20};
+		
+		mergeWithoutExtraSpac(arr1,arr2);
+		
+		
+	}
+
+
+	private static void mergeWithoutExtraSpac(int[] arr1, int[] arr2) {
+		if(arr1.length>arr2.length)
+			mergeWithoutExtraSpac(arr2, arr1);
+		
+		int m1=0,m2=0;
+		
+		int l1=0;
+		int h1=arr1.length-1;
+		
+		int l2=0;
+		int h2=arr2.length-1;
+		int x1,y1,x2,y2;
+		while(l1<=l2) {
+			m1=(l1+h1)/2;
+			
+			m2=arr1.length-m1-2;
+			
+			if(m1<=0)
+				x1=Integer.MIN_VALUE;
+			else
+				x1=arr1[m1];
+			if((m1+1)>=arr1.length)
+				y1=Integer.MAX_VALUE;
+			else
+				y1=arr1[m1+1];
+			//////////////////////////////
+			if(m2<=0)
+				x2=Integer.MIN_VALUE;
+			else
+				x2=arr1[m2];
+			if((m2+1)>=arr2.length)
+				y2=Integer.MAX_VALUE;
+			else
+				y2=arr2[m2+1];
+			
+			if(x1<y2&&x2<y1)
+				break;
+			
+			if(x1>y2)
+				h1=m1;
+			if(x2>y1)
+				l1=m1;
+				
+		}
+		
+		if(m1<0) {
+			
+			for(int i=0;i<arr1.length;i++) {
+				swap(arr1,arr2,i,i);
+			}
+		}
+		
+		if(m1<arr1.length-1) {
+			int index=0;
+			
+			for(int i=m1+1;i<arr1.length;i++) {
+				swap(arr1,arr2,i,index);
+				index++;
+
+			}
+		}
+		
+		Arrays.sort(arr2);
+		Arrays.sort(arr1);
+		
+		System.out.println();
+		
+			
+	}
+
+
+	private static void swap(int[] arr1, int[] arr2, int i,int j) {
+		int temp=arr1[i];
+		arr1[i]=arr2[j];
+		arr2[j]=temp;
+	}
+
+
+	private static void minimumCost() {
+		int N=4, M=4;
+
+		int [][]A= 
+			  {
+					  {9,4,9,9}, 
+					  {6,7,6,4},
+					  {8,3,3,7},
+					  {7,4,9,10}
+			 };
+		
+		int dist [][]=new int [4][4];
+		
+		for(int i=0;i<N;i++)
+			for(int j=0;j<M;j++)
+				dist[i][j]=Integer.MAX_VALUE;
+		
+		dist[0][0]=A[0][0];
+		
+		Map<String,Boolean> visited=new HashMap<String, Boolean>();
+		
+		List<String> queue = new ArrayList<String>();
+		queue.add("0_0");
+		
+		String [] indexes = new String [2];
+		
+		int row=0;
+		int col=0;
+		int tempRow=0;
+		int tempCol=0;
+		int currentDist=0;
+		for(int i=0;i<queue.size();i++) {
+			if(!visited.containsKey(queue.get(i))) {
+				visited.put(queue.get(i), true);
+				indexes=queue.get(i).split("_");
+				row=Integer.parseInt(indexes[0]);
+				col=Integer.parseInt(indexes[1]);
+				
+				currentDist=dist[row][col];
+				
+				if((row-1)>-1) {
+					tempRow=row-1;
+					if(dist[tempRow][col]>=currentDist+A[tempRow][col]) {
+						dist[tempRow][col]=currentDist+A[tempRow][col];
+					}
+					queue.add(tempRow+"_"+col);
+				}
+				
+				if((row+1)<N) {
+					tempRow=row+1;
+					if(dist[tempRow][col]>=currentDist+A[tempRow][col]) {
+						dist[tempRow][col]=currentDist+A[tempRow][col];
+					}
+					queue.add(tempRow+"_"+col);
+				}
+				
+				if((col-1)>-1) {
+					tempCol=col-1;
+					if(dist[row][tempCol]>=currentDist+A[row][tempCol]) {
+						dist[row][tempCol]=currentDist+A[row][tempCol];
+					}
+					queue.add(row+"_"+tempCol);
+				}
+
+				if((col+1)<M) {
+					tempCol=col+1;
+					if(dist[row][tempCol]>=currentDist+A[row][tempCol]) {
+						dist[row][tempCol]=currentDist+A[row][tempCol];
+					}
+					queue.add(row+"_"+tempCol);
+				}
+
+				
+			}
+			
+			
+		}
+		System.out.println();
 		
 		
 
 		
-//		String b="b";
-//		String c= a+b;
-//		System.out.println(c.replaceAll(" ", ""));
+		
+		
+		
+	}
+
+
+	private static void shortestSourceDestination() {
+		int N=3, M=4;
+		int [][]A= 
+		  {
+				  {1,0,0,0}, 
+				  {1,1,0,1},
+				  {0,1,1,1}
+		 };
+		
+		int dist [][]=new int [3][4];
+		
+		for(int i=0;i<N;i++)
+			for(int j=0;j<M;j++)
+				dist[i][j]=Integer.MAX_VALUE;
+		
+		dist[0][0]=0;
+		
+		Map<String,Boolean> visited=new HashMap<String, Boolean>();
+		
+		List<String> queue = new ArrayList<String>();
+		queue.add("0_0");
+		
+		String [] indexes = new String [2];
+		
+		int row=0;
+		int col=0;
+		int tempRow=0;
+		int tempCol=0;
+		int currentDist=0;
+		for(int i=0;i<queue.size();i++) {
+			if(!visited.containsKey(queue.get(i))) {
+				visited.put(queue.get(i), true);
+				indexes=queue.get(i).split("_");
+				row=Integer.parseInt(indexes[0]);
+				col=Integer.parseInt(indexes[1]);
+				
+				currentDist=dist[row][col];
+				
+				if((row-1)>-1 && A[row-1][col]==1) {
+					tempRow=row-1;
+					if(dist[tempRow][col]>=currentDist+1) {
+						dist[tempRow][col]=currentDist+1;
+					}
+					queue.add(tempRow+"_"+col);
+				}
+				
+				if((row+1)<N && A[row+1][col]==1) {
+					tempRow=row+1;
+					if(dist[tempRow][col]>=currentDist+1) {
+						dist[tempRow][col]=currentDist+1;
+					}
+					queue.add(tempRow+"_"+col);
+				}
+				
+				if((col-1)>-1 && A[row][col-1]==1) {
+					tempCol=col-1;
+					if(dist[row][tempCol]>=currentDist+1) {
+						dist[row][tempCol]=currentDist+1;
+					}
+					queue.add(row+"_"+tempCol);
+				}
+
+				if((col+1)<M && A[row][col+1]==1) {
+					tempCol=col+1;
+					if(dist[row][tempCol]>=currentDist+1) {
+						dist[row][tempCol]=currentDist+1;
+					}
+					queue.add(row+"_"+tempCol);
+				}
+
+				
+			}
+			
+			
+		}
+		System.out.println();
+		
+		
+	}
+
+
+	private static void topologicalSorting() {
+		int V = 6 ;
+		List<List<Integer>> adj = new ArrayList<>();
+		adj.add(Arrays.asList());
+		adj.add(Arrays.asList(3));
+		adj.add(Arrays.asList(3));
+		adj.add(Arrays.asList());
+		adj.add(Arrays.asList(0,1));
+		adj.add(Arrays.asList(0,2));
+
+		
+		
+		ArrayList<Integer> result =topoLogySort(V, adj);
+		for(int value:result)
+			System.out.println(value);
+		
+	}
+	
+	private static ArrayList<Integer> topoLogySort(int V, List<List<Integer>> adj) {
+	 	java.util.LinkedList<Integer> arr = new java.util.LinkedList<>();
+	 	ArrayList<Integer> result = new ArrayList<>();
+
+        boolean [] visted = new boolean [V];
+        
+        for(int i=0;i<V;i++){
+            dfsTopoLogicalSort(i,adj,visted,arr);
+        }
+        for(int i=0;i<V;i++) {
+        	result.add(arr.pop());
+        }
+        return result;
+	}
+
+
+	private static void dfsTopoLogicalSort(int value, List<List<Integer>> adj, boolean[] visted,
+			java.util.LinkedList<Integer> arr) {
+		
+		if(!visted[value]){
+            visted[value]=true;
+            
+            for(int child: adj.get(value)){
+            	dfsTopoLogicalSort(child,adj,visted,arr);
+            }
+            arr.push(value);
+            
+        }
+		
+	}
+
+
+	private static void bfs() {
+		int V = 5 ;
+		List<List<Integer>> adj = new ArrayList<>();
+		adj.add(Arrays.asList(1,2,3));
+		adj.add(Arrays.asList());
+		adj.add(Arrays.asList(4));
+		adj.add(Arrays.asList());
+		adj.add(Arrays.asList());
+		
+		
+		boolean visited []= new boolean [V];
+	        
+        ArrayList<Integer> arr = new  ArrayList<>();
+        ArrayList<Integer> result = new  ArrayList<Integer>();
+        result.add(0);
+        arr.addAll(adj.get(0));
+        visited[0]=true;
+        int current=0;
+        
+        for(int i=0;i<arr.size();i++){
+            current=arr.get(i);
+            if(!visited[current]){
+                result.add(current);
+                visited[current]=true;
+                arr.addAll(adj.get(current));
+            }
+        }
+        
+        for(int value:result)
+        	System.out.println(value);
+        
+	}
+
+	private static void dfs() {
+		int V = 5 ;
+		List<List<Integer>> adj = new ArrayList<>();
+		adj.add(Arrays.asList(2,3,1));
+		adj.add(Arrays.asList(0));
+		adj.add(Arrays.asList(0,4));
+		adj.add(Arrays.asList(0));
+		adj.add(Arrays.asList(2));
+		 ArrayList<Integer> arr = dfsOfGraph(V,adj);
+		 
+		 for(int value:arr) {
+			 System.out.println(value);
+		 }
+	}
+	
+	private static ArrayList<Integer> dfsOfGraph(int V, List<List<Integer>> adj) {
+		 ArrayList<Integer> arr = new ArrayList<>();
+	        boolean [] visted = new boolean [V];
+	        
+	        for(int i=0;i<V;i++){
+	            dfs(i,adj,visted,arr);
+	        }
+	        return arr;
+	}
+	
+	public static void dfs(int value,List<List<Integer>> adj, boolean [] visted, ArrayList<Integer> arr){
+        
+        if(!visted[value]){
+            arr.add(value);
+            visted[value]=true;
+            
+            for(int child: adj.get(value)){
+                dfs(child,adj,visted,arr);
+            }
+            
+        }
+        
+    }
+
+
+	private static void bit() {
+//		swapEvenOddBit();
+		
+//		findNonDuplicate();
+//		checkOpositSign(-2,-5);
+//
+//		
+//		 rotatRight();
+//		 swapLowAndHighBit();
+
+	}
+
+	
+	
+	//perfect output
+	private static void swapEvenOddBit() {
+		
+		int even=2;
+		int odd=1;
+		int evenValue=0;
+		int oddValue=0;
+		
+		int n=23;
+		
+		
+		while(even<=n||odd<=n) {
+			if((n&even)==even) {
+				evenValue=even;
+			}else {
+				evenValue=0;
+			}
+			
+			if((n&odd)==odd) {
+				oddValue=odd;
+			}else {
+				oddValue=0;
+			}
+			
+			if((evenValue==0&&oddValue==0)||(evenValue!=0&&oddValue!=0)) {
+				
+			}else {
+				 if(evenValue!=0) {
+					 n-=evenValue;
+					 n+=(evenValue>>1);
+				 }else {
+					 n-=oddValue;
+					 n+=(oddValue<<1);
+				 }
+				 
+			}
+			even<<=2;
+			odd<<=2;
+			
+		}
+		System.out.println(n);
+		
+		
+	}
+
+
+	private static void abc() {
+		int []ar = new int [] {2,3,5,7,6,7,3,2};
+		 
+		 int result = 0;
+		 for(int i=0;i<ar.length;i++) {
+			 result^=ar[i]; 
+		 }
+		 
+		 for(int i=0;i<ar.length;i++) {
+			 if((result^ar[i])==result) {
+					System.out.println(ar[i]);
+
+			 }
+		 }
+	}
+
+
+	private static void queue() {
+		queueWithAraay();
+		
+		priorityQueue();	
+		printCombination();
+	}
+
+
+	private static void stack() {
+		createStack();
+		infixToPostFix();
+		executePostfix();
+		reverseStack();
+		createTwoStack();
+		balanceParentheses();
+		sortStack();
+		
+		getStockSpan();
+		spacialStack();
+		stackWithMiddile();
+
+	}
+
+
+	private static void linkedList() {
+		removeLoopFromAList();
+		
+		createCircularLinkedList();
+		createDoublyLinkList();
+	}
+
+
+	private static void missLaniouse() {
+		myltiplyBySaven(5);
+		isLucky(7);
+		addNumberOfBase16("12A","CD3");
+		
+		power(4,4);
+		
+		shafleAnArray(new int []{1,2,3,4,5,6,7,8});
+
+		
+		pascalTriangle(7);
+		
+		
+		
+		httpClinet();
+	}
+
+
+	private static void httpClinet() {
+		
 //		 Base64 base64 = new Base64();
 //	        System.out.println(new String(base64.encode("1234567890".getBytes())));
-
+//
 //		javax.ws.rs.core.Application app = new javax.ws.rs.core.Application() {
 //		       public Set<Class<?>> getClasses() {
 //		           Set<Class<?>> classes = new HashSet<Class<?>>();
@@ -275,7 +573,7 @@ class DsAlgoApplication extends SpringBootServletInitializer implements Applicat
 //		       }
 //		};
 //		clientConfig.applications(app);
-
+//
 //		org.apache.wink.client.RestClient client = new org.apache.wink.client.RestClient(clientConfig);
 //
 //		org.apache.wink.client.Resource resource = client.resource("https://postman-echo.com/post");
@@ -284,8 +582,8 @@ class DsAlgoApplication extends SpringBootServletInitializer implements Applicat
 //		    
 //		System.out.println("The response code is: " + response.getStatusCode());
 //		System.out.println("The response message body is: " + response.getEntity(String.class));
-
-
+//
+//
 //		ClientConfig clientConfig= new ClientConfig();
 //		clientConfig.connectTimeout(10000);
 //		clientConfig.readTimeout(10000);
@@ -301,825 +599,11 @@ class DsAlgoApplication extends SpringBootServletInitializer implements Applicat
 //		RestClient client = new RestClient();
 //		Resource resource = client.resource("https://postman-echo.com/post");
 //		ClientResponse response =resource.contentType(MediaType.APPLICATION_JSON_TYPE).accept(MediaType.APPLICATION_JSON_TYPE).post("");
-		//SpringApplication.run(DsAlgoApplication.class, args);
-		//		System.out.println("The response code is: " + response.getStatusCode());
+//				System.out.println("The response code is: " + response.getStatusCode());
 //		System.out.println("The response message body is: " + response.getEntity(String.class));
-
-//		removeLoopFromAList();
-		
-//		createCircularLinkedList();
-//		createDoublyLinkList();
-//		createStack();
-//		infixToPostFix();
-//		executePostfix();
-		//reverseStack();
-//		createTwoStack();
-//		balanceParentheses();
-//		sortStack();
-		
-//		getStockSpan();
-//		spacialStack();
-		
-//		stackWithMiddile();
-		
-//		queueWithAraay();
-		
-//		priorityQueue();	
-//		printCombination();
-		// bit algo
-		//findNonDuplicate();
-//		checkOpositSign(-2,-5);
-
-		
-//		 rotatRight();
-		 
-//		 int []ar = new int [] {2,3,5,7,6,7,3,2};
-//		 
-//		 int result = 0;
-//		 for(int i=0;i<ar.length;i++) {
-//			 result^=ar[i]; 
-//		 }
-//		 
-//		 for(int i=0;i<ar.length;i++) {
-//			 if((result^ar[i])==result) {
-//					System.out.println(ar[i]);
-//
-//			 }
-//		 }
-		
-		/*Tree tree = new Tree();
-		tree.setValue(10);
-		
-		Tree t1 = tree;
-		Tree t2 = tree;
-		if(t1==t2) {
-			System.out.println("yes");
-
-		}
-		
-		
-		int n = swapLowAndHighBit();
-		System.out.println(n);
-		
-		int a = 5;
-		int b = 10;
-		a=a+b;
-		b=a-b;
-		a=a-b;
-		System.out.println(a);
-		System.out.println(b);*/
-
-	}
-
-
-	private static void designPattern() {
-		
-	}
-
-
-	private static void remove() {
-		// TODO Auto-generated method stub
-		
-		List<Integer> ar=new ArrayList<Integer>();
-		ar.add(1);
-		ar.add(2);
-		ar.add(3);
-		ar.add(4);
-		ar.add(5);
-		ar.add(7);
-		ar.add(8);
-		ar.add(9);
-		ar.add(10);
-		ar.add(11);
-		
-		Arrays.asList(1,2,3);
-		
-		new HashSet<Integer>();
-
-		
-		int k=3;
-		int index=0;
-		
-		while((k+index-1)<ar.size()) {
-			ar.remove(index+k-1);
-			index+=k;
-		}
-		System.out.println(ar);
-		
-	}
-
-
-	private static void CollectionFramwork() {
-		
-		iterator();
-		List<Integer> list=new java.util.LinkedList<Integer>();
-		list.add(null);
-		
-	 ArrayDeque<Integer> dq=new java.util.ArrayDeque<Integer>();
-		list.add(null);
-		
-		list=new java.util.ArrayList<Integer>();
-		list.add(null);
-		Set<Integer> set=new HashSet<>();
-		set.add(null);
-		Set<Integer> sorted=new TreeSet<Integer>();
-		sorted.add(null);
-	}
-
-
-	private static void iterator() {
-		List<Integer> list=new java.util.ArrayList<Integer>();
-		list.add(1);
-		
-		list.add(2);
-		list.add(3);
-		list.add(4);
-		list.add(5);
-		Iterator<Integer> itr=list.iterator(); 
-		while (itr.hasNext()) {
-			if(itr.next()==4)
-				itr.remove();
-		}
-		System.out.println(list);
-
-
-	}
-
-
-	private static void java() {
-		ObjectInputStream o;
-		thread();
-//		valueOf();
-		generic();
-	}
-
-
-	private static void thread() {
-		Tree root=new Tree();
-	}
-
-
-	private static void generic() {
-		show(5);
-		
 	}
 	
-	private static  <T>  void show(T value) {
-		System.out.println(value);
-	}
-
-
-	private static void valueOf() {
-		String val=String.valueOf(1);
-		System.out.println(val);
-	}
-
-
-	private static void java8() {
-		
-		List<Integer> list=Arrays.asList(7,4,5,6,4,5,8,3,4,6,4,5,1);
-		
-		dropWhile(list);
-		
-//		collectAndThen(list);
-
-		
-//		toMap();
-		
-		
-//		anyMatch();
-		
-//		reduce();
-		
-//		iterate();
-		
-//		flatMap1();
-		
-//		random();
-//		methodReference();
-//		CollectionFramwork();
-
-		
-//		logicalOr();
-		
-//		intLiteralWithUnderscore();
-		
-		
-//		floatingPoint();
-//		checkAlphabate();
-//		converingArrayListIntoMap();
-//		checkAlphabate();
-		//remove element which do meet condition
-//		removeElement();
-//		parallelStrem();
-//		flatMap();
-//		arrayToStream();
-//		streamToArray();
-//		slice();
-//		fingDuplicate();
-//		countChar();
-//		infiniteStream();
-		
-//        range();
-        
-//        mapStringToChar(); 
-//		joining();
-      
-      
-		
-		
-		
-	}
-
-
-	private static void dropWhile(List<Integer> list) {
-		list.stream().dropWhile(a->(a%2)==0).forEach(System.out::println);
-	}
-
-
-	private static void collectAndThen(List<Integer> list) {
-		list.stream().collect(Collectors.collectingAndThen(Collectors.toList(), list1->{
-			Collections.reverse(list);
-			return list.stream();}));
-		}
-
-
-	private static void toMap() {
-		List<Integer> list=Arrays.asList(7,4,5,6,4,5,8,3,4,6,4,5,1);
-		
-		Map<Integer,Integer > map= list.stream().distinct().collect(Collectors.toMap(a->a*a, a->a+a));
-		System.out.println(map);
-		
-
-	}
-
-
-	private static void reduce() {
-		
-		List<Integer> list=Arrays.asList(7,4,5,6,4,5,8,3,4,6,4,5,1);
-		
-		Optional<Integer> max=list.stream().reduce((a,b)-> a>b?a:b);
-		
-		System.out.println(max.get());
-		
-	}
 	
-	private static void anyMatch() {
-		
-		List<Integer> list=Arrays.asList(7,4,5,6,4,5,8,3,4,6,4,5,1);
-		
-		boolean match=list.stream().anyMatch(a-> (a/7==1));
-		
-		System.out.println(match);
-		
-	}
-
-
-	private static void iterate() {
-		Stream.iterate(1, a-> a+a).limit(100).forEach(System.out::println);
-	}
-
-
-	private static void flatMap1() {
-		List<String> sentences = Arrays.asList(
-	            "Java is awesome",
-	            "FlatMap helps in transformation",
-	            "Streams make life easier"
-	        );
-
-	        // Using flatMap to transform and flatten
-	        List<String[]> words = sentences.stream()
-	            .map(sentence -> sentence.split(" ")) // Transform: Split sentence into words
-//	            .flatMap(Arrays::stream) // Flatten: Convert Stream<String[]> to Stream<String>
-	            .collect(Collectors.toList());
-
-	        System.out.println(words);
-	}
-	
-	public static void use(MethodRefeence ref,String name) {
-		ref.print(name);
-	}
-
-
-	private static void methodReference() {
-		
-		use(System.out::println,"krishna");
-	}
-
-
-	private static void random() {
-		Random ran= new Random(1);
-		for(int i=0;i<1000;i++)
-			System.out.println(ran.nextInt());
-		TimerTask t;
-	}
-
-
-	private static void logicalOr() {
-		int a=1;
-		int b=2;
-		
-	}
-	
-	public static  <T>  void get(T valus) {
-		System.out.println(valus);
-		Set<Integer> set=new HashSet<Integer>();
-	}
-	
-
-
-	private static void intLiteralWithUnderscore() {
-		int x = 123_456_789;
-		System.out.println("value of x "+x);
-		
-	
-	}
-
-
-	private static void floatingPoint() {
-		float f=1.2f;
-		double d=1.22;
-	}
-
-
-	private static void joining() {
-		String str =IntStream.range(0, 1000).mapToObj(p-> new String(p+"")).collect(Collectors.joining());
-		System.out.println(str);
-	}
-
-
-	private static void mapStringToChar() {
-		String s = "Java";
-        
-        // Convert String to List of Characters using Streams
-        List<Character> ch = s.chars() // Convert String to IntStream (stream of chars)
-                               .mapToObj(c -> (char) c) // Map each int (char) to Character
-                               .collect(Collectors.toList()); // Collect into a List
-
-        System.out.println(ch);
-	}
-
-
-	private static void range() {
-		String[] array = { "G", "e", "e", "k", "s" }; 
-
-        List<String>list= IntStream.range(0, array.length).mapToObj(index->array[index]).collect(Collectors.toList());
-        System.out.println(list);
-	}
-
-
-	private static void infiniteStream() {
-		DoubleStream.iterate(0, i->i<100, i->i+1).forEach(System.out::println);
-	}
-
-
-	private static void countChar() {
-		System.out.println("abbcsdhoudbkxksdgvcbadasbdxscbdxberfberfersfb".chars().filter(p->p=='b').count());
-	}
-
-
-	private static void fingDuplicate() {
-		
-		Set<Integer> set = new HashSet<Integer>();
-		 Stream<Integer> stream = Stream.of(1, 2,2, 3, 4, 5,1); 
-		 stream.filter(p->!set.add(p)).forEach(System.out::println);
-
-	}
-
-
-	private static void slice() {
-		 Stream<Integer> stream = Stream.of(1, 2, 3, 4, 5); 
-		 stream.skip(1).limit(2-1+1).forEach(System.out::println);
-
-	}
-
-
-	private static void streamToArray() {
-		 Stream<Integer> stream = Stream.of(1, 2, 3, 4, 5); 
-		 Integer[] arr=stream.collect(Collectors.toList()).toArray( new Integer  [0]);
-		 
-	}
-
-
-	private static void arrayToStream() {
-		int [] array = {1,2,3,4};
-		Arrays.stream(array).filter(p->(p%2)==0).forEach(System.out::println);
-		
-		
-	}
-
-
-	private static void flatMap() {
-		
-		List<List<Integer>> list=Arrays.asList(Arrays.asList(1,5,3),Arrays.asList(7,5,9),Arrays.asList(6,4,10),Arrays.asList(8));
-		list.stream().flatMap(p->p.stream().map(q->q*q*q)).forEach(System.out::println);
-		
-		
-		
-	}
-
-
-	private static void parallelStrem() {
-		List<String> names = Arrays.asList("krishna","janoliya","is","good","boy");
-		names.parallelStream().forEach(System.out::println);
-	}
-
-
-	private static void removeElement() {
-		List<String> names = Arrays.asList("krishna","janoliya","is","good","boy");
-		names.stream().filter(str->!(str.length()==3)).collect(Collectors.toList()).forEach(str->System.out.println(str));
-	}
-
-
-	private static void converingArrayListIntoMap() {
-		List<String> names = Arrays.asList("krishna","janoliya","is","good","boy");
-		Map<String, Integer> nameMap=  names.stream().collect(Collectors.toMap(name->name, name->name.length()));
-		
-		System.out.println(nameMap);
-	}
-
-
-	private static void checkAlphabate() {
-		String name="krishna";
-		if(name.chars().allMatch(Character::isAlphabetic)) {
-			System.out.println("all alphabate");
-		}
-	}
-
-
-	private static void linkedList() {
-		//reverseLinkedList();
-		flat();
-		
-
-		
-	}
-
-
-	private static void flat() {
-		// TODO Auto-generated method stub
-		LinkedList2 l5 = new LinkedList2();
-		l5.setName(5);
-		LinkedList2 l10 = new LinkedList2();
-		l10.setName(10);
-		LinkedList2 l19 = new LinkedList2();
-		l19.setName(19);
-		LinkedList2 l28 = new LinkedList2();
-		l28.setName(28);
-		LinkedList2 l7 = new LinkedList2();
-		l7.setName(7);
-		LinkedList2 l8 = new LinkedList2();
-		l8.setName(8);
-
-		LinkedList2 l30 = new LinkedList2();
-		l30.setName(30);
-		LinkedList2 l20 = new LinkedList2();
-		l20.setName(20);
-
-		LinkedList2 l22 = new LinkedList2();
-		l22.setName(22);
-		LinkedList2 l50 = new LinkedList2();
-		l50.setName(50);
-		LinkedList2 l35 = new LinkedList2();
-		l35.setName(35);
-		LinkedList2 l40 = new LinkedList2();
-		l40.setName(40);
-		
-		
-		l5.setNext(l10);
-		l10.setNext(l19);
-		l19.setNext(l28);
-		
-		l7.setNext(l8);
-		l8.setNext(l30);
-		l5.setBottom(l7);
-		
-		l10.setBottom(l20);
-		
-		l22.setNext(l50);
-		l19.setBottom(l22);
-
-		l35.setNext(l40);
-		l28.setBottom(l35);
-		
-		System.out.println("");
-		
-        java.util.PriorityQueue<LinkedList2> pr=
-        		new java.util.PriorityQueue<>((a,b)->a.getName()-b.getName());
-
-		
-        LinkedList2 temp=l5;
-        LinkedList2 bottom=null;
-        while(temp!=null){
-            if(temp.getBottom()!=null){
-                bottom=temp.getBottom();
-                pr.add(bottom);
-                temp.setBottom(null);
-            }
-            temp=temp.getNext();
-
-        }
-        pr.add(l5);
-        
-        LinkedList2 head=null;
-        LinkedList2 tail=null;
-        LinkedList2 node=null;
-        LinkedList2 next=null;
-        while(pr.size()>0){
-            node=pr.remove();
-
-            next=node.getNext();
-            if(next!=null){
-                pr.add(next);
-            }
-            node.setNext(null);
-            if(head==null){
-                head=node;
-                tail=node;
-            }else{
-                tail.setBottom(node);
-                tail=tail.getBottom();
-            }
-        }
-        
-        while(head!=null) {
-        	System.out.println(head.getName());
-        	head=head.getBottom();
-        }
-        
-
-		
-	}
-
-
-	private static void reverseLinkedList() {
-		LinkedList head = new LinkedList();
-		head.setName("1");
-		LinkedList l2 = new LinkedList();
-		l2.setName("2");
-		LinkedList l3 = new LinkedList();
-		l3.setName("3");
-		LinkedList l4 = new LinkedList();
-		l4.setName("4");
-		LinkedList l5 = new LinkedList();
-		l5.setName("5");
-		LinkedList l6 = new LinkedList();
-		l6.setName("6");
-		
-		head.setNext(l2);
-		l2.setNext(l3);
-		l3.setNext(l4);
-		l4.setNext(l5);
-		l5.setNext(l6);
-		
-		LinkedList next=head.getNext();
-		head.setNext(null);
-		LinkedList nextnext=null;
-
-		while(next!=null) {
-			nextnext=next.getNext();
-			next.setNext(head);
-			head=next;
-			next=nextnext;
-			
-		}
-		System.out.println("");
-		
-	}
-
-
-	private static void string() {
-		// TODO Auto-generated method stubS
-		removeDupRecursively();
-		
-
-	}
-
-
-	private static void removeDupRecursively() {
-		String s = "acaaabbbacdddd";
-		int i = 0;
-		while (s.length() > 0 && i < s.length() - 1) {
-			int j = i + 1;
-			if (s.charAt(i) == s.charAt(i + 1)) {
-				System.out.println(s + " 34");
-				for (j = i + 1; j < s.length(); j++)
-					if (!(s.charAt(i) == s.charAt(j)))
-						break;
-				s = s.replace(s.substring(i, j), "");
-				if(i!=0)
-					i--;
-
-
-			}else {
-				i++;
-			}
-		}
-
-		System.out.println(s);
-	}
-	
-	static String  rem(String s,int start){
-        for(int i=start;i<s.length()-1;i++){
-            int j=i+1;
-            if(s.charAt(i)==s.charAt(i+1)){
-                System.out.println(s+" 34");
-                for(j=i+1;j<s.length();j++)
-                    if(!(s.charAt(i)==s.charAt(j)))
-                        break;
-                s=s.replace(s.substring(i,j),"");
-               
-                    rem(s,0);
-                    
-            }
-        }
-        return s;
-    }
-
-
-	private static void array() {
-		getInversion();
-		tappingOfWater();
-		stockExchange();
-	}
-
-	private static void stockExchange() {
-		int n = 7;
-		int A[] = {100,180,260,310,40,535,695};
-		ArrayList<ArrayList<Integer> > result=new ArrayList<ArrayList<Integer>>();
-		int maxIndexArray []=new int [n];
-		maxIndexArray[n-1]=n-1;
-		
-		for(int i=n-2;i>=0;i--) {
-			if(A[i]<A[i+1]) {
-				maxIndexArray[i]=maxIndexArray[i+1];
-			}else {
-				maxIndexArray[i]=i;
-			}
-		}
-		int i=0;
-		ArrayList<Integer> list;
-		while(i<n-1) {
-			if(A[i]<A[i+1]) {
-				list=new ArrayList<Integer>();
-				list.add(i);
-				list.add(maxIndexArray[i]);
-				result.add(list);
-				i=maxIndexArray[i];
-			}else {
-				i++;
-			}
-		}
-		
-		 List<String>list1  = new ArrayList<>();
-	        
-	       
-	        
-	         list1= list1.stream().sorted((a,b)->a.compareTo(b)).
-	        collect(Collectors.toList());
-		
-	}
-
-
-	private static void tappingOfWater() {
-		int arr[] = {3,0,0,2,0,4};
-		int n=6;
-		java.util.LinkedList<Integer> stack = new java.util.LinkedList<>();
-		
-		int nge[]=new int [6];
-		
-		for(int i=0;i<arr.length;i++) {
-			if(stack.size()==0)
-				stack.addFirst(i);
-			else {
-				if(arr[i]>stack.peekFirst()) {
-					nge[stack.removeFirst()]=i;
-					
-				}
-			}
-		}
-		
-	}
-
-
-	//need to be correct 
-	
-	private static void getInversion() {
-		AtomicLong count= new AtomicLong(0);
-		
-		int n = 8;
-		int arr[] = {57, 38, 91, 10, 38 ,28, 79, 41};
-		
-		mergeSort(arr,0,n-1,count);
-		System.out.println(count.get());
-	}
-
-
-	private static void mergeSort(int[] arr, int start, int end, AtomicLong count) {
-		if(start<end) {
-			int mid=(start+end)/2;
-			mergeSort(arr, start, mid, count);
-			mergeSort(arr, mid+1, end, count);
-			merge(arr,start,mid,end,count);
-
-		}
-	}
-
-
-	private static void merge(int[] arr, int start, int mid, int end, AtomicLong count) {		
-		int [] a1=new int [mid-start+1];
-		int [] a2=new int [end-mid];
-		int index=0;
-		for(int i=start;i<=mid;i++) {
-			a1[index]=arr[i];
-			index++;
-		}
-		index=0;
-		for(int i=mid+1;i<=end;i++) {
-			a2[index]=arr[i];
-			index++;
-		}
-		int a1Index=0;
-		int a2Index=0;
-		index=start;
-		while(a1Index<a1.length&&a2Index<a2.length) {
-			if(a1[a1Index]<a2[a2Index]) {
-				arr[index] = a1[a1Index];
-				a1Index++;
-			}else {
-				if(a1[a1Index]!=a2[a2Index])
-					count.addAndGet(a1.length-a1Index);
-				arr[index] = a2[a2Index];
-				a2Index++;
-			}
-			index++;
-			
-		}
-		while(a1Index<a1.length) {
-			arr[index] = a1[a1Index];
-			a1Index++;
-			index++;
-		}
-		
-		while(a2Index<a2.length) {
-			arr[index] = a2[a2Index];
-			a2Index++;
-			index++;
-		}
-	}
-
-
-	private static String revName(String name,int index) {
-		
-		if(index==name.length()-1) {
-			return name.charAt(index)+"";
-		}
-		
-		String next = revName(name, index+1);
-		
-		return next+name.charAt(index);
-	}
-
-	private static MyList reverseLinkedList(MyList l) {
-		if(l.next==null) {
-			return l;
-		}
-		
-		MyList next = reverseLinkedList(l.next);
-		next.next=l;
-		l.next=null;
-		
-		return l;
-	}
-
-	private static int[] mergeSoart(int[] ar, int start, int end) {
-		if(start<end) {
-			
-		}
-		
-		
-		return null;
-	}
-
-	private static void permu(char[] charArray, int i) {
-		if(i==charArray.length-1) {
-			System.out.println(new String(charArray));
-		}else {
-			for(int j=i;j<charArray.length;j++) {
-				swap(charArray,i,j);
-				permu(charArray, i+1);
-				swap(charArray,i,j);
-
-			}
-		}
-	}
-
-	private static void swap(char[] charArray, int i, int j) {
-		char temp=charArray[i];
-		charArray[i]=charArray[j];
-		charArray[j]=temp;
-	}
-
 	private static int swapLowAndHighBit() {
 		int i=1;
 		
@@ -1182,7 +666,7 @@ class DsAlgoApplication extends SpringBootServletInitializer implements Applicat
 
 	private static void printCombination() {
 		int [] ar = new int [] {1,2,3,4,5};
-		int [] per= new int [5];
+		int [] per= new int [3];
 		
 		printCombination(ar,per,0,0);
 	}
@@ -2331,10 +1815,5 @@ class DsAlgoApplication extends SpringBootServletInitializer implements Applicat
 	}
 
 
-	@Override
-	public void run(ApplicationArguments args) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
